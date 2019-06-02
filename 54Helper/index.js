@@ -86,6 +86,24 @@ $(function() {
 		if(data.node.parent === "#") {
 			alert("根节点：" + data.node.text);
 		} else {
+		    fetch('id_json_json_format/index.html').then(resp => {
+                resp.text().then(html => {
+                    // 插入html
+                    $("#jstree_body").html(html);
+
+                    // 插入css
+                    let link = document.createElement('link');
+                    link.setAttribute('rel', 'stylesheet');
+                    link.setAttribute('href', 'id_json_json_format/index.css');
+                    document.head.appendChild(link);
+
+                    // 插入js
+                    let script = document.createElement('script');
+                    script.src = 'id_json_json_format/index.js';
+                    document.body.appendChild(script);
+                });
+            });
+			
 			alert("子节点：" + data.node.text);
 		}
 		console.log(data.selected);
