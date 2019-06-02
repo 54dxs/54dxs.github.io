@@ -2,18 +2,18 @@
 	{
 		"id": "id_json",
 		"parent": "#",
-		"text": "JSON相关",
-		"icon": "../static/img/icon19.png"
+		"text": "JSON相关"
 	}, {
 		"id": "id_json_json_format",
 		"parent": "id_json",
 		"text": "JSON手动美化",
-		"icon": "glyphicon glyphicon-leaf"
+		"icon": "glyphicon glyphicon-leaf",
+		"data": "https://www.baidu.com"
 	}, {
 		"id": "id_json_json_compare",
 		"parent": "id_json",
 		"text": "JSON比对工具",
-		"icon": "glyphicon glyphicon-leaf"
+		"icon": "glyphicon glyphicon-flash"
 	}, {
 		"id": "id_code_beautify",
 		"parent": "#",
@@ -23,7 +23,7 @@
 		"id": "id_code_beautify_js_css_page_beautify",
 		"parent": "id_code_beautify",
 		"text": "Js、Css页面自动美化",
-		"icon": "aaa"
+		"icon": "glyphicon glyphicon-ok"
 	}, {
 		"id": "id_code_beautify_code_beautify",
 		"parent": "id_code_beautify",
