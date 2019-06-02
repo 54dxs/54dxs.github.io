@@ -6,45 +6,16 @@ $(function() {
 			"themes": {
 				"stripes": true
 			},
-			'data': [
-				{
-					"id": "id_json",
-					"parent": "#",
-					"text": "JSON相关"
+			'data': {
+				'url': function(node) {
+					return 'jstree.json';
 				},
-				{
-					"id": "id_json_json_format",
-					"parent": "id_json",
-					"text": "JSON手动美化"
-				},
-				{
-					"id": "id_json_json_compare",
-					"parent": "id_json",
-					"text": "JSON比对工具"
-				},
-				
-				
-				{
-					"id": "id_code_beautify",
-					"parent": "#",
-					"text": "代码美化/压缩"
-				},
-				{
-					"id": "id_code_beautify_js_css_page_beautify",
-					"parent": "id_code_beautify",
-					"text": "Js、Css页面自动美化"
-				},
-				{
-					"id": "id_code_beautify_code_beautify",
-					"parent": "id_code_beautify",
-					"text": "JSON比对工具"
-				},
-				{
-					"id": "id_code_beautify_code_compress",
-					"parent": "id_code_beautify",
-					"text": "代码压缩工具"
+				'data': function(node) {
+					return {
+						'id': node.id
+					};
 				}
-			]
+			}
 		},
 		"types": {
 			"#": {
@@ -65,8 +36,7 @@ $(function() {
 			}
 		},
 		"plugins": [
-			"contextmenu", "dnd", "search",
-			"state", "types", "wholerow"
+			"contextmenu", "dnd", "search", "state", "types", "wholerow"
 		]
 	});
 });
