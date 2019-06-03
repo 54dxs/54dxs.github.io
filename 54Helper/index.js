@@ -73,25 +73,30 @@ $(function() {
 		if(!data.event) {
 			// TODO 这里处理首次加载逻辑
 			console.log("首次加载页面: " + data.node.text);
-			
+
 			let id = data.node.id;
-		    fetch(id + '/index.html').then(resp => {
-                resp.text().then(html => {
-                    // 插入html
-                    $("#jstree_body").html(html);
+			fetch(id + '/index.html').then(resp => {
+				resp.text().then(html => {
+					// 插入html
+					$("#jstree_body").html(html);
 
-                    // 插入css
-                    let link = document.createElement('link');
-                    link.setAttribute('rel', 'stylesheet');
-                    link.setAttribute('href', id + '/index.css');
-                    document.head.appendChild(link);
+					// 插入css
+					let link = document.createElement('link');
+					link.setAttribute('rel', 'stylesheet');
+					link.setAttribute('href', id + '/index.css');
+					document.head.appendChild(link);
 
-                    // 插入js
-                    let script = document.createElement('script');
-                    script.src = id + '/index.js';
-                    document.body.appendChild(script);
-                });
-            });
+					// 插入js
+					let script = document.createElement('script');
+					script.src = id + '/index.js';
+					document.body.appendChild(script);
+				}).catch(e => {
+					console.log("error1: " + e);
+				});
+			}).catch(e => {
+				console.log("error: " + e);
+			});
+
 			return;
 		}
 		if(!data.node) {
@@ -103,29 +108,53 @@ $(function() {
 			return;
 		}
 		if(data.node.parent === "#") {
-//			alert("根节点：" + data.node.text);
+			//			alert("根节点：" + data.node.text);
 		} else {
 			let id = data.node.id;
-		    fetch(id + '/index.html').then(resp => {
-                resp.text().then(html => {
-                    // 插入html
-                    $("#jstree_body").html(html);
+			fetch(id + '/index.html').then(resp => {
+				resp.text().then(html => {
+					// 插入html
+					$("#jstree_body").html(html);
 
-                    // 插入css
-                    let link = document.createElement('link');
-                    link.setAttribute('rel', 'stylesheet');
-                    link.setAttribute('href', id + '/index.css');
-                    document.head.appendChild(link);
+					// 插入css
+					let link = document.createElement('link');
+					link.setAttribute('rel', 'stylesheet');
+					link.setAttribute('href', id + '/index.css');
+					document.head.appendChild(link);
 
-                    // 插入js
-                    let script = document.createElement('script');
-                    script.src = id + '/index.js';
-                    document.body.appendChild(script);
-                });
-            });
-			
-//			alert("子节点：" + data.node.text);
+					// 插入js
+					let script = document.createElement('script');
+					script.src = id + '/index.js';
+					document.body.appendChild(script);
+				});
+			});
+
+			//			alert("子节点：" + data.node.text);
 		}
 		console.log(data.selected);
 	});
+
+	// ---左侧导航-------------------------------------------------------------------------------------------------------------------
+	
+	function init() {
+		const $html = $('html');
+		const $document = $(document);
+		const $dom = $(TEMPLATE);
+		const $sidebar = $dom.find('.octotree-sidebar');
+		const $toggler = $sidebar.find('.octotree-toggle');
+		const $views = $sidebar.find('.octotree-view');
+		const $footer = $sidebar.find('.octotree-footer');
+		const $viewHeader = $views.find('.octotree-view-header');
+		const $spinner = $sidebar.find('.octotree-spin');
+		const $pinner = $sidebar.find('.octotree-pin');
+		const adapter = new GitHub(store);
+		const treeView = new TreeView($dom, store, adapter);
+		const optsView = new OptionsView($dom, store, adapter);
+		const helpPopup = new HelpPopup($dom, store);
+		const errorView = new ErrorView($dom, store);
+		let currRepo = false;
+		let hasError = false;
+	}
+
+	init();
 });
