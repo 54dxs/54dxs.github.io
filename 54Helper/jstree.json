@@ -120,5 +120,25 @@
 		"id": "id_other_tools_interface_postman",
 		"parent": "id_other_tools",
 		"text": "接口调试助手"
+	}, {
+		"id": "id_other_tools2",
+		"parent": "#",
+		"text": "其他工具"
+	}, {
+		"id": "id_other_tools_sticky_notes2",
+		"parent": "id_other_tools2",
+		"text": "我的便签笔记"
+	}, {
+		"id": "id_other_tools_remove_bg2",
+		"parent": "id_other_tools2",
+		"text": "人像背景移除"
+	}, {
+		"id": "id_other_tools_google_assistant2",
+		"parent": "id_other_tools2",
+		"text": "谷歌访问助手"
+	}, {
+		"id": "id_other_tools_interface_postman2",
+		"parent": "id_other_tools2",
+		"text": "接口调试助手"
 	}
 ]
