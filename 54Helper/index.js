@@ -73,6 +73,25 @@ $(function() {
 		if(!data.event) {
 			// TODO 这里处理首次加载逻辑
 			console.log("首次加载页面: " + data.node.text);
+			
+			let id = data.node.id;
+		    fetch(id + '/index.html').then(resp => {
+                resp.text().then(html => {
+                    // 插入html
+                    $("#jstree_body").html(html);
+
+                    // 插入css
+                    let link = document.createElement('link');
+                    link.setAttribute('rel', 'stylesheet');
+                    link.setAttribute('href', id + '/index.css');
+                    document.head.appendChild(link);
+
+                    // 插入js
+                    let script = document.createElement('script');
+                    script.src = id + '/index.js';
+                    document.body.appendChild(script);
+                });
+            });
 			return;
 		}
 		if(!data.node) {
@@ -84,9 +103,10 @@ $(function() {
 			return;
 		}
 		if(data.node.parent === "#") {
-			alert("根节点：" + data.node.text);
+//			alert("根节点：" + data.node.text);
 		} else {
-		    fetch('id_json_json_format/index.html').then(resp => {
+			let id = data.node.id;
+		    fetch(id + '/index.html').then(resp => {
                 resp.text().then(html => {
                     // 插入html
                     $("#jstree_body").html(html);
@@ -94,17 +114,17 @@ $(function() {
                     // 插入css
                     let link = document.createElement('link');
                     link.setAttribute('rel', 'stylesheet');
-                    link.setAttribute('href', 'id_json_json_format/index.css');
+                    link.setAttribute('href', id + '/index.css');
                     document.head.appendChild(link);
 
                     // 插入js
                     let script = document.createElement('script');
-                    script.src = 'id_json_json_format/index.js';
+                    script.src = id + '/index.js';
                     document.body.appendChild(script);
                 });
             });
 			
-			alert("子节点：" + data.node.text);
+//			alert("子节点：" + data.node.text);
 		}
 		console.log(data.selected);
 	});

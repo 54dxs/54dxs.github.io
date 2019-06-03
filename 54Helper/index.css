@@ -1,2 +1,28 @@
 @import url("../static/css/bootstrap/css/bootstrap.min.css");
+.c54dxs-sidebar {
+	width: 265px;
+	background-color: #FFFFFF;
+	position: fixed;
+	z-index: 1000000001;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	overflow: visible;
+	box-sizing: border-box;
+	transform: translate3d(0px, 0px, 0px);
+	transition: transform 0.2s ease 0s;
+}
 
+.c54dxs-views {
+	height: 100%;
+	overflow-y: auto;
+}
+
+.c54dxs-body {
+	box-sizing: border-box;
+}
+
+html {
+	margin-left: 265px;
+}
