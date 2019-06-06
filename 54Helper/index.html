@@ -12,22 +12,116 @@
 
 	<body>
 		<div class="c54dxs-sidebar">
+			<!--侧边栏显示隐藏控件-->
 			<div class="c54dxs-toggle">
 				<i class="c54dxs-toggle-icon" role="button"></i>
 				<span>54Helper</span>
 				<div class="popup">
 					<div class="arrow"></div>
 					<div class="content">
-					你好，这是54Helper。将鼠标移到该按钮上以显示代码树。你也可以按\n
-					快捷键 <kbd>cmd shift s</kbd> (or <kbd>ctrl shift s</kbd>).\n
+						你好，这是54Helper。将鼠标移到该按钮上以显示代码树。你也可以按\n 快捷键 <kbd>cmd shift s</kbd> (or <kbd>ctrl shift s</kbd>).\n
 					</div>
 				</div>
 			</div>
-			<div class="input-group">
+
+			<!--边栏设置按钮-固定边栏-->
+			<a class="c54dxs-pin" data-store="PINNED" href="javascript:void(0)">
+				<span class="tooltipped tooltipped-s" aria-label="固定边栏"> <i class="c54dxs-icon-pin"></i> </span>
+			</a>
+
+			<!--边栏设置按钮-设置-->
+			<a class="c54dxs-settings" href="javascript:void(0)">
+				<span class="tooltipped tooltipped-s" aria-label="设置"> <i class="c54dxs-icon-settings"></i> </span>
+			</a>
+
+			<!--内容展示区-->
+			<div class="c54dxs-views">
+				<div class="c54dxs-view c54dxs-tree-view current">
+					<div class="c54dxs-view-header"></div>
+					<div id="jstree" class="c54dxs-view-body"></div>
+					<a class="c54dxs-spin"> <span class="c54dxs-spin--loader"></span> </a>
+				</div>
+			<!--<div class="input-group">
 				<span class="input-group-addon">搜索</span>
 				<input type="text" class="form-control" id="jstree_search" placeholder="请输入关键字" />
 			</div>
-			<div id="jstree" class="c54dxs-views"></div>
+			<div id="jstree" class="c54dxs-views"></div>-->
+				<div class="c54dxs-view c54dxs-error-view">
+					<div class="c54dxs-view-header"></div>
+					<form class="c54dxs-view-body">
+						<div class="message"></div>
+					</form>
+				</div>
+
+				<div class="c54dxs-view c54dxs-settings-view">
+					<div class="c54dxs-view-header">设置</div>
+					<form class="c54dxs-view-body">
+						<div>
+							<label>GitHub账户token</label>
+							<div class="c54dxs-token-actions">
+								<a class="c54dxs-create-token" target="_blank" tabindex="-1">
+									<span class="tooltipped tooltipped-n" aria-label="生成新token"><i class="c54dxs-icon-key"></i></span>
+								</a>
+								<a class="c54dxs-help" href="https://github.com/lijian17/54Helper/wiki" target="_blank" tabindex="-1">
+									<span class="tooltipped tooltipped-n" aria-label="为什么需要这样做？"><i class="c54dxs-icon-help"></i></span>
+								</a>
+							</div>
+							<input type="text" class="form-control input-block" data-store="TOKEN" />
+						</div>
+
+						<div>
+							<div>
+								<label>快捷键</label>
+								<div class="c54dxs-token-actions">
+									<a class="c54dxs-help" href="https://github.com/lijian17/54Helper/wiki" target="_blank" tabindex="-1">
+										<span class="tooltipped tooltipped-n" aria-label="了解更多"><i class="c54dxs-icon-help"></i></span>
+									</a>
+								</div>
+							</div>
+							<input type="text" autocomplete="off" spellcheck="false" autocapitalize="off" class="form-control" data-store="HOTKEYS" />
+						</div>
+
+						<div><label><input type="checkbox" data-store="DARKMODE" /> Dark模式</label></div>
+						<div><label><input type="checkbox" data-store="HOVEROPEN" /> 鼠标悬停时打开边栏</label></div>
+						<div><label><input type="checkbox" data-store="LOADALL" /> 一次性加载整个GitHub树</label></div>
+						<div><label><input type="checkbox" data-store="NONCODE" /> 在非代码页中显示</label></div>
+						<div><label><input type="checkbox" data-store="ICONS" /> 显示特定于文件的图标</label></div>
+						<div><label><input type="checkbox" data-store="PR" /> 显示拉取、请求、修改<span class="c54dxs-disclaimer">注意：最多300个文件</span></label></div>
+
+						<div><button class="btn btn-primary">保存设置</button></div>
+					</form>
+
+					<div class="c54dxs-ad-big">
+						<div style="display: none;">54Helper Pro的特点</div>
+						<ul style="display: none;">
+							<li>Dark模式</li>
+							<li>文件搜索</li>
+							<li>更改停靠位置</li>
+							<li>Github企业</li>
+							<li>多个Github帐户</li>
+							<li>Safari浏览器支持</li>
+						</ul>
+						<div style="display: none;">
+							<a href="https://github.com/lijian17/54Helper/wiki" target="_blank">
+								<i class="c54dxs-icon-github"></i>在我们的网站上了解更多
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--<div class="input-group">
+				<span class="input-group-addon">搜索</span>
+				<input type="text" class="form-control" id="jstree_search" placeholder="请输入关键字" />
+			</div>
+			<div id="jstree" class="c54dxs-views"></div>-->
+
+			<!--底部-->
+			<div class="c54dxs-footer">
+				<div class="c54dxs-ad-small">
+					<a href="https://github.com/lijian17/54Helper/wiki" target="_blank">54Helper</a>
+				</div>
+			</div>
 		</div>
 		<div id="jstree_body" class="c54dxs-body"></div>
 	</body>
