@@ -714,11 +714,11 @@ TestResult.displayName = 'TestResult';
   }
 
   function toString() {
-    return this.testCount      + ' tests, ' +
-           this.assertionCount + ' assertions, ' +
-           this.failureCount   + ' failures, ' +
-           this.errorCount     + ' errors, ' +
-           this.skipCount      + ' skips';
+    return this.testCount      + ' 个测试, ' +
+           this.assertionCount + ' 个断言, ' +
+           this.failureCount   + ' 个失败, ' +
+           this.errorCount     + ' 个错误, ' +
+           this.skipCount      + ' 个跳过';
   }
 
   p.addAssertion  = addAssertion;
@@ -934,7 +934,7 @@ ConsoleTestResult.displayName = 'ConsoleTestResult';
 
   function addSkip(testcase, msg) {
     _super.addSkip.call(this, testcase, msg);
-    this.logger.warn('Skipping testcase ' + testcase + ': ' + msg.message);
+    this.logger.warn('跳过测试用例 ' + testcase + ': ' + msg.message);
   }
 
   function addFailure(testcase, msg) {
@@ -944,42 +944,42 @@ ConsoleTestResult.displayName = 'ConsoleTestResult';
 
   function addError(testcase, error) {
     _super.addError.call(this, testcase, error);
-    this.logger.error(testcase + ' threw an error. ' + error);
+    this.logger.error(testcase + ' 抛出一个错误. ' + error);
   }
 
   function startTest(testcase) {
     _super.startTest.call(this, testcase);
-    this.logger.debug('Started testcase ' + testcase + '.');
+    this.logger.debug('已启动测试用例 ' + testcase + '.');
   }
 
   function stopTest(testcase) {
-    this.logger.debug('Completed testcase ' + testcase + '.');
+    this.logger.debug('已完成的测试用例 ' + testcase + '.');
   }
 
   function pauseTest(testcase) {
-    this.logger.info('Paused testcase ' + testcase + '.');
+    this.logger.info('暂停的测试用例 ' + testcase + '.');
   }
 
   function restartTest(testcase) {
-    this.logger.info('Restarted testcase ' + testcase + '.');
+    this.logger.info('重新启动测试用例 ' + testcase + '.');
   }
 
   function startSuite(suite) {
-    this.logger.info('Started suite ' + suite + '.');
+    this.logger.info('启动测试套件 ' + suite + '.');
   }
 
   function stopSuite(suite) {
-    this.logger.info('Completed suite ' + suite + '.');
+    this.logger.info('完成测试套件 ' + suite + '.');
   }
 
   function start(t0) {
     _super.start.call(this, t0);
-    this.logger.info('Started tests.');
+    this.logger.info('已启动测试.');
   }
 
   function stop(t1) {
     _super.stop.call(this, t1);
-    this.logger.info('Completed tests in ' + ((t1 - this.t0)/1000) + 's.');
+    this.logger.info('测试完成,耗时 ' + ((t1 - this.t0)/1000) + 's.');
     this.logger.info(this.toString() + '.');
   }
 
