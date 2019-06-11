@@ -26,10 +26,20 @@
 
 	var FILE_REGEXP = /.*?\/(\w+\.html)(.*)/;
 
+	/**
+	 * 从浏览器地址栏获取文件名
+	 * http://127.0.0.1:8020/54dxs.github.io/54Helper/KeymasterTest.html?__hbt=1560219626931->KeymasterTest.html
+	 */
 	function getNameFromFile() {
 		return(global.location || '').toString().replace(FILE_REGEXP, '$1');
 	}
 
+	/**
+	 * 测试链
+	 * 
+	 * @param {Object} subclass 子类
+	 * @param {Object} superclass 父类
+	 */
 	function chain(subclass, superclass) {
 		function Subclass() {}
 		Subclass.prototype = superclass.prototype;
@@ -38,6 +48,12 @@
 		return subclass;
 	}
 
+	/**
+	 * 延迟执行
+	 * 
+	 * @param {Object} block 待执行的方法
+	 * @param {Object} context 待执行方法的参数集
+	 */
 	function defer(block, context) {
 		if('setTimeout' in global) {
 			window.setTimeout(function() {
@@ -48,38 +64,51 @@
 		}
 	}
 
+	/**
+	 * 断言跳过错误
+	 * 
+	 * @param {Object} message
+	 */
 	function AssertionSkippedError(message) {
 		this.message = message;
 	}
-
 	AssertionSkippedError.displayName = 'AssertionSkippedError';
-
 	(function(p) {
 		p.name = 'AssertionSkippedError';
 	})(AssertionSkippedError.prototype);
 	Evidence.AssertionSkippedError = AssertionSkippedError;
 
+	/**
+	 * 断言失败错误
+	 * 
+	 * @param {Object} message
+	 * @param {Object} template
+	 * @param {Object} args
+	 */
 	function AssertionFailedError(message, template, args) {
 		this.message = message;
 		this.template = template || '';
 		this.args = args;
 	}
-
 	AssertionFailedError.displayName = 'AssertionFailedError';
-
 	(function(p) {
 		p.name = 'AssertionFailedError';
 	})(AssertionFailedError.prototype);
 	Evidence.AssertionFailedError = AssertionFailedError;
 
+	/**
+	 * 断言消息
+	 * 
+	 * @param {Object} message
+	 * @param {Object} template
+	 * @param {Object} args
+	 */
 	function AssertionMessage(message, template, args) {
 		this.message = message.replace(/%/g, '%%');
 		this.template = template || '';
 		this.args = args;
 	}
-
 	AssertionMessage.displayName = 'AssertionMessage';
-
 	(function(p) {
 		function toString() {
 			return UI.printf(this.message + this.template, this.args);
@@ -88,7 +117,17 @@
 	})(AssertionMessage.prototype);
 	Evidence.AssertionMessage = AssertionMessage;
 
+	/**
+	 * 断言
+	 */
 	var Assertions = (function() {
+		/**
+		 * 断言表达式
+		 * 
+		 * @param {Object} expression 表达式
+		 * @param {Object} message 消息
+		 * @param {Object} template 模板
+		 */
 		function _assertExpression(expression, message, template) {
 			/*for (var i=0; i < 100000; i++) {
 			  (function(){})()
@@ -101,14 +140,27 @@
 			}
 		}
 
+		/**
+		 * 跳过
+		 * @param {Object} message
+		 */
 		function skip(message) {
 			throw new AssertionSkippedError(message || 'Skipped!');
 		}
 
+		/**
+		 * 失败
+		 * @param {Object} message
+		 */
 		function fail(message) {
 			this._assertExpression(false, message || 'Flunked!');
 		}
 
+		/**
+		 * 断言
+		 * @param {Object} test
+		 * @param {Object} message
+		 */
 		function assert(test, message) {
 			this._assertExpression(!!test,
 				message || 'Failed assertion.',
@@ -116,6 +168,11 @@
 			);
 		}
 
+		/**
+		 * 证伪
+		 * @param {Object} test
+		 * @param {Object} message
+		 */
 		function refute(test, message) {
 			this._assertExpression(!test,
 				message || 'Failed refutation.',
@@ -123,6 +180,11 @@
 			);
 		}
 
+		/**
+		 * 断言为真
+		 * @param {Object} test
+		 * @param {Object} message
+		 */
 		function assertTrue(test, message) {
 			this._assertExpression(
 				(test === true),
@@ -131,6 +193,11 @@
 			);
 		}
 
+		/**
+		 * 证伪为真
+		 * @param {Object} test
+		 * @param {Object} message
+		 */
 		function refuteTrue(test, message) {
 			this._assertExpression(
 				(test !== true),
@@ -139,6 +206,11 @@
 			);
 		}
 
+		/**
+		 * 断言null
+		 * @param {Object} test
+		 * @param {Object} message
+		 */
 		function assertNull(test, message) {
 			this._assertExpression(
 				(test === null),
@@ -147,6 +219,11 @@
 			);
 		}
 
+		/**
+		 * 证伪null
+		 * @param {Object} test
+		 * @param {Object} message
+		 */
 		function refuteNull(test, message) {
 			this._assertExpression(
 				(test !== null),
@@ -155,6 +232,11 @@
 			);
 		}
 
+		/**
+		 * 断言undefined
+		 * @param {Object} test
+		 * @param {Object} message
+		 */
 		function assertUndefined(test, message) {
 			this._assertExpression(
 				(typeof test === 'undefined'),
@@ -163,6 +245,11 @@
 			);
 		}
 
+		/**
+		 * 证伪undefined
+		 * @param {Object} test
+		 * @param {Object} message
+		 */
 		function refuteUndefined(test, message) {
 			this._assertExpression(
 				(typeof test !== 'undefined'),
@@ -171,6 +258,11 @@
 			);
 		}
 
+		/**
+		 * 断言false
+		 * @param {Object} test
+		 * @param {Object} message
+		 */
 		function assertFalse(test, message) {
 			this._assertExpression(
 				(test === false),
@@ -179,6 +271,11 @@
 			);
 		}
 
+		/**
+		 * 证伪false
+		 * @param {Object} test
+		 * @param {Object} message
+		 */
 		function refuteFalse(test, message) {
 			this._assertExpression(
 				(test !== false),
@@ -187,6 +284,12 @@
 			);
 		}
 
+		/**
+		 * 断言equal
+		 * @param {Object} expected
+		 * @param {Object} actual
+		 * @param {Object} message
+		 */
 		function assertEqual(expected, actual, message) {
 			this._assertExpression(
 				(expected == actual),
@@ -195,6 +298,12 @@
 			);
 		}
 
+		/**
+		 * 证伪equal
+		 * @param {Object} expected
+		 * @param {Object} actual
+		 * @param {Object} message
+		 */
 		function refuteEqual(expected, actual, message) {
 			this._assertExpression(
 				(expected != actual),
@@ -203,6 +312,12 @@
 			);
 		}
 
+		/**
+		 * 断言完全相同
+		 * @param {Object} expected
+		 * @param {Object} actual
+		 * @param {Object} message
+		 */
 		function assertIdentical(expected, actual, message) {
 			this._assertExpression(
 				(expected === actual),
@@ -211,6 +326,12 @@
 			);
 		}
 
+		/**
+		 * 证伪完全相同
+		 * @param {Object} expected
+		 * @param {Object} actual
+		 * @param {Object} message
+		 */
 		function refuteIdentical(expected, actual, message) {
 			this._assertExpression(
 				(expected !== actual),
@@ -219,6 +340,12 @@
 			);
 		}
 
+		/**
+		 * 断言包含
+		 * @param {Object} property
+		 * @param {Object} object
+		 * @param {Object} message
+		 */
 		function assertIn(property, object, message) {
 			this._assertExpression(
 				(property in object),
@@ -227,6 +354,12 @@
 			);
 		}
 
+		/**
+		 * 证伪包含
+		 * @param {Object} property
+		 * @param {Object} object
+		 * @param {Object} message
+		 */
 		function refuteIn(property, object, message) {
 			this._assertExpression(!(property in object),
 				message || 'Failed refutation.',
@@ -256,11 +389,15 @@
 	})();
 	Evidence.Assertions = Assertions;
 
+	/**
+	 * 测试用例
+	 * 
+	 * @param {Object} methodName
+	 */
 	function TestCase(methodName) {
 		this._methodName = methodName;
 		this.name = methodName;
 	}
-
 	(function() {
 		function extend(name, methods) {
 			function TestCaseSubclass(methodName) {
@@ -293,7 +430,6 @@
 		TestCase.subclasses = [];
 		TestCase.defaultTimeout = 10000;
 	})();
-
 	(function(p) {
 		function run(result) {
 			if(result) {
@@ -392,6 +528,11 @@
 	})(TestCase.prototype);
 	Evidence.TestCase = TestCase;
 
+	/**
+	 * 测试套件
+	 * @param {Object} name
+	 * @param {Object} tests
+	 */
 	function TestSuite(name, tests) {
 		this.name = name;
 		this._tests = [];
@@ -399,9 +540,7 @@
 			this.push.apply(this, tests);
 		}
 	}
-
 	TestSuite.displayName = 'TestSuite';
-
 	(function(p) {
 		function run(result) {
 			this._index = 0;
@@ -472,10 +611,11 @@
 	})(TestSuite.prototype);
 	Evidence.TestSuite = TestSuite;
 
+	/**
+	 * 测试执行器
+	 */
 	function TestRunner() {}
-
 	TestRunner.displayName = 'TestRunner';
-
 	(function(p) {
 		function run(suite) {
 			suite.parent = null;
@@ -494,10 +634,11 @@
 	})(TestRunner.prototype);
 	Evidence.TestRunner = TestRunner;
 
+	/**
+	 * 测试装载机
+	 */
 	function TestLoader() {}
-
 	TestLoader.displayName = 'TestLoader';
-
 	(function(p) {
 		function loadTestsFromTestCase(testcaseClass) {
 			var suite = new TestSuite(testcaseClass.displayName),
@@ -546,6 +687,9 @@
 	})(TestLoader.prototype);
 	Evidence.TestLoader = TestLoader;
 
+	/**
+	 * 自动执行器
+	 */
 	function AutoRunner() {
 		if(global.console && global.console.log) {
 			this.logger = Logger;
@@ -558,7 +702,6 @@
 		this.verbosity = Logger.INFO;
 		this.runner = ConsoleTestRunner;
 	}
-
 	(function() {
 		function run(options) {
 			var autoRunner = new this();
@@ -581,7 +724,6 @@
 			console: ConsoleTestRunner
 		};
 	})();
-
 	(function(p) {
 		function run() {
 			var logger = new this.logger(this.verbosity),
@@ -678,6 +820,9 @@
 	})(AutoRunner.prototype);
 	Evidence.AutoRunner = AutoRunner;
 
+	/**
+	 * 测试结果集
+	 */
 	function TestResult() {
 		this.testCount = 0;
 		this.assertionCount = 0;
@@ -689,9 +834,7 @@
 		this.errorCount = 0;
 		this.testCount = 0;
 	}
-
 	TestResult.displayName = 'TestResult';
-
 	(function(p) {
 		function addAssertion() {
 			this.assertionCount++;
@@ -757,14 +900,20 @@
 		p.toString = toString;
 	})(TestResult.prototype);
 	Evidence.TestResult = TestResult;
+	
+	/**
+	 * 控制面板
+	 */
 	var Console = {};
-
+	/**
+	 * 日志
+	 * @param {Object} level
+	 */
 	function Logger(level) {
 		if(typeof level !== 'undefined') {
 			this.level = level;
 		}
 	}
-
 	Logger.displayName = 'Logger';
 	Logger.LEVELS = ['NOTSET', 'DEBUG', 'INFO', 'WARN', 'ERROR', 'CRITICAL'];
 	Logger.CRITICAL = 5;
@@ -773,7 +922,6 @@
 	Logger.INFO = 2;
 	Logger.DEBUG = 1;
 	Logger.NOTSET = 0;
-
 	(function(p) {
 		function critical(template, params) {
 			this.log(Logger.CRITICAL, template, params);
@@ -826,13 +974,16 @@
 	})(Logger.prototype);
 	Console.Logger = Logger;
 
+	/**
+	 * popup日志
+	 * 
+	 * @param {Object} level
+	 */
 	function PopupLogger(level) {
 		Logger.call(this, level);
 	}
-
 	chain(PopupLogger, Logger);
 	PopupLogger.displayName = 'PopupLogger';
-
 	(function(p) {
 		var BASIC_STYLES = 'color: #333; background-color: #fff; font-family: monospace; border-bottom: 1px solid #ccc;';
 		var STYLES = {
@@ -900,15 +1051,17 @@
 	})(PopupLogger.prototype);
 	Console.PopupLogger = PopupLogger;
 
+	/**
+	 * 命令行日志
+	 * 
+	 * @param {Object} level
+	 */
 	function CommandLineLogger(level) {
 		Logger.call(this, level);
 	}
-
 	chain(CommandLineLogger, Logger);
 	CommandLineLogger.displayName = 'CommandLineLogger';
-
 	(function(p) {
-
 		function log(level, msg, params) {
 			level = level || Logger.NOTSET;
 			if(level >= this.level) {
@@ -927,14 +1080,17 @@
 	})(CommandLineLogger.prototype);
 	Console.CommandLineLogger = CommandLineLogger;
 
+	/**
+	 * 控制面板测试执行器
+	 * 
+	 * @param {Object} logger
+	 */
 	function ConsoleTestRunner(logger) {
 		TestRunner.call(this);
 		this.logger = logger;
 	}
-
 	chain(ConsoleTestRunner, TestRunner);
 	ConsoleTestRunner.displayName = 'ConsoleTestRunner';
-
 	(function(p) {
 		function _makeResult() {
 			return new ConsoleTestResult(this.logger);
@@ -944,14 +1100,17 @@
 	})(ConsoleTestRunner.prototype);
 	Console.TestRunner = ConsoleTestRunner;
 
+	/**
+	 * 控制面板测试结果集
+	 *
+	 * @param {Object} logger
+	 */
 	function ConsoleTestResult(logger) {
 		TestResult.call(this);
 		this.logger = logger;
 	}
-
 	chain(ConsoleTestResult, TestResult);
 	ConsoleTestResult.displayName = 'ConsoleTestResult';
-
 	(function(p) {
 		var _super = TestResult.prototype;
 
@@ -1023,8 +1182,11 @@
 		p.start = start;
 		p.stop = stop;
 	})(ConsoleTestResult.prototype);
-
 	Console.TestResult = ConsoleTestResult;
+	
+	/**
+	 * UI
+	 */
 	var UI = (function() {
 		function printf(template, args, inspector) {
 			var parts = [],
@@ -1064,11 +1226,15 @@
 	})();
 	Evidence.UI = UI;
 
+	/**
+	 * 设置默认加载器
+	 */
 	var defaultLoader = new TestLoader();
 	Evidence.defaultLoader = defaultLoader;
 
-	global.Evidence = Evidence;
+	global.Evidence = Evidence;// 将单元测试组件挂载到全局
 
+	//如果是浏览器模式
 	if(global.location) {
 		global.onload = function() {
 			if(typeof originalOnload === 'function') {
@@ -1076,7 +1242,9 @@
 			}
 			AutoRunner.run();
 		};
-	} else if(global.arguments) {
+	} 
+	// 如果是命令行模式
+	else if(global.arguments) {
 		var runtime = java.lang.Runtime.getRuntime();
 		var thread = new java.lang.Thread(function() {
 			AutoRunner.run();
