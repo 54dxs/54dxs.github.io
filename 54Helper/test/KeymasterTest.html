@@ -26,10 +26,8 @@
       17:'ctrlKey',
       91:'metaKey'
     };
-    // because the DOM is retarded,
-    // and browsers don't really care about the DOM API anyway
-    // (IE, Firefox, WebKit are all using different event generators),
-    // we'll just simulate events roughly
+    // 因为dom是延迟的，浏览器根本不关心dom api（例如，firefox、webkit都使用不同的事件生成器），
+    // 所以我们只是粗略地模拟事件。
     function keydown(code, modifiers, el){
       var event = document.createEvent('Event');
       event.initEvent('keydown', true, true);
