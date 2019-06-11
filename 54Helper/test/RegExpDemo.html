@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>正则表达式</title>
+	</head>
+
+	<body>
+		<p>搜索字符串 "runoob", 并显示匹配的起始位置：</p>
+		<button onclick="myFunction()">点我</button>
+		<p id="demo"></p>
+		<script>
+			var FILE_REGEXP = /.*?\/(\w+\.html)(.*)/;
+
+			function getNameFromFile() {
+				var loc = (location || '').toString();
+				
+				console.log(loc.match(/.*?\//))
+				console.log(loc.match(/.*?\/(\w+\.html)/))
+				console.log(loc.match(/.*?\/(\w+\.html)(.*)/))
+				
+				
+				var rep = loc.replace(FILE_REGEXP, '$2');
+				return rep;
+			}
+
+			function a() {
+				var a = '<H1>Chapter 1 - 介绍正则表达式</H1>';
+				var a1 = /<.*>/;
+				var a2 = /<.*?>/;
+				var a3 = /<\w+?>/;
+				console.log(a.match(a1));
+				console.log(a.match(a2));
+				console.log(a.match(a3));
+			}
+
+			function match() {
+				var str = "http://www.runoob.com:80/html/html-tutorial.html";
+				
+				console.log(str.match(/(\w+):\/\//));
+				console.log(str.match(/(\w+):\/\/([^/:]+)/));
+				console.log(str.match(/(\w+):\/\/([^/:]+)(:\d+)?/));
+				console.log(str.match(/(\w+):\/\/([^/:]+)(:\d+)?([^# ]*)/));
+				
+				var patt1 = /(\w+):\/\/([^/:]+)(:\d*)?(\/html)(\/html)([^# ]*)/;
+				var arr = str.match(patt1);
+				for(var i = 0; i < arr.length; i++) {
+					console.log(arr[i]);
+					document.write(arr[i]);
+					document.write("<br>");
+				}
+			}
+
+			function myFunction() {
+//				document.getElementById("demo").innerHTML = getNameFromFile();
+//				a();
+				match();
+			}
+		</script>
+	</body>
+
+</html>
