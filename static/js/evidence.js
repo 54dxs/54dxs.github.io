@@ -13,6 +13,9 @@
     TestCase.extend.apply(TestCase, arguments);
   }
 
+  /**
+   * 无冲突
+   */
   function noConflict() {
     global.Evidence = originalEvidence;
     return Evidence;
