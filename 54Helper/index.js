@@ -140,11 +140,13 @@ $(function() {
 	const PINNED_CLASS = 'c54dxs-pinned';
 
 	const STORE = {
+		TOKEN: 'c54dxs.access_token', //令牌
 		WIDTH: 'c54dxs.sidebar_width'
 	};
 
 	const DEFAULTS = {
-		WIDTH: 250
+		TOKEN: '6ae86c5ce7a5e2a133d4ddee62cb5347589dd1ce',
+		WIDTH: 280
 	};
 
 	const EVENT = {
@@ -279,6 +281,394 @@ $(function() {
 	window.pluginManager = new PluginManager();
 	window.Plugin = Plugin;
 
+	class C54dxsService {
+		getAccessToken() {
+			return window.store.get(window.STORE.TOKEN);
+		}
+
+		getInvalidTokenMessage({
+			responseStatus,
+			requestHeaders
+		}) {
+			return(
+				'GitHub访问token无效' +
+				'请转到 <a class="settings-btn" href="javascript:void(0)">设置</a> 并更新token'
+			);
+		}
+	}
+
+	window.c54dxs = new C54dxsService();
+
+	/**
+	 * 适配器基类
+	 */
+	class Adapter {
+		constructor(deps, store) {
+			deps.forEach((dep) => window[dep]());
+			this._defaultBranch = {};
+			this.store = store;
+		}
+
+		/**
+		 * 从仓库加载代码树
+		 * @param {Object} opts: {
+		 *                  path: 加载树的起始路径,
+		 *                  repo: 当前存储库,
+		 *                  node (可选): 所选节点 (为null加载整个树),
+		 *                  token (可选): 个人访问令牌
+		 *                 }
+		 * @param {Function} transform(item)
+		 * @param {Function} cb(err: error, tree: Array[Array|item])
+		 * @api protected
+		 */
+		_loadCodeTreeInternal(opts, transform, cb) {
+			const folders = {
+				'': []
+			};
+			const $dummyDiv = $('<div/>');
+			const {
+				path,
+				repo,
+				node
+			} = opts;
+
+			opts.encodedBranch = opts.encodedBranch || encodeURIComponent(decodeURIComponent(repo.branch));
+
+			this._getTree(path, opts, (err, tree) => {
+				if(err) return cb(err);
+
+				this._getSubmodules(tree, opts, (err, submodules) => {
+					if(err) return cb(err);
+
+					submodules = submodules || {};
+
+					const nextChunk = (iteration = 0) => {
+						const CHUNK_SIZE = 300;
+
+						for(let i = 0; i < CHUNK_SIZE; i++) {
+							const item = tree[iteration * CHUNK_SIZE + i];
+
+							// We're done
+							if(item === undefined) {
+								return cb(null, folders['']);
+							}
+
+							// Runs transform requested by subclass
+							if(transform) {
+								transform(item);
+							}
+
+							// If lazy load and has parent, prefix with parent path
+							if(node && node.path) {
+								item.path = node.path + '/' + item.path;
+							}
+
+							const path = item.path;
+							const type = item.type;
+							const index = path.lastIndexOf('/');
+							const name = $dummyDiv.text(path.substring(index + 1)).html(); // Sanitizes, closes #9
+
+							item.id = NODE_PREFIX + path;
+							item.text = name;
+
+							// Uses `type` as class name for tree node
+							item.icon = type;
+
+							if(type === 'blob') {
+								if(this.store.get(STORE.ICONS)) {
+									const className = FileIcons.getClassWithColor(name);
+									item.icon += ' ' + (className || 'file-generic');
+								} else {
+									item.icon += ' file-generic';
+								}
+							}
+
+							if(item.patch) {
+								const {
+									action,
+									previous,
+									filesChanged: files,
+									additions,
+									deletions
+								} = item.patch;
+								let patch = '';
+								patch += action === 'added' ? '<span class="text-green">added</span>' : '';
+								patch += action === 'renamed' ? `<span class="text-green" title="${previous}">renamed</span>` : '';
+								patch += action === 'removed' ? `<span class="text-red" title="${previous}">removed</span>` : '';
+								patch += files ?
+									`<span class='octotree-patch-files'>${files} ${files === 1 ? 'file' : 'files'}</span>` :
+									'';
+								patch += additions !== 0 ? `<span class="text-green">+${additions}</span>` : '';
+								patch += deletions !== 0 ? `<span class="text-red">-${deletions}</span>` : '';
+								item.text += `<span class="octotree-patch">${patch}</span>`;
+							}
+
+							if(node) {
+								folders[''].push(item);
+							} else {
+								folders[path.substring(0, index)].push(item);
+							}
+
+							if(type === 'tree' || type === 'blob') {
+								if(type === 'tree') {
+									if(node) item.children = true;
+									else folders[item.path] = item.children = [];
+								}
+
+								// If item is part of a PR, jump to that file's diff
+								if(item.patch && typeof item.patch.diffId === 'number') {
+									const url = this._getPatchHref(repo, item.patch);
+									item.a_attr = {
+										href: url,
+										'data-download-url': item.url,
+										'data-download-filename': name
+									};
+								} else {
+									// Encodes but retains the slashes, see #274
+									const encodedPath = path
+										.split('/')
+										.map(encodeURIComponent)
+										.join('/');
+									const url = this._getItemHref(repo, type, encodedPath, opts.encodedBranch);
+									item.a_attr = {
+										href: url,
+										'data-download-url': url,
+										'data-download-filename': name
+									};
+								}
+							} else if(type === 'commit') {
+								let moduleUrl = submodules[item.path];
+
+								if(moduleUrl) {
+									// Fixes #105
+									// Special handling for submodules hosted in GitHub
+									if(~moduleUrl.indexOf('github.com')) {
+										moduleUrl = moduleUrl
+											.replace(/^git(:\/\/|@)/, window.location.protocol + '//')
+											.replace('github.com:', 'github.com/')
+											.replace(/.git$/, '');
+										item.text =
+											`<a href="${moduleUrl}" class="jstree-anchor">${name}</a>` +
+											'<span>@ </span>' +
+											`<a href="${moduleUrl}/tree/${item.sha}" class="jstree-anchor">${item.sha.substr(0, 7)}</a>`;
+									}
+									item.a_attr = {
+										href: moduleUrl
+									};
+								}
+							}
+						}
+
+						setTimeout(() => nextChunk(iteration + 1));
+					};
+
+					nextChunk();
+				});
+			});
+		}
+
+		/**
+		 * 一般错误处理
+		 * @api protected
+		 */
+		_handleError(settings, jqXHR, cb) {
+			let error;
+			let message;
+
+			switch(jqXHR.status) {
+				case 0:
+					error = '连接错误';
+					message = `无法连接到网站。如果您与此网站的网络连接正常，可能是API中断。请稍后再试。`;
+					break;
+				case 409:
+					error = '空存储库';
+					message = '此存储库为空。';
+					break;
+				case 401:
+					error = '无效token';
+					message = c54dxs.getInvalidTokenMessage({
+						responseStatus: jqXHR.status,
+						requestHeaders: settings.headers
+					});
+					break;
+				case 404:
+					error = '私有存储库';
+					message =
+						'访问私有存储库需要Github访问token。' +
+						'请转到 <a class="settings-btn" href="javascript:void(0)">设置</a> 并输入token';
+					break;
+				case 403:
+					if(jqXHR.getResponseHeader('X-RateLimit-Remaining') === '0') {
+						// It's kinda specific for GitHub
+						error = '超出API限制';
+						message =
+							'您已经超过了 <a href="https://developer.github.com/v3/#rate-limiting">GitHub API速率限制</a>. ' +
+							'要继续使用octotree，需要提供一个github访问token。' +
+							'请转到 <a class="settings-btn" href="javascript:void(0)">设置</a> 并输入token';
+					} else {
+						error = '禁止的';
+						message =
+							'访问私有存储库需要Github访问token。' +
+							'请转到 <a class="settings-btn" href="javascript:void(0)">设置</a> 并输入token';
+					}
+					break;
+
+					// Fallback message
+				default:
+					error = message = jqXHR.statusText;
+					break;
+			}
+			cb({
+				error: `Error: ${error}`,
+				message: message,
+				status: jqXHR.status
+			});
+		}
+
+		/**
+		 * 返回要添加到侧边栏的CSS类
+		 * @api public
+		 */
+		getCssClass() {
+			throw new Error('Not implemented');
+		}
+
+		/**
+		 * 返回侧边栏可接受的最小宽度
+		 * @api protected
+		 */
+		getMinWidth() {
+			return 220;
+		}
+
+		/**
+		 * 在侧边栏添加到DOM之后，inits的行为
+		 * @api public
+		 */
+		init($sidebar) {
+			$sidebar.resizable({
+				handles: 'e',
+				minWidth: this.getMinWidth()
+			});
+		}
+
+		/**
+		 * 返回适配器是否能够在单个请求中加载整个树。这通常由基础API决定。
+		 * @api public
+		 */
+		canLoadEntireTree(opts) {
+			return false;
+		}
+
+		/**
+		 * 加载代码树。
+		 * @api public
+		 */
+		loadCodeTree(opts, cb) {
+			throw new Error('Not implemented');
+		}
+
+		/**
+		 * 返回创建个人访问令牌的URL
+		 * @api public
+		 */
+		getCreateTokenUrl() {
+			throw new Error('Not implemented');
+		}
+
+		/**
+		 * 根据边栏的可见性和宽度更新布局。
+		 * @api public
+		 */
+		updateLayout(sidebarPinned, sidebarVisible, sidebarWidth) {
+			throw new Error('Not implemented');
+		}
+
+		/**
+		 * 返回当前路径的repo信息
+		 * @api public
+		 */
+		getRepoFromPath(token, cb) {
+			throw new Error('Not implemented');
+		}
+
+		/**
+		 * 选择特定路径的文件
+		 * @api public
+		 */
+		selectFile(path) {
+			window.location.href = path;
+		}
+
+		/**
+		 * 选择子模块
+		 * @api public
+		 */
+		selectSubmodule(path) {
+			window.location.href = path;
+		}
+
+		/**
+		 * 在新选项卡中打开文件或子模块
+		 * @api public
+		 */
+		openInNewTab(path) {
+			window.open(path, '_blank').focus();
+		}
+
+		/**
+		 * 下载一个文件
+		 * @api public
+		 */
+		downloadFile(path, fileName) {
+			const downloadUrl = path.replace(/\/blob\/|\/src\//, '/raw/');
+			const link = document.createElement('a');
+
+			link.setAttribute('href', downloadUrl);
+
+			// GitHub将重定向到其他来源（主机）以下载文件。
+			// 但是，新主机没有从GitHub添加到内容安全策略头中，
+			// 因此浏览器不会保存文件，而是导航到该文件。使用 '_blank'作为不被导航的技巧，请参阅
+			// https://www.html5rocks.com/en/tutorials/security/content-security-policy/
+			link.setAttribute('target', '_blank');
+
+			link.click();
+		}
+
+		/**
+		 * 在路径处获取树
+		 * @param {Object} opts - {token, repo}
+		 * @api protected
+		 */
+		_getTree(path, opts, cb) {
+			throw new Error('Not implemented');
+		}
+
+		/**
+		 * 获取树中的子模块
+		 * @param {Object} opts - {token, repo, encodedBranch}
+		 * @api protected
+		 */
+		_getSubmodules(tree, opts, cb) {
+			throw new Error('Not implemented');
+		}
+
+		/**
+		 * Returns item's href value.
+		 * @api protected
+		 */
+		_getItemHref(repo, type, encodedPath, encodedBranch) {
+			return `/${repo.username}/${repo.reponame}/${type}/${encodedBranch}/${encodedPath}`;
+		}
+		/**
+		 * Returns patch's href value.
+		 * @api protected
+		 */
+		_getPatchHref(repo, patch) {
+			return `/${repo.username}/${repo.reponame}/pull/${repo.pullNumber}/files#diff-${patch.diffId}`;
+		}
+	}
+
 	loadExtension();
 
 	async function loadExtension() {
@@ -288,7 +678,7 @@ $(function() {
 		const $toggler = $sidebar.find('.c54dxs-toggle');
 		const $spinner = $sidebar.find('.c54dxs-spin');
 		const $pinner = $sidebar.find('.c54dxs-pin');
-//		const adapter = new GitHub(store);
+		//		const adapter = new GitHub(store);
 
 		setupSidebarFloatingBehaviors();
 
@@ -303,17 +693,17 @@ $(function() {
 			.on(EVENT.REQ_END, () => $spinner.removeClass('c54dxs-spin--loading'))
 			.on(EVENT.LAYOUT_CHANGE, layoutChanged)
 			.on(EVENT.TOGGLE_PIN, layoutChanged);
-//			.on(EVENT.LOC_CHANGE, () => tryLoadRepo());
+		//			.on(EVENT.LOC_CHANGE, () => tryLoadRepo());
 
 		// 侧边栏初始样式参数设置
 		$sidebar
-//			.addClass(adapter.getCssClass())
+			//			.addClass(adapter.getCssClass())
 			.width(Math.min(parseInt(store.get(STORE.WIDTH)), 1000))
 			.resize(() => layoutChanged(true));
 		//			.appendTo($('body'));
 
-//		adapter.init($sidebar);
-//		helpPopup.init();
+		//		adapter.init($sidebar);
+		//		helpPopup.init();
 
 		/**
 		 * 侧边栏显示隐藏的切换控制
@@ -331,7 +721,7 @@ $(function() {
 				// 请注意，tryloadrepo（）已经负责在没有任何更改的情况下不重新加载。
 				if(isSidebarVisible()) {
 					$toggler.show();
-//					tryLoadRepo();
+					//					tryLoadRepo();
 				}
 			}
 			return visibility;
