@@ -136,17 +136,24 @@ $(function() {
 
 	// ---左侧导航-------------------------------------------------------------------------------------------------------------------
 
+	const NODE_PREFIX = 'c54dxs';
 	const SHOW_CLASS = 'c54dxs-show';
 	const PINNED_CLASS = 'c54dxs-pinned';
 
 	const STORE = {
 		TOKEN: 'c54dxs.access_token', //令牌
-		WIDTH: 'c54dxs.sidebar_width'
+		NONCODE: 'c54dxs.noncode_shown', // 非代码页是否显示
+		WIDTH: 'c54dxs.sidebar_width',
+		ICONS: 'c54dxs.icons',
+		HUGE_REPOS: 'c54dxs.huge_repos'
 	};
 
 	const DEFAULTS = {
 		TOKEN: '6ae86c5ce7a5e2a133d4ddee62cb5347589dd1ce',
-		WIDTH: 280
+		NONCODE: true,
+		WIDTH: 280,
+		ICONS: true,
+		HUGE_REPOS: {}
 	};
 
 	const EVENT = {
@@ -666,6 +673,891 @@ $(function() {
 		 */
 		_getPatchHref(repo, patch) {
 			return `/${repo.username}/${repo.reponame}/pull/${repo.pullNumber}/files#diff-${patch.diffId}`;
+		}
+	}
+
+	class PjaxAdapter extends Adapter {
+		constructor(store) {
+			super(['jquery.pjax.js'], store);
+			$(document)
+				.on('pjax:start', () => $(document).trigger(EVENT.REQ_START))
+				.on('pjax:end', () => $(document).trigger(EVENT.REQ_END))
+				.on('pjax:timeout', (e) => e.preventDefault());
+		}
+
+		// @override
+		// @param {Object} opts - {pjaxContainer: 指定的PJAX容器}
+		// @api public
+		init($sidebar, opts) {
+			super.init($sidebar);
+
+			opts = opts || {};
+			const pjaxContainer = opts.pjaxContainer;
+
+			// MutationObserver接口提供了监视对DOM树所做更改的能力。
+			if(!window.MutationObserver) return;
+
+			// 一些主机使用pjax切换页面。
+			// 此观察器检测PJAX容器是否已用新内容和触发器布局进行了更新。
+			const pageChangeObserver = new window.MutationObserver(() => {
+				// 触发位置更改，不能只是重新布局，
+				// 因为Octotree可能需要隐藏/显示，具体取决于当前页面是否是代码页。
+				return $(document).trigger(EVENT.LOC_CHANGE);
+			});
+
+			if(pjaxContainer) {
+				pageChangeObserver.observe(pjaxContainer, {
+					childList: true
+				});
+			} else {
+				// 如果DOM已更改，则返回
+				let firstLoad = true,
+					href,
+					hash;
+
+				function detectLocChange() {
+					if(location.href !== href || location.hash !== hash) {
+						href = location.href;
+						hash = location.hash;
+
+						// 如果这是第一次调用它，则无需通知更改，
+						// 因为octotree在加载选项后进行自己的初始化。
+						if(firstLoad) {
+							firstLoad = false;
+						} else {
+							setTimeout(() => {
+								$(document).trigger(EVENT.LOC_CHANGE);
+							}, 300); // 等一下PJAX DOM更改
+						}
+					}
+					setTimeout(detectLocChange, 200);
+				}
+
+				detectLocChange();
+			}
+		}
+
+		// @override
+		// @param {Object} opts - {$pjax_container: jQuery object}
+		// @api public
+		selectFile(path, opts) {
+			opts = opts || {};
+
+			// 如果已选择文件，则不执行任何操作
+			if(location.pathname === path) return;
+
+			// 如果我们在同一个页面上，只是导航到另一个锚
+			// 不用费心用pjax获取页面
+			const pathWithoutAnchor = path.replace(/#.*$/, '');
+			const isSamePage = location.pathname === pathWithoutAnchor;
+			const pjaxContainerSel = opts.pjaxContainerSel;
+			const loadWithPjax = $(pjaxContainerSel).length && !isSamePage;
+
+			if(loadWithPjax) {
+				this._patchPjax();
+				$.pjax({
+					// 根据跨域内容设置，pjax需要完整的路径才能使用firefox
+					url: location.protocol + '//' + location.host + path,
+					container: pjaxContainerSel,
+					timeout: 0 // 全局超时似乎不起作用，请改用此方法
+				});
+			} else {
+				super.selectFile(path);
+			}
+		}
+
+		_patchPjax() {
+			// pjax插件($.pjax)与octotree(文档就绪事件)同时加载，
+			// 我们不知道何时完全加载了$.pjax，因此我们将在运行时进行一次修补。
+			if(!!this._$pjaxPatched) return;
+
+			/**
+			 * 此时，当用户在Github Code页面上时，Github有时会在文件列表中单击文件时刷新页面。 
+			 * 在内部，Github使用pjax（一个jQuery插件 -  defunkt / jquery-pjax）
+			 * 来获取正在选择的文件内容，并且Github的服务器渲染有一个更改，导致刷新问题。 
+			 * 这也影响Octotree，当用户在Octotree的侧边栏中选择文件时，Github页面会刷新。
+			 * 由于此代码，刷新发生了这个代码
+			 * https://github.com/defunkt/jquery-pjax/blob/c9acf5e7e9e16fdd34cb2de882d627f97364a952/jquery.pjax.js#L272。 
+			 * 在等待Github解决错误的刷新时，下面的代码是一个黑客修复，当在侧边栏中选择一个文件时，
+			 * Octotree不会触发刷新（但如果在Github文件视图中选择了文件，Github仍会刷新）
+			 */
+			$.pjax.defaults.version = function() {
+				// 禁用检查布局版本以防止在PJAX库中刷新
+				return null;
+			};
+
+			this._$pjaxPatched = true;
+		}
+	}
+
+	const GH_RESERVED_USER_NAMES = [
+		'settings',
+		'orgs',
+		'organizations',
+		'site',
+		'blog',
+		'about',
+		'explore',
+		'styleguide',
+		'showcases',
+		'trending',
+		'stars',
+		'dashboard',
+		'notifications',
+		'search',
+		'developer',
+		'account',
+		'pulls',
+		'issues',
+		'features',
+		'contact',
+		'security',
+		'join',
+		'login',
+		'watching',
+		'new',
+		'integrations',
+		'gist',
+		'business',
+		'mirrors',
+		'open-source',
+		'personal',
+		'pricing',
+		'sessions'
+	];
+	const GH_RESERVED_REPO_NAMES = ['followers', 'following', 'repositories'];
+	const GH_404_SEL = '#parallax_wrapper';
+
+	// 当在repo路径（如https://github.com/jquery/jquery）加载github页面时，
+	// html树具有<main id=“js repo pjax container”>以包含服务器呈现的响应pjax的html。
+	// 但是，如果在特定文件（例如https://github.com/jquery/jquery/blob/master/.editorconfig）
+	// 加载github页面，则该<main>元素没有“id”属性。因此，下面的选择器使用多个路径，但只指向同一个<main>元素
+	const GH_PJAX_CONTAINER_SEL = '#js-repo-pjax-container, div[itemtype="http://schema.org/SoftwareSourceCode"] main, [data-pjax-container]';
+
+	const GH_CONTAINERS = '.container, .container-lg, .container-responsive';
+	const GH_HEADER = '.js-header-wrapper > header';
+	const GH_RAW_CONTENT = 'body > pre';
+	const GH_MAX_HUGE_REPOS_SIZE = 50;
+
+	class GitHub extends PjaxAdapter {
+		constructor(store) {
+			super(store);
+		}
+
+		// @override
+		init($sidebar) {
+			const pjaxContainer = $(GH_PJAX_CONTAINER_SEL)[0];
+			super.init($sidebar, {
+				pjaxContainer: pjaxContainer
+			});
+
+			// 通过检测页面布局何时更新来修复＃151。
+			// 在这种情况下，split-diff页面具有更宽的布局，因此需要重新计算边距。
+			// 请注意，由于URL更改无法执行此操作，因为通过pjax的新DOM可能尚未就绪。
+			const diffModeObserver = new window.MutationObserver((mutations) => {
+				mutations.forEach((mutation) => {
+					if(~mutation.oldValue.indexOf('split-diff') || ~mutation.target.className.indexOf('split-diff')) {
+						return $(document).trigger(EVENT.LAYOUT_CHANGE);
+					}
+				});
+			});
+
+			diffModeObserver.observe(document.body, {
+				attributes: true,
+				attributeFilter: ['class'],
+				attributeOldValue: true
+			});
+		}
+
+		// @override
+		getCssClass() {
+			return 'c54dxs-github-sidebar';
+		}
+
+		// @override
+		canLoadEntireTree(repo) {
+			const key = `${repo.username}/${repo.reponame}`;
+			const hugeRepos = this.store.get(STORE.HUGE_REPOS);
+			if(hugeRepos[key]) {
+				// 更新repo的最后加载时间
+				hugeRepos[key] = new Date().getTime();
+				this.store.set(STORE.HUGE_REPOS, hugeRepos);
+			}
+			return !hugeRepos[key];
+		}
+
+		// @override
+		getCreateTokenUrl() {
+			return(
+				`${location.protocol}//${location.host}/settings/tokens/new?` +
+				'scopes=repo&description=54Helper%20browser%20extension'
+			);
+		}
+
+		// @override
+		updateLayout(sidebarPinned, sidebarVisible, sidebarWidth) {
+			const SPACING = 10;
+			const $header = $(GH_HEADER);
+			const $containers = $(GH_CONTAINERS);
+			const autoMarginLeft = ($(document).width() - $containers.width()) / 2;
+			const shouldPushEverything = sidebarPinned && sidebarVisible;
+			const smallScreen = autoMarginLeft <= sidebarWidth + SPACING;
+
+			$('html').css('margin-left', shouldPushEverything && smallScreen ? sidebarWidth : '');
+			$containers.css('margin-left', shouldPushEverything && smallScreen ? SPACING : '');
+
+			if(shouldPushEverything && !smallScreen) {
+				// 在大屏幕中覆盖重要的Github Header类
+				$header.attr('style', `padding-left: ${sidebarWidth + SPACING}px !important`);
+			} else {
+				$header.removeAttr('style');
+			}
+		}
+
+		// @override
+		getRepoFromPath(currentRepo, token, cb) {
+			// 404 页, 跳转
+			if($(GH_404_SEL).length) {
+				return cb();
+			}
+
+			// 跳转至 raw 页
+			if($(GH_RAW_CONTENT).length) {
+				return cb();
+			}
+
+			// (username)/(reponame)[/(type)][/(typeId)]
+			const match = window.location.pathname.match(/([^\/]+)\/([^\/]+)(?:\/([^\/]+))?(?:\/([^\/]+))?/);
+			if(!match) {
+				return cb();
+			}
+
+			const username = match[1];
+			const reponame = match[2];
+			const type = match[3];
+			const typeId = match[4];
+
+			// 不是一个库，跳转
+			if(~GH_RESERVED_USER_NAMES.indexOf(username) || ~GH_RESERVED_REPO_NAMES.indexOf(reponame)) {
+				return cb();
+			}
+
+			// 检查是否应在非代码页中显示
+			const isPR = type === 'pull';
+			const isCodePage = !type || isPR || ['tree', 'blob', 'commit'].indexOf(type) >= 0;
+			const showInNonCodePage = this.store.get(STORE.NONCODE);
+			if(!showInNonCodePage && !isCodePage) {
+				return cb();
+			}
+
+			// 通过检查URL或DOM获取分支，非常脆弱，因此提供多个回退。
+			// TODO 如果有更强大的方法来做这件事会很棒
+			/**
+			 * Github根据分支名称的长度在下面的结构中呈现分支名称
+			 *
+			 * 选项1：当长度足够短时
+			 * <summary title="Switch branches or tags">
+			 *   <span class="css-truncate-target">feature/1/2/3</span>
+			 * </summary>
+			 *
+			 * 选项2：长度太长时
+			 * <summary title="feature/1/2/3/4/5/6/7/8">
+			 *   <span class="css-truncate-target">feature/1/2/3...</span>
+			 * </summary>
+			 */
+			const branchDropdownMenuSummary = $('.branch-select-menu summary');
+			const branchNameInTitle = branchDropdownMenuSummary.attr('title');
+			const branchNameInSpan = branchDropdownMenuSummary.find('span').text();
+			const branchFromSummary =
+				branchNameInTitle && branchNameInTitle.toLowerCase().startsWith('switch branches') ?
+				branchNameInSpan :
+				branchNameInTitle;
+
+			const branch =
+				// 当代码页在特定提交中列出树时，选择提交ID作为分支名称
+				(type === 'commit' && typeId) ||
+				// 从DOM中选择提交ID或分支名称
+				branchFromSummary ||
+				($('.overall-summary .numbers-summary .commits a').attr('href') || '').replace(
+					`/${username}/${reponame}/commits/`,
+					''
+				) ||
+				// 拉取请求页
+				($('.commit-ref.base-ref').attr('title') || ':').match(/:(.*)/)[1] ||
+				// 重复使用上一个选定分支（如果存在）
+				(currentRepo.username === username && currentRepo.reponame === reponame && currentRepo.branch) ||
+				// 从缓存获取默认分支
+				this._defaultBranch[username + '/' + reponame];
+
+			const showOnlyChangedInPR = this.store.get(STORE.PR);
+			const pullNumber = isPR && showOnlyChangedInPR ? typeId : null;
+			const repo = {
+				username,
+				reponame,
+				branch,
+				pullNumber
+			};
+			if(repo.branch) {
+				cb(null, repo);
+			} else {
+				// 仍然没有运气，真正得到默认分支
+				this._get(null, {
+					repo,
+					token
+				}, (err, data) => {
+					if(err) return cb(err);
+					repo.branch = this._defaultBranch[username + '/' + reponame] = data.default_branch || 'master';
+					cb(null, repo);
+				});
+			}
+		}
+
+		// @override
+		selectFile(path) {
+			super.selectFile(path, {
+				pjaxContainerSel: GH_PJAX_CONTAINER_SEL
+			});
+		}
+
+		// @override
+		loadCodeTree(opts, cb) {
+			opts.encodedBranch = encodeURIComponent(decodeURIComponent(opts.repo.branch));
+			opts.path = (opts.node && (opts.node.sha || opts.encodedBranch)) || opts.encodedBranch + '?recursive=1';
+			this._loadCodeTreeInternal(opts, null, cb);
+		}
+
+		// @override
+		_getTree(path, opts, cb) {
+			if(opts.repo.pullNumber) {
+				this._getPatch(opts, cb);
+			} else {
+				this._get(`/git/trees/${path}`, opts, (err, res) => {
+					if(err) cb(err);
+					else cb(null, res.tree);
+				});
+			}
+		}
+
+		/**
+		 * 获取在Pull Request中修补的文件
+		 * 返回的diff映射包含已更改的文件以及已更改文件的父项
+		 * 这允许仅对包含具有差异的文件的文件夹过滤树
+		 * @param {Object} opts: {
+		 *                  path: 加载树的起始路径,
+		 *                  repo: 当前的存储库,
+		 *                  node (可选): 所选节点（null以加载整个树）,
+		 *                  token (可选): 个人访问令牌
+		 *                 }
+		 * @param {Function} cb(err: error, diffMap: Object)
+		 */
+		_getPatch(opts, cb) {
+			const {
+				pullNumber
+			} = opts.repo;
+
+			this._get(`/pulls/${pullNumber}/files?per_page=300`, opts, (err, res) => {
+				if(err) cb(err);
+				else {
+					const diffMap = {};
+
+					res.forEach((file, index) => {
+						// 记录文件补丁信息
+						diffMap[file.filename] = {
+							type: 'blob',
+							diffId: index,
+							action: file.status,
+							additions: file.additions,
+							blob_url: file.blob_url,
+							deletions: file.deletions,
+							filename: file.filename,
+							path: file.path,
+							sha: file.sha
+						};
+
+						// 记录祖先文件夹
+						const folderPath = file.filename
+							.split('/')
+							.slice(0, -1)
+							.join('/');
+						const split = folderPath.split('/');
+
+						// 祖先文件夹的聚合元数据
+						split.reduce((path, curr) => {
+							if(path.length) path = `${path}/${curr}`;
+							else path = `${curr}`;
+
+							if(diffMap[path] == null) {
+								diffMap[path] = {
+									type: 'tree',
+									filename: path,
+									filesChanged: 1,
+									additions: file.additions,
+									deletions: file.deletions
+								};
+							} else {
+								diffMap[path].additions += file.additions;
+								diffMap[path].deletions += file.deletions;
+								diffMap[path].filesChanged++;
+							}
+							return path;
+						}, '');
+					});
+
+					// 转换为模拟来自`tree`的响应
+					const tree = Object.keys(diffMap).map((fileName) => {
+						const patch = diffMap[fileName];
+						return {
+							patch,
+							path: fileName,
+							sha: patch.sha,
+							type: patch.type,
+							url: patch.blob_url
+						};
+					});
+
+					// 按路径排序，需要按字母顺序排列（所以父文件夹在子项之前）
+					// 注意：这仍然是上述转换的一部分，以模仿get tree的行为
+					tree.sort((a, b) => a.path.localeCompare(b.path));
+
+					cb(null, tree);
+				}
+			});
+		}
+
+		// @override
+		_getSubmodules(tree, opts, cb) {
+			const item = tree.filter((item) => /^\.gitmodules$/i.test(item.path))[0];
+			if(!item) return cb();
+
+			this._get(`/git/blobs/${item.sha}`, opts, (err, res) => {
+				if(err) return cb(err);
+				const data = atob(res.content.replace(/\n/g, ''));
+				cb(null, parseGitmodules(data));
+			});
+		}
+
+		_get(path, opts, cb) {
+			const host =
+				location.protocol + '//' + (location.host === 'github.com' ? 'api.github.com' : location.host + '/api/v3');
+			const url = `${host}/repos/${opts.repo.username}/${opts.repo.reponame}${path || ''}`;
+			const cfg = {
+				url,
+				method: 'GET',
+				cache: false
+			};
+
+			if(opts.token) {
+				cfg.headers = {
+					Authorization: 'token ' + opts.token
+				};
+			}
+
+			$.ajax(cfg)
+				.done((data) => {
+					if(path && path.indexOf('/git/trees') === 0 && data.truncated) {
+						const hugeRepos = this.store.get(STORE.HUGE_REPOS);
+						const repo = `${opts.repo.username}/${opts.repo.reponame}`;
+						const repos = Object.keys(hugeRepos);
+						if(!hugeRepos[repo]) {
+							// 如果备忘录的repos太多，请删除最旧的repos
+							if(repos.length >= GH_MAX_HUGE_REPOS_SIZE) {
+								const oldestRepo = repos.reduce((min, p) => (hugeRepos[p] < hugeRepos[min] ? p : min));
+								delete hugeRepos[oldestRepo];
+							}
+							hugeRepos[repo] = new Date().getTime();
+							this.store.set(STORE.HUGE_REPOS, hugeRepos);
+						}
+						this._handleError(cfg, {
+							status: 206
+						}, cb);
+					} else cb(null, data);
+				})
+				.fail((jqXHR) => this._handleError(cfg, jqXHR, cb));
+		}
+	}
+
+	/**
+	 * 帮助popup
+	 */
+	class HelpPopup {
+		constructor($dom, store) {
+			this.$view = $dom.find('.popup');
+			this.store = store;
+			this.showInstallationWarning = false;
+		}
+
+		init() {
+			const $view = this.$view;
+			const store = this.store;
+			const popupShown = store.get(STORE.POPUP);
+			const sidebarVisible = $('html').hasClass(SHOW_CLASS);
+
+			if(this.showInstallationWarning) {
+				$view
+					.find('.content')
+					.text('您当前安装了2个54Helper版本。请卸载其中一个。');
+			} else if(popupShown || sidebarVisible) {
+				return hideAndDestroy();
+			}
+
+			$(document).one(EVENT.TOGGLE, hideAndDestroy);
+
+			setTimeout(() => {
+				setTimeout(hideAndDestroy, 10000);
+				$view.addClass('show').click(hideAndDestroy);
+			}, 500);
+
+			/**
+			 * 隐藏和销毁
+			 */
+			function hideAndDestroy() {
+				store.set(STORE.POPUP, true);
+				if($view.hasClass('show')) {
+					$view.removeClass('show').one('transitionend', () => $view.remove());
+				} else {
+					$view.remove();
+				}
+			}
+		}
+
+		/**
+		 * 设置显示安装警告
+		 */
+		setShowInstallationWarning() {
+			this.showInstallationWarning = true;
+		}
+	}
+
+	class ErrorView {
+		constructor($dom) {
+			this.$this = $(this);
+			this.$view = $dom.find('.c54dxs-error-view');
+		}
+
+		show(err) {
+			this.$view.find('.c54dxs-view-header').html(err.error);
+			this.$view.find('.message').html(err.message);
+			this.$view.find('.settings-btn').click((event) => {
+				event.preventDefault();
+				this.$this.trigger(EVENT.VIEW_CLOSE, {
+					showSettings: true
+				});
+			});
+			this.$this.trigger(EVENT.VIEW_READY);
+		}
+	}
+
+	class TreeView {
+		constructor($dom, store, adapter) {
+			this.store = store;
+			this.adapter = adapter;
+			this.$view = $dom.find('.c54dxs-tree-view');
+			this.$tree = this.$view
+				.find('.c54dxs-view-body')
+				.on('click.jstree', '.jstree-open>a', ({
+					target
+				}) => {
+					setTimeout(() => this.$jstree.close_node(target));
+				})
+				.on('click.jstree', '.jstree-closed>a', ({
+					target
+				}) => {
+					setTimeout(() => this.$jstree.open_node(target));
+				})
+				.on('click', this._onItemClick.bind(this))
+				.jstree({
+					core: {
+						multiple: false,
+						animation: 50,
+						worker: false,
+						themes: {
+							responsive: false
+						}
+					},
+					plugins: ['wholerow', 'search']
+				});
+		}
+
+		get $jstree() {
+			return this.$tree.jstree(true);
+		}
+
+		focus() {
+			this.$jstree.get_container().focus();
+		}
+
+		show(repo, token) {
+			const $jstree = this.$jstree;
+
+			$jstree.settings.core.data = (node, cb) => {
+				const prMode = this.store.get(STORE.PR) && repo.pullNumber;
+				const loadAll = this.adapter.canLoadEntireTree(repo) && (prMode || this.store.get(STORE.LOADALL));
+
+				node = !loadAll && (node.id === '#' ? {
+					path: ''
+				} : node.original);
+
+				this.adapter.loadCodeTree({
+					repo,
+					token,
+					node
+				}, (err, treeData) => {
+					if(err) {
+						if(err.status === 206 && loadAll) {
+							// repo太大了无法加载所有，需要重试
+							$jstree.refresh(true);
+						} else {
+							$(this).trigger(EVENT.FETCH_ERROR, [err]);
+						}
+					} else {
+						treeData = this._sort(treeData);
+						if(loadAll) {
+							treeData = this._collapse(treeData);
+						}
+						cb(treeData);
+					}
+				});
+			};
+
+			this.$tree.one('refresh.jstree', () => {
+				this.syncSelection(repo);
+				$(this).trigger(EVENT.VIEW_READY);
+			});
+
+			this._showHeader(repo);
+			$jstree.refresh(true);
+		}
+
+		_showHeader(repo) {
+			const adapter = this.adapter;
+
+			this.$view
+				.find('.c54dxs-view-header')
+				.html(
+					`<div class="c54dxs-header-summary">
+			          <div class="c54dxs-header-repo">
+			            <i class="c54dxs-icon-repo"></i>
+			            <a href="/${repo.username}">${repo.username}</a> /
+			            <a data-pjax href="/${repo.username}/${repo.reponame}">${repo.reponame}</a>
+			          </div>
+			          <div class="c54dxs-header-branch">
+			            <i class="c54dxs-icon-branch"></i>
+			            ${this._deXss(repo.branch.toString())}
+			          </div>
+			        </div>`
+				)
+				.on('click', 'a[data-pjax]', function(event) {
+					event.preventDefault();
+					// A.href始终返回绝对URL，不希望如此
+					const href = $(this).attr('href');
+					const newTab = event.shiftKey || event.ctrlKey || event.metaKey;
+					newTab ? adapter.openInNewTab(href) : adapter.selectFile(href);
+				});
+		}
+
+		_deXss(str) {
+			return str && str.replace(/[<>'"&]/g, '-');
+		}
+
+		_sort(folder) {
+			folder.sort((a, b) => {
+				if(a.type === b.type) return a.text === b.text ? 0 : a.text < b.text ? -1 : 1;
+				return a.type === 'blob' ? 1 : -1;
+			});
+
+			folder.forEach((item) => {
+				if(item.type === 'tree' && item.children !== true && item.children.length > 0) {
+					this._sort(item.children);
+				}
+			});
+
+			return folder;
+		}
+
+		_collapse(folder) {
+			return folder.map((item) => {
+				if(item.type === 'tree') {
+					item.children = this._collapse(item.children);
+					if(item.children.length === 1 && item.children[0].type === 'tree') {
+						const onlyChild = item.children[0];
+						onlyChild.text = item.text + '/' + onlyChild.text;
+						return onlyChild;
+					}
+				}
+				return item;
+			});
+		}
+
+		_onItemClick(event) {
+			let $target = $(event.target);
+			let download = false;
+
+			// 处理鼠标中键单击
+			if(event.which === 2) return;
+
+			// 处理图标单击，修复 #122
+			if($target.is('i.jstree-icon')) {
+				$target = $target.parent();
+				download = true;
+			}
+
+			if(!$target.is('a.jstree-anchor')) return;
+
+			// 完成后重新聚焦以便键盘导航工作，修复 #158
+			const refocusAfterCompletion = () => {
+				$(document).one('pjax:success page:load', () => {
+					this.$jstree.get_container().focus();
+				});
+			};
+
+			const adapter = this.adapter;
+			const newTab = event.shiftKey || event.ctrlKey || event.metaKey;
+			const href = $target.attr('href');
+			// 第二条路径用于子模块子链接
+			const $icon = $target.children().length ? $target.children(':first') : $target.siblings(':first');
+
+			if($icon.hasClass('commit')) {
+				refocusAfterCompletion();
+				newTab ? adapter.openInNewTab(href) : adapter.selectSubmodule(href);
+			} else if($icon.hasClass('blob')) {
+				if(download) {
+					const downloadUrl = $target.attr('data-download-url');
+					const downloadFileName = $target.attr('data-download-filename');
+					adapter.downloadFile(downloadUrl, downloadFileName);
+				} else {
+					refocusAfterCompletion();
+					newTab ? adapter.openInNewTab(href) : adapter.selectFile(href);
+				}
+			}
+		}
+
+		syncSelection(repo) {
+			const $jstree = this.$jstree;
+			if(!$jstree) return;
+
+			// 将 /username/reponame/object_type/branch/path 转换为 path
+			const path = decodeURIComponent(location.pathname);
+			const match = path.match(/(?:[^\/]+\/){4}(.*)/);
+			if(!match) return;
+
+			const currentPath = match[1];
+			const loadAll = this.adapter.canLoadEntireTree(repo) && this.store.get(STORE.LOADALL);
+
+			selectPath(loadAll ? [currentPath] : breakPath(currentPath));
+
+			// 转换 ['a/b'] to ['a', 'a/b']
+			function breakPath(fullPath) {
+				return fullPath.split('/').reduce((res, path, idx) => {
+					res.push(idx === 0 ? path : `${res[idx - 1]}/${path}`);
+					return res;
+				}, []);
+			}
+
+			function selectPath(paths, index = 0) {
+				const nodeId = NODE_PREFIX + paths[index];
+
+				if($jstree.get_node(nodeId)) {
+					$jstree.deselect_all();
+					$jstree.select_node(nodeId);
+					$jstree.open_node(nodeId, () => {
+						if(++index < paths.length) {
+							selectPath(paths, index);
+						}
+					});
+				}
+			}
+		}
+	}
+
+	class OptionsView {
+		constructor($dom, store, adapter) {
+			this.store = store;
+			this.adapter = adapter;
+			this.$toggler = $dom.find('.c54dxs-settings').click(this.toggle.bind(this));
+			this.$view = $dom.find('.c54dxs-settings-view').submit((event) => {
+				event.preventDefault();
+				this.toggle(false);
+			});
+			this.$view.find('a.c54dxs-create-token').attr('href', this.adapter.getCreateTokenUrl());
+
+			this.loadElements();
+
+			// 隐藏侧边栏时隐藏选项视图
+			$(document).on(EVENT.TOGGLE, (event, visible) => {
+				if(!visible) this.toggle(false);
+			});
+		}
+
+		/**
+		 * 使用[data-store]属性加载元素。 
+		 * 如果有动态添加的元素，则调用它，以便可以加载和保存它们。
+		 */
+		loadElements() {
+			this.elements = this.$view.find('[data-store]').toArray();
+		}
+
+		/**
+		 * 切换此屏幕的可见性
+		 */
+		toggle(visibility) {
+			if(visibility !== undefined) {
+				if(this.$view.hasClass('current') === visibility) return;
+				return this.toggle();
+			}
+
+			if(this.$toggler.hasClass('selected')) {
+				this._save();
+				this.$toggler.removeClass('selected');
+				$(this).trigger(EVENT.VIEW_CLOSE);
+			} else {
+				this._load();
+			}
+		}
+
+		_load() {
+			this._eachOption(
+				($elm, key, value, cb) => {
+					if($elm.is(':checkbox')) $elm.prop('checked', value);
+					else $elm.val(value);
+					cb();
+				},
+				() => {
+					this.$toggler.addClass('selected');
+					$(this).trigger(EVENT.VIEW_READY);
+				}
+			);
+		}
+
+		_save() {
+			const changes = {};
+			this._eachOption(
+				($elm, key, value, cb) => {
+					const newValue = $elm.is(':checkbox') ? $elm.is(':checked') : $elm.val();
+					if(value === newValue) return cb();
+					changes[key] = [value, newValue];
+					this.store.set(key, newValue, cb);
+				},
+				() => {
+					if(Object.keys(changes).length) {
+						$(this).trigger(EVENT.OPTS_CHANGE, changes);
+					}
+				}
+			);
+		}
+
+		_eachOption(processFn, completeFn) {
+			parallel(
+				this.elements,
+				(elm, cb) => {
+					const $elm = $(elm);
+					const key = STORE[$elm.data('store')];
+
+					this.store.get(key, (value) => {
+						processFn($elm, key, value, () => cb());
+					});
+				},
+				completeFn
+			);
 		}
 	}
 
