@@ -136,16 +136,110 @@ $(function() {
 
 	// ---左侧导航-------------------------------------------------------------------------------------------------------------------
 
-	const SHOW_CLASS = 'c54dxs-show';// 侧边栏显示html类
-	const PINNED_CLASS = 'c54dxs-pinned';// 边栏设置按钮样式类
+	const NODE_PREFIX = 'c54dxs';
+	const ADDON_CLASS = 'c54dxs';
+	const SHOW_CLASS = 'c54dxs-show'; // 侧边栏显示html类
+	const PINNED_CLASS = 'c54dxs-pinned'; // 边栏设置按钮样式类（小书钉📌）
+
+	const GH_CONTAINERS = '.c54dxs-body';
+	const GH_HEADER = '.c54dxs-body';
 
 	const STORE = {
-		HOVEROPEN: 'c54dxs.hover_open'
+		TOKEN: 'c54dxs.access_token',
+		DARKMODE: 'c54dxs.dark_mode',
+		THEME: 'c54dxs.theme',
+		HOVEROPEN: 'c54dxs.hover_open',
+		NONCODE: 'c54dxs.noncode_shown',
+		PR: 'c54dxs.pr_shown',
+		HOTKEYS: 'c54dxs.hotkeys',
+		ICONS: 'c54dxs.icons',
+		LOADALL: 'c54dxs.loadall',
+		POPUP: 'c54dxs.popup_shown',
+		WIDTH: 'c54dxs.sidebar_width',
+		SHOWN: 'c54dxs.sidebar_shown',
+		PINNED: 'c54dxs.sidebar_pinned',
+		HUGE_REPOS: 'c54dxs.huge_repos'
 	};
 
 	const DEFAULTS = {
-		HOVEROPEN: true
+		TOKEN: '',
+		DARKMODE: false,
+		THEME: '', //主题
+		HOVEROPEN: true,
+		NONCODE: true,
+		PR: true,
+		LOADALL: true,
+		HOTKEYS: '⌘+⇧+s, ⌃+⇧+s',
+		ICONS: true,
+		POPUP: false,
+		WIDTH: 232,
+		SHOWN: false,
+		PINNED: false,
+		HUGE_REPOS: {}
 	};
+
+	const EVENT = {
+		TOGGLE: 'c54dxs:toggle',
+		TOGGLE_PIN: 'c54dxs:pin',
+		LOC_CHANGE: 'c54dxs:location',
+		LAYOUT_CHANGE: 'c54dxs:layout',
+		REQ_START: 'c54dxs:start',
+		REQ_END: 'c54dxs:end',
+		OPTS_CHANGE: 'c54dxs:change',
+		VIEW_READY: 'c54dxs:ready',
+		VIEW_CLOSE: 'c54dxs:close',
+		VIEW_SHOW: 'c54dxs:show',
+		FETCH_ERROR: 'c54dxs:error'
+	};
+
+	window.STORE = STORE;
+	window.DEFAULTS = DEFAULTS;
+	window.EVENT = EVENT;
+
+	class Storage {
+		static create(values, defaults) {
+			const store = new Storage();
+			for(const key of Object.keys(values)) {
+				store.setIfNull(values[key], defaults[key]);
+			}
+			return store;
+		}
+
+		set(key, val, cb) {
+			try {
+				localStorage.setItem(key, JSON.stringify(val));
+			} catch(e) {
+				const msg =
+					'54Helper无法保存其设置' +
+					'如果此域的本地存储已满，请清理并重试。';
+				console.error(msg, e);
+			}
+			if(cb) cb();
+		}
+
+		get(key, cb) {
+			var val = parse(localStorage.getItem(key));
+			if(cb) cb(val);
+			else return val;
+
+			function parse(val) {
+				try {
+					return JSON.parse(val);
+				} catch(e) {
+					return val;
+				}
+			}
+		}
+
+		setIfNull(key, val, cb) {
+			this.get(key, (existingVal) => {
+				this.set(key, existingVal == null ? val : existingVal, cb);
+			});
+		}
+	}
+
+	const store = Storage.create(STORE, DEFAULTS);
+	window.store = store;
 
 	loadExtension();
 	async function loadExtension() {
@@ -154,8 +248,9 @@ $(function() {
 		const $sidebar = $('.c54dxs-sidebar'); // 侧边栏容器
 		const $toggler = $sidebar.find('.c54dxs-toggle'); //边栏显示隐藏控制按钮
 		const $spinner = $sidebar.find('.c54dxs-spin');
-		const $pinner = $sidebar.find('.c54dxs-pin');// 边栏设置按钮
+		const $pinner = $sidebar.find('.c54dxs-pin'); // 边栏设置按钮(小书钉📌)
 
+		$pinner.click(togglePin);
 		setupSidebarFloatingBehaviors();
 
 		// 监听浏览器窗口大小变化
@@ -177,13 +272,12 @@ $(function() {
 			.width(Math.min(parseInt(store.get(STORE.WIDTH)), 1000))
 			.resize(() => layoutChanged(true));
 		//			.appendTo($('body'));
-
 		//		adapter.init($sidebar);
 		//		helpPopup.init();
 
 		/**
-		 * 侧边栏显示隐藏的切换控制
-		 * @param {Object} visibility
+		 * 侧边栏显示隐藏的切换控制（如果当前显示，调用后则隐藏。如果当前隐藏，调用后则显示）
+		 * @param {Object} visibility true:;false:
 		 */
 		function toggleSidebar(visibility) {
 			if(visibility !== undefined) {
@@ -204,7 +298,7 @@ $(function() {
 		}
 
 		/**
-		 * 固定边栏按钮的切换处理
+		 * 固定边栏按钮（小书钉📌）的切换处理
 		 * @param {Object} isPinned
 		 */
 		function togglePin(isPinned) {
@@ -229,9 +323,35 @@ $(function() {
 		 */
 		function layoutChanged(save = false) {
 			const width = $sidebar.outerWidth();
-			//			adapter.updateLayout(isSidebarPinned(), isSidebarVisible(), width);
+			updateLayout(isSidebarPinned(), isSidebarVisible(), width);
 			if(save === true) {
 				store.set(STORE.WIDTH, width);
+			}
+		}
+
+		/**
+		 * 更新布局
+		 * 
+		 * @param {Object} sidebarPinned
+		 * @param {Object} sidebarVisible
+		 * @param {Object} sidebarWidth
+		 */
+		function updateLayout(sidebarPinned, sidebarVisible, sidebarWidth) {
+			const SPACING = 10;
+			const $header = $(GH_HEADER);
+			const $containers = $(GH_CONTAINERS);
+			const autoMarginLeft = ($(document).width() - $containers.width()) / 2;
+			const shouldPushEverything = sidebarPinned && sidebarVisible;
+			const smallScreen = autoMarginLeft <= sidebarWidth + SPACING;
+
+			$('html').css('margin-left', shouldPushEverything && smallScreen ? sidebarWidth : '');
+			$containers.css('margin-left', shouldPushEverything && smallScreen ? SPACING : '');
+
+			if(shouldPushEverything && !smallScreen) {
+				// 在大屏幕中覆盖重要的Github Header类
+				$header.attr('style', `padding-left: ${sidebarWidth + SPACING}px !important`);
+			} else {
+				$header.removeAttr('style');
 			}
 		}
 
@@ -239,9 +359,9 @@ $(function() {
 		 * 控制边栏在浮动模式（即非固定）下的行为。
 		 */
 		function setupSidebarFloatingBehaviors() {
-			const MOUSE_LEAVE_DELAY = 500;
-			const KEY_PRESS_DELAY = 4000;
-			let isMouseInSidebar = false;
+			const MOUSE_LEAVE_DELAY = 500; //鼠标离开延迟
+			const KEY_PRESS_DELAY = 4000; //按键\延时
+			let isMouseInSidebar = false; //鼠标在侧边栏中
 
 			handleHoverOpenOption(this.store.get(STORE.HOVEROPEN));
 
@@ -299,10 +419,17 @@ $(function() {
 				});
 		}
 
+		/**
+		 * 侧边栏按钮鼠标响应事件
+		 */
 		function onTogglerHovered() {
 			toggleSidebar(true);
 		}
 
+		/**
+		 * 侧边栏控制按钮点击事件
+		 * @param {Object} event
+		 */
 		function onTogglerClicked(event) {
 			event.stopPropagation();
 			toggleSidebar(true);
@@ -311,23 +438,31 @@ $(function() {
 		/**
 		 * 处理鼠标滑动到侧边栏开关处
 		 * 
-		 * @param {Object} enableHoverOpen
+		 * @param {Object} enableHoverOpen true:鼠标经过切换;false:鼠标点击切换
 		 */
 		function handleHoverOpenOption(enableHoverOpen) {
 			// on添加事件、off移除事件
 			if(enableHoverOpen) {
-				$toggler.off('click', onTogglerClicked);
-				$toggler.on('mouseenter', onTogglerHovered);
+				$toggler.off('click', onTogglerClicked); // 移除点击事件
+				$toggler.on('mouseenter', onTogglerHovered); //添加鼠标🖱进入事件
 			} else {
 				$toggler.off('mouseenter', onTogglerHovered);
 				$toggler.on('click', onTogglerClicked);
 			}
 		}
 
+		/**
+		 * 侧边栏显示的还是隐藏的(html是否有样式SHOW_CLASS)
+		 * true:有;false:没有
+		 */
 		function isSidebarVisible() {
 			return $html.hasClass(SHOW_CLASS);
 		}
 
+		/**
+		 * 侧边栏设置按钮（小书钉）是否有类PINNED_CLASS
+		 * true:有;false:没有
+		 */
 		function isSidebarPinned() {
 			return $pinner.hasClass(PINNED_CLASS);
 		}
