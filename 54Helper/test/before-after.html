@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.content:before {
+				content: '\260E:';
+				color: red;
+			}
+			
+			.attr:after {
+				content: '['attr(href)']';
+				color: red;
+			}
+			
+			.url:before {
+				content: url(../../static/img/icon16.png);
+			}
+			/*调用计数器，可以不使用列表元素实现序号功能。
+			配合counter-increment和counter-reset属性使用：*/
+			
+			.section {
+				counter-reset: s1;
+			}
+			
+			.chapter1 {
+				counter-reset: s2;
+			}
+			
+			.chapter1:before {
+				counter-increment: s1;
+				content: counter(s1) '、';
+				color: red;
+				font-weight: bold;
+			}
+			
+			.chapter2:before {
+				counter-increment: s2;
+				content: counter(s1) '.' counter(s2) '、';
+				color: burlywood;
+				font-weight: bold;
+			}
+			
+			#star-six {
+				width: 0;
+				height: 0;
+				border-left: 50px solid transparent;
+				border-right: 50px solid transparent;
+				border-bottom: 100px solid red;
+				position: relative;
+			}
+			
+			#star-six::after {
+				width: 0;
+				height: 0;
+				border-left: 50px solid transparent;
+				border-right: 50px solid transparent;
+				border-top: 100px solid red;
+				position: absolute;
+				content: "";
+				top: 30px;
+				left: -50px;
+			}
+			/*多背景图片*/
+			
+			#silverback {
+				position: relative;
+				z-index: 1;
+				min-width: 200px;
+				min-height: 200px;
+				padding: 120px 200px 50px;
+				background: #d3ff99 url(../../static/img/alipay.png) -10% 0 repeat-x;
+			}
+			
+			#silverback:before,
+			#silverback:after {
+				position: absolute;
+				z-index: -1;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				padding-top: 100px;
+			}
+			
+			#silverback:before {
+				content: url(../../static/img/icon128.png);
+				padding-left: 3%;
+				text-align: left;
+				background: transparent url(../../static/img/icon16.png) 300% 0 repeat-x;
+			}
+			
+			#silverback:after {
+				content: url(../../static/img/wxpay.png);
+				padding-right: 3%;
+				text-align: right;
+				background: transparent url(../../static/vendor/jstree/themes/default/40px.png) 70% 0 repeat-x;
+			}
+		</style>
+	</head>
+
+	<body>
+		<p class="content">15010990415</p>
+		<a class="attr" href="https://www.baidu.com/">百度一下</a><br>
+		<a class="attr url" href="https://www.baidu.com/">百度一下</a><br>
+		<div class="section">
+			<p class="chapter1">HTML tutorials</p>
+			<p class="chapter2">HTML Tutorial</p>
+			<p class="chapter2">XHTML Tutorial</p>
+			<p class="chapter2">CSS Tutorial</p>
+
+			<p class="chapter1">Scripting tutorials</p>
+			<p class="chapter2">JavaScript</p>
+			<p class="chapter2">VBScript</p>
+
+			<p class="chapter1">XML tutorials</p>
+			<p class="chapter2">XML</p>
+			<p class="chapter2">XSL</p>
+		</div>
+		<div id="star-six"></div>
+		<div id="silverback">一个标签应用了5张背景图片</div>
+	</body>
+
+</html>
