@@ -22,6 +22,7 @@
 - 页面性能检测（页面响应时间、Header监测）
 - 页面栅格标尺（页面栅格化、屏幕标尺）
 - 多维小工具集（进制转换、RGB/HEX颜色转换、Crontab、还款计算器等）
+- 网页再造精灵（网页特效、网页定制、脚本注入、自动刷新等）
 - Ajax调试功能（需在控制台中使用）
 - 社会主义核心价值观编解码
 - 网页编码设置（UTF-8、GBK、日文、韩文等）
@@ -34,6 +35,6 @@
 
 ## 二、安装方法 
 1. 下载当前最新版[*.crx](https://github.com/lijian17/54Helper/releases)
-1. chrome浏览器地址栏输入：[chrome://extensions/](chrome://extensions/) 并打开
-2. 右上角开启`开发者模式`
-3. 拖拽crx到当前页面，完成安装
+2. chrome浏览器地址栏输入：[chrome://extensions/](chrome://extensions/) 并打开
+3. 右上角开启`开发者模式`
+4. 拖拽crx到当前页面，完成安装
