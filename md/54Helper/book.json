@@ -19,7 +19,8 @@
 		"donate",
 		"tbfed-pagefooter",
 		"alerts",
-		"flexible-alerts"
+		"flexible-alerts",
+		"pageview-count"
 	],
 	"pluginsConfig": {
 		"code": {
