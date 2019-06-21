@@ -11,7 +11,8 @@
 		"code",
 		"expandable-chapters-small",
 		"back-to-top-button",
-		"github"
+		"github",
+		"emphasize"
 	],
 	"pluginsConfig": {
 		"code": {
