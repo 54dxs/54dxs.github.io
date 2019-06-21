@@ -10,16 +10,11 @@
 		"search-pro",
 		"code",
 		"expandable-chapters-small",
-		"back-to-top-button",
-		"insert-logo"
+		"back-to-top-button"
 	],
 	"pluginsConfig": {
 		"code": {
 			"copyButtons": true
-		},
-		"insert-logo": {
-			"url": "../img/icon128.png",
-			"style": "background: red; max-height: 128px; min-height: 128px"
 		}
 	}
 }
