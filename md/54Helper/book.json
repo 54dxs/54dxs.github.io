@@ -20,7 +20,8 @@
 		"tbfed-pagefooter",
 		"alerts",
 		"flexible-alerts",
-		"pageview-count"
+		"pageview-count",
+		"lightbox"
 	],
 	"pluginsConfig": {
 		"code": {
