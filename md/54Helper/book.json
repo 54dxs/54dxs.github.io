@@ -10,11 +10,15 @@
 		"search-pro",
 		"code",
 		"expandable-chapters-small",
-		"back-to-top-button"
+		"back-to-top-button",
+		"github"
 	],
 	"pluginsConfig": {
 		"code": {
 			"copyButtons": true
+		},
+		"github": {
+			"url": "https://github.com/lijian17/54Helper"
 		}
 	}
 }
