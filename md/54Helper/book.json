@@ -9,13 +9,17 @@
 		"-search",
 		"search-pro",
 		"code",
-		"todo",
 		"expandable-chapters-small",
-		"back-to-top-button"
+		"back-to-top-button",
+		"insert-logo"
 	],
 	"pluginsConfig": {
 		"code": {
 			"copyButtons": true
+		},
+		"insert-logo": {
+			"url": "../img/icon128.png",
+			"style": "background: red; max-height: 128px; min-height: 128px"
 		}
 	}
 }
