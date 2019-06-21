@@ -15,7 +15,8 @@
 		"emphasize",
 		"splitter",
 		"-sharing",
-		"sharing-plus"
+		"sharing-plus",
+		"donate"
 	],
 	"pluginsConfig": {
 		"code": {
@@ -47,6 +48,14 @@
 				"stumbleupon",
 				"whatsapp"
 			]
+		},
+		"donate": {
+			"title": "<span style='font-size:50px; color:red'>🍖🍖赏个鸡腿吃呗!</span><br><br>",
+			"button": "赏",
+			"wechat": "../img/wxpay.png",
+			"alipay": "../img/alipay.png",
+			"wechatText": "<font color='red'>微信打赏</font>",
+			"alipayText": "<font color='blue'>支付宝打赏</font>"
 		}
 	}
 }
