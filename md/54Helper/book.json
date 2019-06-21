@@ -21,7 +21,8 @@
 		"alerts",
 		"flexible-alerts",
 		"pageview-count",
-		"lightbox"
+		"lightbox",
+		"hide-element"
 	],
 	"pluginsConfig": {
 		"code": {
@@ -74,6 +75,11 @@
 				"icon": "fa fa-comments",
 				"className": "info"
 			}
+		},
+		"hide-element": {
+			"elements": [
+				".gitbook-link"
+			]
 		}
 	}
 }
