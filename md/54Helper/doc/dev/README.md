@@ -115,22 +115,46 @@ iconVisibility
 
 
 
-对比：
+NOTE：
 > [!NOTE]
 > 这是一个简单的Note类型的使用，所有的属性都是默认值。
 
+TIP：
+> [!TIP]
+> 这是一个简单的TIP类型的使用，所有的属性都是默认值。
+
+WARNING：
+> [!WARNING]
+> 这是一个简单的WARNING类型的使用，所有的属性都是默认值。
+
+DANGER：
+> [!DANGER]
+> 这是一个简单的DANGER类型的使用，所有的属性都是默认值。
+
 ---
 
-> [!NOTE|style:flat|lable:Mylable|iconVisibility:hidden]
+> [!NOTE|style:flat|label:Mylable|iconVisibility:hidden]
 > "!type":`NOTE`、"style":`flat`、"lable":`自定义标签`、图标不可见
 
-效果：
+NOTE：
+> [!NOTE|style:flat|label:Mylable]
+> 这是一个简单的Note类型的使用，所有的属性都是默认值。
 
+TIP：
+> [!TIP|style:flat|label:Mylable]
+> 这是一个简单的TIP类型的使用，所有的属性都是默认值。
 
+WARNING：
+> [!WARNING|style:flat|label:警告]
+> 这是一个简单的WARNING类型的使用，所有的属性都是默认值。
 
+DANGER：
+> [!DANGER|style:flat|label:危险]
+> 这是一个简单的DANGER类型的使用，所有的属性都是默认值。
 
-
-
+聊天：
+> [!DANGER|style:flat|label:聊天|icon:fa fa-comments]
+> 这是一个简单的自定义类型的使用，所有的属性都是默认值。
 
 
 json配置个性化
