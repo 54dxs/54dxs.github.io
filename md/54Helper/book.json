@@ -12,7 +12,8 @@
 		"expandable-chapters-small",
 		"back-to-top-button",
 		"github",
-		"emphasize"
+		"emphasize",
+		"splitter"
 	],
 	"pluginsConfig": {
 		"code": {
