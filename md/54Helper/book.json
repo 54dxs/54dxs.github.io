@@ -13,7 +13,9 @@
 		"back-to-top-button",
 		"github",
 		"emphasize",
-		"splitter"
+		"splitter",
+		"-sharing",
+		"sharing-plus"
 	],
 	"pluginsConfig": {
 		"code": {
@@ -21,6 +23,30 @@
 		},
 		"github": {
 			"url": "https://github.com/lijian17/54Helper"
+		},
+		"sharing": {
+			"douban": true,
+			"qq": true,
+			"qzone": true,
+			"weibo": true,
+			"all": [
+				"douban",
+				"facebook",
+				"google",
+				"hatenaBookmark",
+				"instapaper",
+				"linkedin",
+				"twitter",
+				"weibo",
+				"messenger",
+				"qq",
+				"qzone",
+				"viber",
+				"vk",
+				"pocket",
+				"stumbleupon",
+				"whatsapp"
+			]
 		}
 	}
 }
