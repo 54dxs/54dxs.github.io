@@ -17,7 +17,8 @@
 		"-sharing",
 		"sharing-plus",
 		"donate",
-		"tbfed-pagefooter"
+		"tbfed-pagefooter",
+		"alerts"
 	],
 	"pluginsConfig": {
 		"code": {
