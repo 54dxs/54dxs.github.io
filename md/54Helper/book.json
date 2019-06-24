@@ -21,7 +21,8 @@
 		"alerts",
 		"flexible-alerts",
 		"pageview-count",
-		"hide-element"
+		"hide-element",
+		"popup"
 	],
 	"pluginsConfig": {
 		"code": {
