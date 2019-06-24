@@ -22,7 +22,8 @@
 		"flexible-alerts",
 		"pageview-count",
 		"hide-element",
-		"popup"
+		"popup",
+		"custom-favicon"
 	],
 	"pluginsConfig": {
 		"code": {
@@ -80,6 +81,7 @@
 			"elements": [
 				".gitbook-link"
 			]
-		}
+		},
+		"favicon": "./doc/img/favicon.ico"
 	}
 }
