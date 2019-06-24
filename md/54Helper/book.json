@@ -23,7 +23,8 @@
 		"pageview-count",
 		"hide-element",
 		"popup",
-		"custom-favicon"
+		"custom-favicon",
+		"sectionx"
 	],
 	"pluginsConfig": {
 		"code": {
