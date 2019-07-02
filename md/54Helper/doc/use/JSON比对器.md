@@ -32,10 +32,9 @@
 ![JSON比对器的使用-popup菜单](../img/json-diff-4.png)
 👆JSON比对器的使用-popup菜单
 
-3、功能演示说明  
+## 3.2、功能演示说明  
 - 非json串会报“JSON不合法！”  
 - 会显示两侧总共有多少处差异，并颜色高亮标识出差异处  
 
 ![JSON比对器的使用](../img/json-diff-5.png)
 👆JSON比对器的使用
-
