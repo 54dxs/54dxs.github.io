@@ -1,0 +1,87 @@
+{
+	"root": "./",
+	"title": "Android面试指南",
+	"description": "Android面试指南，认真准备，沉着应对，必拿offer",
+	"author": "深情小建",
+	"language": "zh-hans",
+	"plugins": [
+		"-lunr",
+		"-search",
+		"search-pro",
+		"code",
+		"expandable-chapters-small",
+		"back-to-top-button",
+		"github",
+		"emphasize",
+		"splitter",
+		"-sharing",
+		"sharing-plus",
+		"donate",
+		"tbfed-pagefooter",
+		"alerts",
+		"flexible-alerts",
+		"pageview-count",
+		"hide-element",
+		"popup",
+		"custom-favicon",
+		"sectionx"
+	],
+	"pluginsConfig": {
+		"code": {
+			"copyButtons": true
+		},
+		"github": {
+			"url": "https://github.com/lijian17/54dxs.github.io"
+		},
+		"sharing": {
+			"qq": true,
+			"qzone": true,
+			"weibo": true,
+			"all": [
+				"douban",
+				"facebook",
+				"google",
+				"hatenaBookmark",
+				"instapaper",
+				"linkedin",
+				"twitter",
+				"weibo",
+				"messenger",
+				"qq",
+				"qzone",
+				"viber",
+				"vk",
+				"pocket",
+				"stumbleupon",
+				"whatsapp"
+			]
+		},
+		"donate": {
+			"title": "<span style='font-size:5rem; color:red'>🍖🍖赏个鸡腿吃呗!</span><br><br>",
+			"button": "赏",
+			"wechat": "../img/wxpay.png",
+			"alipay": "../img/alipay.png",
+			"wechatText": "<font color='red'>微信打赏</font>",
+			"alipayText": "<font color='blue'>支付宝打赏</font>"
+		},
+		"tbfed-pagefooter": {
+			"copyright": "Copyright &copy 54dxs.cn 2019",
+			"modify_label": "该文件修订时间:",
+			"modify_format": "YYYY-MM-DD HH:mm:ss"
+		},
+		"flexible-alerts": {
+			"style": "callout",
+			"comment": {
+				"label": "Comment",
+				"icon": "fa fa-comments",
+				"className": "info"
+			}
+		},
+		"hide-element": {
+			"elements": [
+				".gitbook-link"
+			]
+		},
+		"favicon": "./doc/img/favicon.ico"
+	}
+}
