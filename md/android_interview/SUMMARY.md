@@ -1,11 +1,9 @@
 # Summary
 
 ## 一、前言
-
 * [1.1、介绍](README.md)
 
 ## 二、Java
-
 * [2.1、Java基础](doc/java/basis.md)
     * [2.1.1、Java集合框架](doc/java/basis/Collections-Framework.md)
     * [2.1.2、Java集合——ArrayList](doc/java/basis/arraylist.md)
@@ -49,7 +47,6 @@
     * [2.3.5、JVM怎么判断对象是否已死？](doc/java/virtual-machine/life-cycle.md)
 
 ## 三、Android
-
 * [3.1、Android基础](doc/android/basis.md)
     * [3.1.1、Activity全方位解析](doc/android/basis/activity.md)
     * [3.1.2、Service全方位解析](doc/android/basis/service.md)
@@ -93,7 +90,6 @@
     * [3.3.3、EventBus解析](doc/android/open-source-framework/EventBus.md)
 
 ## 四、数据结构
-
 * [4.1、线性表](doc/data-structure/linear-list.md)
 * [4.2、栈和队](doc/data-structure/stack-queue.md)
 * [4.3、树](doc/data-structure/tree.md)
@@ -113,7 +109,6 @@
 * [4.7、海量数据处理](doc/data-structure/mass_data_processing.md)
 
 ## 五、算法
-
 * [5.1、剑指offer](doc/algorithm/For-offer.md)
     * [01.二维数组中的查找](doc/algorithm/For-offer/01.md)
     * [02.替换空格](doc/algorithm/For-offer/02.md)
@@ -181,7 +176,7 @@
     * [64.机器人的运动范围](doc/algorithm/For-offer/64.md)
 * [5.2、LeetCode](doc/algorithm/leetcode.md)
     * [5.2.1、Dynamic Programming](doc/algorithm/LeetCode/Dynamic-Programming.md)
-    	* [5.2.1.1、Distinct Subsequences](doc/algorithm/LeetCode/Dynamic-Programming/Distinct-Subsequences.md)
+        * [5.2.1.1、Distinct Subsequences](doc/algorithm/LeetCode/Dynamic-Programming/Distinct-Subsequences.md)
         * [5.2.1.2、Longest Common Subsequence](doc/algorithm/LeetCode/Dynamic-Programming/Longest-Common-Subsequence.md)
         * [5.2.1.3、Longest Increasing Subsequence](doc/algorithm/LeetCode/Dynamic-Programming/Longest-Increasing-Subsequence.md)
         * [5.2.1.4、Best Time to Buy and Sell Stock](doc/algorithm/LeetCode/Dynamic-Programming/stock.md)
@@ -214,7 +209,6 @@
         * [5.2.5.3、Candy](doc/algorithm/LeetCode/Greedy/Candy.md)
 
 ## 六、设计模式
-
 * [6.1、创建型模式](doc/design-mode/Builder-Pattern.md)
     * [6.1.1、简单工厂模式](doc/design-mode/Builder-Pattern/Simple-Factory.md)
     * [6.1.2、工厂方法模式](doc/design-mode/Builder-Pattern/Factory-Method.md)
@@ -234,18 +228,15 @@
     * [6.3.5、模板方法模式](doc/design-mode/Behavioral-Pattern/Template-Method.md)
 
 ## 七、计算机网络
-
 * [7.1、TCP/IP](doc/computer-networks/tcpip.md)
 * [7.2、HTTP](doc/computer-networks/http.md)
 * [7.3、HTTPS](doc/computer-networks/https.md)
 
 ## 八、操作系统
-
 * [8.1、概述](doc/operating-system/summarize.md)
 * [8.2、进程与线程](doc/operating-system/process-thread.md)
 * [8.3、内存管理](doc/operating-system/memory-management.md)
 
 ## 九、数据库
-
 * [9.1、SQL语句](doc/sql/SQL.md)
 
