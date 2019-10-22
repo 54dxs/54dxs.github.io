@@ -4,6 +4,11 @@
 	"description": "Android面试指南，认真准备，沉着应对，必拿offer",
 	"author": "深情小建",
 	"language": "zh-hans",
+	"links": {
+		"sidebar": {
+			"54大学生[Android频道]": "https://android.54dxs.cn"
+		}
+	},
 	"plugins": [
 		"-lunr",
 		"-search",
@@ -24,7 +29,8 @@
 		"hide-element",
 		"popup",
 		"custom-favicon",
-		"sectionx"
+		"sectionx",
+		"insert-logo"
 	],
 	"pluginsConfig": {
 		"code": {
@@ -82,6 +88,10 @@
 				".gitbook-link"
 			]
 		},
-		"favicon": "./doc/img/favicon.ico"
+		"favicon": "./doc/img/favicon.ico",
+		"insert-logo": {
+			"url": "/img/android-logo.png",
+			"style": "background: none; max-height: 270px; min-height: 60px"
+		}
 	}
 }
