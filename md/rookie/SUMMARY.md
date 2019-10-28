@@ -44,7 +44,7 @@
     * [3.4.2、Date和Time控件(1)](doc/widget/date-time-1.md)
     * [3.4.3、Date和Time控件(2)](doc/widget/date-time-2.md)
     * [3.4.4、Adapter基础讲解](doc/widget/adapter.md)
-    * [3.4.5、ListView简单实用](doc/widget/listview.md)
+    * [3.4.5、ListView简单使用](doc/widget/listview.md)
     * [3.4.6、BaseAdapter优化](doc/widget/baseadapter.md)
     * [3.4.7、ListView的焦点问题](doc/widget/listview-focus.md)
     * [3.4.8、ListView之checkbox错位问题解决](doc/widget/listview-checkbox.md)
