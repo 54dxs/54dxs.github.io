@@ -195,10 +195,10 @@
 * [11.14、Android GPS初涉](doc/manager/gps.md)
 
 ## 十二、Android项目实战(看妹子APP)
-* [12.1、项目搭建与简单实现](doc/looksister/looksister1.md)
-* [12.2、解析后台数据](doc/looksister/looksister2.md)
-* [12.3、图片加载优化(写个图片缓存小框架)](doc/looksister/looksister3.md)
-* [12.4、添加数据缓存(加入SQLite)](doc/looksister/looksister4.md)
-* [12.5、代码回顾，调整与日志类编写](doc/looksister/looksister5.md)
-* [12.6、图标制作，混淆，签名打包，APK瘦身，应用发布](doc/looksister/looksister6.md)
+* [12.1、项目搭建与简单实现](doc/drysister/drysister1.md)
+* [12.2、解析后台数据](doc/drysister/drysister2.md)
+* [12.3、图片加载优化(写个图片缓存小框架)](doc/drysister/drysister3.md)
+* [12.4、添加数据缓存(加入SQLite)](doc/drysister/drysister4.md)
+* [12.5、代码回顾，调整与日志类编写](doc/drysister/drysister5.md)
+* [12.6、图标制作，混淆，签名打包，APK瘦身，应用发布](doc/drysister/drysister6.md)
 
