@@ -1,0 +1,3312 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>8.5.1、基本用法 · Android新手入门</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="深情小建">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-emphasize/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-sectionx/sectionx.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-insert-logo/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="webview-javascrip.html" />
+    
+    
+    <link rel="prev" href="webview.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://android.54dxs.cn/interview/index.html" target="_blank" class="custom-link">54大学生[Android频道][面试指南]</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://android.54dxs.cn/rookie/index.html" target="_blank" class="custom-link">54大学生[Android频道][新手入门]</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://android.54dxs.cn/advanced/index.html" target="_blank" class="custom-link">54大学生[Android频道][进阶之光]</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://android.54dxs.cn/project/index.html" target="_blank" class="custom-link">54大学生[Android频道][项目实战]</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        <li class="header">一、前言</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    1.1、介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">二、Android开发准备</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../ready/intro.html">
+            
+                <a href="../ready/intro.html">
+            
+                    
+                    2.0、Android基础入门教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../ready/system-architecture-analysis.html">
+            
+                <a href="../ready/system-architecture-analysis.html">
+            
+                    
+                    2.1、背景相关与系统架构分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../ready/development-environment-build.html">
+            
+                <a href="../ready/development-environment-build.html">
+            
+                    
+                    2.2、开发环境搭建
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" data-path="../ready/eclipse-adt-sdk-app.html">
+            
+                <a href="../ready/eclipse-adt-sdk-app.html">
+            
+                    
+                    2.2.1、使用Eclipse + ADT + SDK开发Android APP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" data-path="../ready/android-studio.html">
+            
+                <a href="../ready/android-studio.html">
+            
+                    
+                    2.2.2、使用Android Studio开发Android APP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../ready/sdk-problem-solve.html">
+            
+                <a href="../ready/sdk-problem-solve.html">
+            
+                    
+                    2.3、SDK更新不了问题解决
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../ready/genymotion-install.html">
+            
+                <a href="../ready/genymotion-install.html">
+            
+                    
+                    2.4、Genymotion模拟器安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="../ready/git.html">
+            
+                <a href="../ready/git.html">
+            
+                    
+                    2.5、Git
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.6.1" data-path="../ready/git-repo-operate.html">
+            
+                <a href="../ready/git-repo-operate.html">
+            
+                    
+                    2.5.1、Git使用教程之本地仓库的基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.2" data-path="../ready/git-repo-create.html">
+            
+                <a href="../ready/git-repo-create.html">
+            
+                    
+                    2.5.2、Git之使用GitHub搭建远程仓库
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="../ready/9png.html">
+            
+                <a href="../ready/9png.html">
+            
+                    
+                    2.6、.9png图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="../ready/interface-design.html">
+            
+                <a href="../ready/interface-design.html">
+            
+                    
+                    2.7、界面原型设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="../ready/project-src-analysis.html">
+            
+                <a href="../ready/project-src-analysis.html">
+            
+                    
+                    2.8、工程相关解析(各种文件，资源访问)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10" data-path="../ready/sign-package.html">
+            
+                <a href="../ready/sign-package.html">
+            
+                    
+                    2.9、Android程序签名打包
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11" data-path="../ready/decompile-apk-get-code-resources.html">
+            
+                <a href="../ready/decompile-apk-get-code-resources.html">
+            
+                    
+                    2.10、反编译APK获取代码&资源
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">三、Android控件使用</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../widget/view-viewgroup-intro.html">
+            
+                <a href="../widget/view-viewgroup-intro.html">
+            
+                    
+                    3.1、View与ViewGroup的概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../widget/layout.html">
+            
+                <a href="../widget/layout.html">
+            
+                    
+                    3.2、布局
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../widget/linearlayout.html">
+            
+                <a href="../widget/linearlayout.html">
+            
+                    
+                    3.2.1、LinearLayout(线性布局)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../widget/relativelayout.html">
+            
+                <a href="../widget/relativelayout.html">
+            
+                    
+                    3.2.2、RelativeLayout(相对布局)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.3" data-path="../widget/tablelayout.html">
+            
+                <a href="../widget/tablelayout.html">
+            
+                    
+                    3.2.3、TableLayout(表格布局)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.4" data-path="../widget/framelayout.html">
+            
+                <a href="../widget/framelayout.html">
+            
+                    
+                    3.2.4、FrameLayout(帧布局)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.5" data-path="../widget/gridlayout.html">
+            
+                <a href="../widget/gridlayout.html">
+            
+                    
+                    3.2.5、GridLayout(网格布局)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.6" data-path="../widget/absolutelayout.html">
+            
+                <a href="../widget/absolutelayout.html">
+            
+                    
+                    3.2.6、AbsoluteLayout(绝对布局)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../widget/widget.html">
+            
+                <a href="../widget/widget.html">
+            
+                    
+                    3.3、基础控件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.3.1" data-path="../widget/textview.html">
+            
+                <a href="../widget/textview.html">
+            
+                    
+                    3.3.1、TextView(文本框)详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.2" data-path="../widget/edittext.html">
+            
+                <a href="../widget/edittext.html">
+            
+                    
+                    3.3.2、EditText(输入框)详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.3" data-path="../widget/button-imagebutton.html">
+            
+                <a href="../widget/button-imagebutton.html">
+            
+                    
+                    3.3.3、Button(按钮)与ImageButton(图像按钮)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.4" data-path="../widget/imageview.html">
+            
+                <a href="../widget/imageview.html">
+            
+                    
+                    3.3.4、ImageView(图像视图)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.5" data-path="../widget/radiobutton-checkbox.html">
+            
+                <a href="../widget/radiobutton-checkbox.html">
+            
+                    
+                    3.3.5、RadioButton(单选按钮)和Checkbox(复选框)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.6" data-path="../widget/togglebutton-switch.html">
+            
+                <a href="../widget/togglebutton-switch.html">
+            
+                    
+                    3.3.6、开关按钮ToggleButton和开关Switch
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.7" data-path="../widget/progressbar.html">
+            
+                <a href="../widget/progressbar.html">
+            
+                    
+                    3.3.7、ProgressBar(进度条)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.8" data-path="../widget/seekbar.html">
+            
+                <a href="../widget/seekbar.html">
+            
+                    
+                    3.3.8、SeekBar(拖动条)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.9" data-path="../widget/ratingbar.html">
+            
+                <a href="../widget/ratingbar.html">
+            
+                    
+                    3.3.9、RatingBar(星级评分条)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../widget/widget2.html">
+            
+                <a href="../widget/widget2.html">
+            
+                    
+                    3.4、复杂控件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.4.1" data-path="../widget/scrollview.html">
+            
+                <a href="../widget/scrollview.html">
+            
+                    
+                    3.4.1、ScrollView(滚动条)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.2" data-path="../widget/date-time-1.html">
+            
+                <a href="../widget/date-time-1.html">
+            
+                    
+                    3.4.2、Date和Time控件(1)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.3" data-path="../widget/date-time-2.html">
+            
+                <a href="../widget/date-time-2.html">
+            
+                    
+                    3.4.3、Date和Time控件(2)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.4" data-path="../widget/adapter.html">
+            
+                <a href="../widget/adapter.html">
+            
+                    
+                    3.4.4、Adapter基础讲解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.5" data-path="../widget/listview.html">
+            
+                <a href="../widget/listview.html">
+            
+                    
+                    3.4.5、ListView简单使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.6" data-path="../widget/baseadapter.html">
+            
+                <a href="../widget/baseadapter.html">
+            
+                    
+                    3.4.6、BaseAdapter优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.7" data-path="../widget/listview-focus.html">
+            
+                <a href="../widget/listview-focus.html">
+            
+                    
+                    3.4.7、ListView的焦点问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.8" data-path="../widget/listview-checkbox.html">
+            
+                <a href="../widget/listview-checkbox.html">
+            
+                    
+                    3.4.8、ListView之checkbox错位问题解决
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.9" data-path="../widget/listview-update.html">
+            
+                <a href="../widget/listview-update.html">
+            
+                    
+                    3.4.9、ListView的数据更新问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="../widget/widget3.html">
+            
+                <a href="../widget/widget3.html">
+            
+                    
+                    3.5、高阶控件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.5.1" data-path="../widget/customer-baseadapter.html">
+            
+                <a href="../widget/customer-baseadapter.html">
+            
+                    
+                    3.5.1、构建一个可复用的自定义BaseAdapter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.2" data-path="../widget/listview-item.html">
+            
+                <a href="../widget/listview-item.html">
+            
+                    
+                    3.5.2、ListView Item多布局的实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.3" data-path="../widget/gridview.html">
+            
+                <a href="../widget/gridview.html">
+            
+                    
+                    3.5.3、GridView(网格视图)的基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.4" data-path="../widget/spinner.html">
+            
+                <a href="../widget/spinner.html">
+            
+                    
+                    3.5.4、Spinner(列表选项框)的基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.5" data-path="../widget/autocompletetextview.html">
+            
+                <a href="../widget/autocompletetextview.html">
+            
+                    
+                    3.5.5、AutoCompleteTextView(自动完成文本框)的基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.6" data-path="../widget/expandablelistview.html">
+            
+                <a href="../widget/expandablelistview.html">
+            
+                    
+                    3.5.6、ExpandableListView(可折叠列表)的基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.7" data-path="../widget/viewflipper.html">
+            
+                <a href="../widget/viewflipper.html">
+            
+                    
+                    3.5.7、ViewFlipper(翻转视图)的基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.8" data-path="../widget/toast.html">
+            
+                <a href="../widget/toast.html">
+            
+                    
+                    3.5.8、Toast(吐司)的基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.9" data-path="../widget/notification.html">
+            
+                <a href="../widget/notification.html">
+            
+                    
+                    3.5.9、Notification(状态栏通知)详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.10" data-path="../widget/alertdialog.html">
+            
+                <a href="../widget/alertdialog.html">
+            
+                    
+                    3.5.10、AlertDialog(对话框)详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="../widget/widget4.html">
+            
+                <a href="../widget/widget4.html">
+            
+                    
+                    3.6、窗体控件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.6.1" data-path="../widget/dialog.html">
+            
+                <a href="../widget/dialog.html">
+            
+                    
+                    3.6.1、其他几种常用对话框基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6.2" data-path="../widget/popupwindow.html">
+            
+                <a href="../widget/popupwindow.html">
+            
+                    
+                    3.6.2、PopupWindow(悬浮框)的基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6.3" data-path="../widget/menu.html">
+            
+                <a href="../widget/menu.html">
+            
+                    
+                    3.6.3、菜单(Menu)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6.4" data-path="../widget/viewpager.html">
+            
+                <a href="../widget/viewpager.html">
+            
+                    
+                    3.6.4、ViewPager的简单使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6.5" data-path="../widget/drawerlayout.html">
+            
+                <a href="../widget/drawerlayout.html">
+            
+                    
+                    3.6.5、DrawerLayout(官方侧滑菜单)的简单使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">四、Android事件浅析</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../event/listen-event-handle.html">
+            
+                <a href="../event/listen-event-handle.html">
+            
+                    
+                    4.1、基于监听的事件处理机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../event/callback-event-handle.html">
+            
+                <a href="../event/callback-event-handle.html">
+            
+                    
+                    4.2、基于回调的事件处理机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../event/handler-message.html">
+            
+                <a href="../event/handler-message.html">
+            
+                    
+                    4.3、Handler消息传递机制浅析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../event/touchlistener-ontouchevent.html">
+            
+                <a href="../event/touchlistener-ontouchevent.html">
+            
+                    
+                    4.4、TouchListener PK OnTouchEvent + 多点触碰
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../event/listener-edittext-change.html">
+            
+                <a href="../event/listener-edittext-change.html">
+            
+                    
+                    4.5、监听EditText的内容变化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="../event/configuration.html">
+            
+                <a href="../event/configuration.html">
+            
+                    
+                    4.6、响应系统设置的事件(Configuration类)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="../event/ansynctask.html">
+            
+                <a href="../event/ansynctask.html">
+            
+                    
+                    4.7、AnsyncTask异步任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="../event/gestures.html">
+            
+                <a href="../event/gestures.html">
+            
+                    
+                    4.8、Gestures(手势)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">五、Android四大组件</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../component/activity.html">
+            
+                <a href="../component/activity.html">
+            
+                    
+                    5.1、Activity
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="../component/activity2.html">
+            
+                <a href="../component/activity2.html">
+            
+                    
+                    5.1.1、Activity初学乍练
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" data-path="../component/activity-start.html">
+            
+                <a href="../component/activity-start.html">
+            
+                    
+                    5.1.2、Activity初窥门径
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" data-path="../component/activity-intro.html">
+            
+                <a href="../component/activity-intro.html">
+            
+                    
+                    5.1.3、Activity登堂入室
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../component/service.html">
+            
+                <a href="../component/service.html">
+            
+                    
+                    5.2、Service
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="../component/service1.html">
+            
+                <a href="../component/service1.html">
+            
+                    
+                    5.2.1、Service初涉
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.2" data-path="../component/service2.html">
+            
+                <a href="../component/service2.html">
+            
+                    
+                    5.2.2、Service进阶
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.3" data-path="../component/service3.html">
+            
+                <a href="../component/service3.html">
+            
+                    
+                    5.2.3、Service精通
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../component/broadcastreceiver.html">
+            
+                <a href="../component/broadcastreceiver.html">
+            
+                    
+                    5.3、BroadcastReceiver
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.3.1" data-path="../component/broadcastreceiver1.html">
+            
+                <a href="../component/broadcastreceiver1.html">
+            
+                    
+                    5.3.1、BroadcastReceiver牛刀小试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.2" data-path="../component/broadcastreceiver2.html">
+            
+                <a href="../component/broadcastreceiver2.html">
+            
+                    
+                    5.3.2、BroadcastReceiver庖丁解牛
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="../component/contentprovider.html">
+            
+                <a href="../component/contentprovider.html">
+            
+                    
+                    5.4、ContentProvider
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.4.1" data-path="../component/contentprovider1.html">
+            
+                <a href="../component/contentprovider1.html">
+            
+                    
+                    5.4.1、ContentProvider初探
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.2" data-path="../component/contentprovider2.html">
+            
+                <a href="../component/contentprovider2.html">
+            
+                    
+                    5.4.2、ContentProvider再探——Document Provider
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="../component/intent.html">
+            
+                <a href="../component/intent.html">
+            
+                    
+                    5.5、Intent
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.5.1" data-path="../component/intent-base.html">
+            
+                <a href="../component/intent-base.html">
+            
+                    
+                    5.5.1、Intent的基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5.2" data-path="../component/intent-pass-data.html">
+            
+                <a href="../component/intent-pass-data.html">
+            
+                    
+                    5.5.2、Intent之复杂数据的传递
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">六、Android之Fragment</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../fragment/fragment-base.html">
+            
+                <a href="../fragment/fragment-base.html">
+            
+                    
+                    6.1、Fragment基本概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../fragment/fragment-demo.html">
+            
+                <a href="../fragment/fragment-demo.html">
+            
+                    
+                    6.2、Fragment实例精讲
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="../fragment/fragment-demo1.html">
+            
+                <a href="../fragment/fragment-demo1.html">
+            
+                    
+                    6.2.1、底部导航栏的实现(方法1)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="../fragment/fragment-demo2.html">
+            
+                <a href="../fragment/fragment-demo2.html">
+            
+                    
+                    6.2.2、底部导航栏的实现(方法2)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.3" data-path="../fragment/fragment-demo3.html">
+            
+                <a href="../fragment/fragment-demo3.html">
+            
+                    
+                    6.2.3、底部导航栏的实现(方法3)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.4" data-path="../fragment/fragment-demo4.html">
+            
+                <a href="../fragment/fragment-demo4.html">
+            
+                    
+                    6.2.4、底部导航栏+ViewPager滑动切换页面
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.5" data-path="../fragment/fragment-demo5.html">
+            
+                <a href="../fragment/fragment-demo5.html">
+            
+                    
+                    6.2.5、新闻(购物)类App列表Fragment的简单实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">七、Android数据存储</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../store/file.html">
+            
+                <a href="../store/file.html">
+            
+                    
+                    7.1、文件存储读写
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../store/sharedpreferences.html">
+            
+                <a href="../store/sharedpreferences.html">
+            
+                    
+                    7.2、SharedPreferences保存用户偏好参数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="../store/sqlite.html">
+            
+                <a href="../store/sqlite.html">
+            
+                    
+                    7.3、SQLite数据库
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.3.1" data-path="../store/sqlite1.html">
+            
+                <a href="../store/sqlite1.html">
+            
+                    
+                    7.3.1、初见SQLite数据库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3.2" data-path="../store/sqlite2.html">
+            
+                <a href="../store/sqlite2.html">
+            
+                    
+                    7.3.2、又见SQLite数据库
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">八、Android网络通信</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="http.html">
+            
+                <a href="http.html">
+            
+                    
+                    8.1、Http
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1.1" data-path="http-protocol.html">
+            
+                <a href="http-protocol.html">
+            
+                    
+                    8.1.1、Http协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.2" data-path="http-response-header.html">
+            
+                <a href="http-response-header.html">
+            
+                    
+                    8.1.2、Http请求头与响应头
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.3" data-path="httpurlconnection.html">
+            
+                <a href="httpurlconnection.html">
+            
+                    
+                    8.1.3、HttpURLConnection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.4" data-path="httpclient.html">
+            
+                <a href="httpclient.html">
+            
+                    
+                    8.1.4、HttpClient
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="dataparser.html">
+            
+                <a href="dataparser.html">
+            
+                    
+                    8.2、数据解析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.2.1" data-path="xml.html">
+            
+                <a href="xml.html">
+            
+                    
+                    8.2.1、XML数据解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2.2" data-path="json.html">
+            
+                <a href="json.html">
+            
+                    
+                    8.2.2、JSON数据解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="upload-download.html">
+            
+                <a href="upload-download.html">
+            
+                    
+                    8.3、文件上传下载
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.3.1" data-path="upload-file.html">
+            
+                <a href="upload-file.html">
+            
+                    
+                    8.3.1、文件上传
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3.2" data-path="download1.html">
+            
+                <a href="download1.html">
+            
+                    
+                    8.3.2、文件下载(1)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3.3" data-path="download2.html">
+            
+                <a href="download2.html">
+            
+                    
+                    8.3.3、文件下载(2)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="webservice.html">
+            
+                <a href="webservice.html">
+            
+                    
+                    8.4、调用WebService
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5" data-path="webview.html">
+            
+                <a href="webview.html">
+            
+                    
+                    8.5、WebView
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="8.5.1" data-path="webview-base.html">
+            
+                <a href="webview-base.html">
+            
+                    
+                    8.5.1、基本用法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5.2" data-path="webview-javascrip.html">
+            
+                <a href="webview-javascrip.html">
+            
+                    
+                    8.5.2、WebView和JavaScrip交互基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5.3" data-path="webview-attention.html">
+            
+                <a href="webview-attention.html">
+            
+                    
+                    8.5.3、Android4.4后WebView的一些注意事项
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5.4" data-path="webview-download-file.html">
+            
+                <a href="webview-download-file.html">
+            
+                    
+                    8.5.4、WebView文件下载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5.5" data-path="webview-cache.html">
+            
+                <a href="webview-cache.html">
+            
+                    
+                    8.5.5、WebView缓存问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5.6" data-path="webview-error-code.html">
+            
+                <a href="webview-error-code.html">
+            
+                    
+                    8.5.6、WebView处理网页返回的错误码信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8.6" data-path="socket.html">
+            
+                <a href="socket.html">
+            
+                    
+                    8.6、Socket
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.6.1" data-path="socket-intro.html">
+            
+                <a href="socket-intro.html">
+            
+                    
+                    8.6.1、Socket学习网络基础准备
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.6.2" data-path="tcp1.html">
+            
+                <a href="tcp1.html">
+            
+                    
+                    8.6.2、基于TCP协议的Socket通信(1)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.6.3" data-path="tcp2.html">
+            
+                <a href="tcp2.html">
+            
+                    
+                    8.6.3、基于TCP协议的Socket通信(2)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.6.4" data-path="udp.html">
+            
+                <a href="udp.html">
+            
+                    
+                    8.6.4、基于UDP协议的Socket通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">九、Android自定义控件</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../custom/drawable.html">
+            
+                <a href="../custom/drawable.html">
+            
+                    
+                    9.1、Android中的13种Drawable小结
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1.1" data-path="../custom/drawable1.html">
+            
+                <a href="../custom/drawable1.html">
+            
+                    
+                    9.1.1、Part 1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.2" data-path="../custom/drawable2.html">
+            
+                <a href="../custom/drawable2.html">
+            
+                    
+                    9.1.2、Part 2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.3" data-path="../custom/drawable3.html">
+            
+                <a href="../custom/drawable3.html">
+            
+                    
+                    9.1.3、Part 3
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="../custom/bitmap.html">
+            
+                <a href="../custom/bitmap.html">
+            
+                    
+                    9.2、Bitmap(位图)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.1" data-path="../custom/bitmap1.html">
+            
+                <a href="../custom/bitmap1.html">
+            
+                    
+                    9.2.1、Bitmap(位图)全解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2" data-path="../custom/bitmap2.html">
+            
+                <a href="../custom/bitmap2.html">
+            
+                    
+                    9.2.2、Bitmap引起的OOM问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="../custom/canvas.html">
+            
+                <a href="../custom/canvas.html">
+            
+                    
+                    9.3、Canvas(绘图)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.1" data-path="../custom/drawable-tool.html">
+            
+                <a href="../custom/drawable-tool.html">
+            
+                    
+                    9.3.1、三个绘图工具类详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2" data-path="../custom/bitmap-demo.html">
+            
+                <a href="../custom/bitmap-demo.html">
+            
+                    
+                    9.3.2、绘图类实战示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.3" data-path="../custom/maskfilter.html">
+            
+                <a href="../custom/maskfilter.html">
+            
+                    
+                    9.3.3、Paint API之MaskFilter(面具)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.4" data-path="../custom/xfermode-porterduff1.html">
+            
+                <a href="../custom/xfermode-porterduff1.html">
+            
+                    
+                    9.3.4、Paint API之Xfermode与PorterDuff详解(1)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.5" data-path="../custom/xfermode-porterduff2.html">
+            
+                <a href="../custom/xfermode-porterduff2.html">
+            
+                    
+                    9.3.5、Paint API之Xfermode与PorterDuff详解(2)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.6" data-path="../custom/xfermode-porterduff3.html">
+            
+                <a href="../custom/xfermode-porterduff3.html">
+            
+                    
+                    9.3.6、Paint API之Xfermode与PorterDuff详解(3)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.7" data-path="../custom/xfermode-porterduff4.html">
+            
+                <a href="../custom/xfermode-porterduff4.html">
+            
+                    
+                    9.3.7、Paint API之Xfermode与PorterDuff详解(4)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.8" data-path="../custom/xfermode-porterduff5.html">
+            
+                <a href="../custom/xfermode-porterduff5.html">
+            
+                    
+                    9.3.8、Paint API之Xfermode与PorterDuff详解(5)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.9" data-path="../custom/colorfilter1.html">
+            
+                <a href="../custom/colorfilter1.html">
+            
+                    
+                    9.3.9、Paint API之ColorFilter(颜色过滤器)(1)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.10" data-path="../custom/colorfilter2.html">
+            
+                <a href="../custom/colorfilter2.html">
+            
+                    
+                    9.3.10、Paint API之ColorFilter(颜色过滤器)(2)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.11" data-path="../custom/colorfilter3.html">
+            
+                <a href="../custom/colorfilter3.html">
+            
+                    
+                    9.3.11、Paint API之ColorFilter(颜色过滤器)(3)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.12" data-path="../custom/patheffect.html">
+            
+                <a href="../custom/patheffect.html">
+            
+                    
+                    9.3.12、Paint API之PathEffect(路径效果)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.13" data-path="../custom/shader.html">
+            
+                <a href="../custom/shader.html">
+            
+                    
+                    9.3.13、Paint API之Shader(图像渲染)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.14" data-path="../custom/shadowlayer.html">
+            
+                <a href="../custom/shadowlayer.html">
+            
+                    
+                    9.3.14、Paint几个枚举常量值以及ShadowLayer阴影效果
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.15" data-path="../custom/typeface.html">
+            
+                <a href="../custom/typeface.html">
+            
+                    
+                    9.3.15、Paint API之Typeface(字型)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.16" data-path="../custom/canvas-api1.html">
+            
+                <a href="../custom/canvas-api1.html">
+            
+                    
+                    9.3.16、Canvas API详解(1)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.17" data-path="../custom/canvas-api2.html">
+            
+                <a href="../custom/canvas-api2.html">
+            
+                    
+                    9.3.17、Canvas API详解(2)剪切方法合集
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.18" data-path="../custom/canvas-api3.html">
+            
+                <a href="../custom/canvas-api3.html">
+            
+                    
+                    9.3.18、Canvas API详解(3)Matrix和drawBitmapMash
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" data-path="../custom/animation.html">
+            
+                <a href="../custom/animation.html">
+            
+                    
+                    9.4、Android动画
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.4.1" data-path="../custom/frameanimation.html">
+            
+                <a href="../custom/frameanimation.html">
+            
+                    
+                    9.4.1、帧动画
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4.2" data-path="../custom/tween.html">
+            
+                <a href="../custom/tween.html">
+            
+                    
+                    9.4.2、补间动画
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4.3" data-path="../custom/valueanimator1.html">
+            
+                <a href="../custom/valueanimator1.html">
+            
+                    
+                    9.4.3、属性动画-初见
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4.4" data-path="../custom/valueanimator2.html">
+            
+                <a href="../custom/valueanimator2.html">
+            
+                    
+                    9.4.4、属性动画-又见
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">十、Android音视频</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" data-path="../video/soundpool.html">
+            
+                <a href="../video/soundpool.html">
+            
+                    
+                    10.1、使用SoundPool播放音效(Duang~)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="../video/mediaplayer.html">
+            
+                <a href="../video/mediaplayer.html">
+            
+                    
+                    10.2、MediaPlayer播放音频与视频
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="../video/camera.html">
+            
+                <a href="../video/camera.html">
+            
+                    
+                    10.3、使用Camera拍照
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.4" data-path="../video/mediarecord.html">
+            
+                <a href="../video/mediarecord.html">
+            
+                    
+                    10.4、使用MediaRecord录音
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">十一、Android服务管理器</li>
+        
+        
+    
+        <li class="chapter " data-level="11.1" data-path="../manager/telephonymanager.html">
+            
+                <a href="../manager/telephonymanager.html">
+            
+                    
+                    11.1、TelephonyManager(电话管理器)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="../manager/smsmanager.html">
+            
+                <a href="../manager/smsmanager.html">
+            
+                    
+                    11.2、SmsManager(短信管理器)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3" data-path="../manager/audiomanager.html">
+            
+                <a href="../manager/audiomanager.html">
+            
+                    
+                    11.3、AudioManager(音频管理器)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.4" data-path="../manager/vibrator.html">
+            
+                <a href="../manager/vibrator.html">
+            
+                    
+                    11.4、Vibrator(振动器)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.5" data-path="../manager/alarmmanager.html">
+            
+                <a href="../manager/alarmmanager.html">
+            
+                    
+                    11.5、AlarmManager(闹钟服务)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.6" data-path="../manager/powermanager.html">
+            
+                <a href="../manager/powermanager.html">
+            
+                    
+                    11.6、PowerManager(电源服务)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.7" data-path="../manager/windowmanager.html">
+            
+                <a href="../manager/windowmanager.html">
+            
+                    
+                    11.7、WindowManager(窗口管理服务)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.8" data-path="../manager/layoutinflater.html">
+            
+                <a href="../manager/layoutinflater.html">
+            
+                    
+                    11.8、LayoutInflater(布局服务)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.9" data-path="../manager/wallpapermanager.html">
+            
+                <a href="../manager/wallpapermanager.html">
+            
+                    
+                    11.9、WallpaperManager(壁纸管理器)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.10" data-path="../manager/sensor1.html">
+            
+                <a href="../manager/sensor1.html">
+            
+                    
+                    11.10、传感器专题(1)——相关介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.11" data-path="../manager/sensor2.html">
+            
+                <a href="../manager/sensor2.html">
+            
+                    
+                    11.11、传感器专题(2)——方向传感器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.12" data-path="../manager/sensor3.html">
+            
+                <a href="../manager/sensor3.html">
+            
+                    
+                    11.12、传感器专题(3)——加速度/陀螺仪传感器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.13" data-path="../manager/sensor4.html">
+            
+                <a href="../manager/sensor4.html">
+            
+                    
+                    11.13、传感器专题(4)——其他传感器了解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.14" data-path="../manager/gps.html">
+            
+                <a href="../manager/gps.html">
+            
+                    
+                    11.14、Android GPS初涉
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">十二、Android项目实战(看妹子APP)</li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" data-path="../drysister/drysister1.html">
+            
+                <a href="../drysister/drysister1.html">
+            
+                    
+                    12.1、项目搭建与简单实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="../drysister/drysister2.html">
+            
+                <a href="../drysister/drysister2.html">
+            
+                    
+                    12.2、解析后台数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" data-path="../drysister/drysister3.html">
+            
+                <a href="../drysister/drysister3.html">
+            
+                    
+                    12.3、图片加载优化(写个图片缓存小框架)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.4" data-path="../drysister/drysister4.html">
+            
+                <a href="../drysister/drysister4.html">
+            
+                    
+                    12.4、添加数据缓存(加入SQLite)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.5" data-path="../drysister/drysister5.html">
+            
+                <a href="../drysister/drysister5.html">
+            
+                    
+                    12.5、代码回顾，调整与日志类编写
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.6" data-path="../drysister/drysister6.html">
+            
+                <a href="../drysister/drysister6.html">
+            
+                    
+                    12.6、图标制作，混淆，签名打包，APK瘦身，应用发布
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >8.5.1、基本用法</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x4E00;&#x3001;&#x672C;&#x8282;&#x5F15;&#x8A00;">&#x4E00;&#x3001;&#x672C;&#x8282;&#x5F15;&#x8A00;</h2>
+<p>&#x672C;&#x8282;&#x7ED9;&#x5927;&#x5BB6;&#x5E26;&#x6765;&#x7684;&#x662F;Android&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x663E;&#x793A;&#x7F51;&#x9875;&#x7684;&#x63A7;&#x4EF6;&#xFF1A;WebView(&#x7F51;&#x9875;&#x89C6;&#x56FE;)&#x3002;</p>
+<p>&#x73B0;&#x5728;Android&#x5E94;&#x7528; &#x5C42;&#x5F00;&#x53D1;&#x7684;&#x65B9;&#x5411;&#x6709;&#x4E24;&#x79CD;&#xFF1A;&#x5BA2;&#x6237;&#x7AEF;&#x5F00;&#x53D1;&#x548C;HTML5&#x79FB;&#x52A8;&#x7AEF;&#x5F00;&#x53D1;&#xFF01;</p>
+<p>&#x6240;&#x8C13;&#x7684;HTML5&#x7AEF;&#x5C31;&#x662F;&#xFF1A;HTML5 + CSS + JS&#x6765;&#x6784;&#x5EFA; &#x4E00;&#x4E2A;&#x7F51;&#x9875;&#x7248;&#x7684;&#x5E94;&#x7528;,&#x800C;&#x8FD9;&#x4E2D;&#x95F4;&#x7684;&#x5A92;&#x4ECB;&#x5C31;&#x662F;&#x8FD9;&#x4E2A;WebView,&#x800C;Web&#x548C;&#x7F51;&#x9875;&#x7AEF;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;JS&#x6765;&#x8FDB;&#x884C;&#x4EA4;&#x4E92;,&#x6BD4;&#x5982;, &#x7F51;&#x9875;&#x8BFB;&#x53D6;&#x624B;&#x673A;&#x8054;&#x7CFB;&#x4EBA;,&#x8C03;&#x7528;&#x624B;&#x673A;&#x76F8;&#x5173;&#x7684;API&#x7B49;&#xFF01;</p>
+<p>&#x800C;&#x4E14;&#x76F8;&#x6BD4;&#x8D77;&#x666E;&#x901A;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x5F00;&#x53D1;,HTML5&#x79FB;&#x52A8;&#x7AEF;&#x6709;&#x4E2A;&#x4F18;&#x52BF;&#xFF1A; &#x53EF;&#x4EE5;&#x7528;&#x767E;&#x5206;&#x6BD4;&#x6765;&#x5E03;&#x5C40;,&#x800C;&#x4E14;&#x5982;&#x679C;HTML5&#x7AEF;&#x6709;&#x4EC0;&#x4E48;&#x5927;&#x6539;,&#x6211;&#x4EEC;&#x4E0D;&#x7528;&#x50CF;&#x5BA2;&#x6237;&#x7AEF;&#x90A3;&#x6837;&#x53BB;&#x91CD;&#x65B0;&#x4E0B;&#x4E00;&#x4E2A;APP,&#x7136;&#x540E; &#x8986;&#x76D6;&#x5B89;&#x88C5;,&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x4FEE;&#x6539;&#x4E0B;&#x7F51;&#x9875;&#x5373;&#x53EF;&#xFF01;&#x800C;&#x5BA2;&#x6237;&#x7AEF;...&#x60E8;&#x4E0D;&#x5FCD;&#x7779;,&#x5F53;&#x7136;HTML5&#x4E5F;&#x6709;&#x4E2A;&#x7F3A;&#x70B9;,&#x5C31;&#x662F;&#x6027;&#x80FD;&#x7684;&#x95EE;&#x9898;, &#x6570;&#x636E;&#x79EF;&#x7D2F;,&#x8017;&#x7535;&#x95EE;&#x9898;,&#x8FD8;&#x6709;&#x95EA;&#x5C4F;&#x7B49;&#x7B49;...</p>
+<p>&#x53E6;&#x5916;,&#x9488;&#x5BF9;&#x8FD9;&#x79CD;&#x8DE8;&#x5E73;&#x53F0;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5176;&#x4ED6;&#x7684;&#x7B2C;&#x4E09;&#x65B9;&#x5FEB;&#x901F;&#x5F00;&#x53D1; &#x6846;&#x67B6;,&#x6BD4;&#x5982;PhoneGap,&#x5BF9;&#x4E86;,&#x8FD8;&#x6709;&#x73B0;&#x5728;&#x7F51;&#x7EDC;&#x4E0A;&#x5F88;&#x591A;&#x4E00;&#x952E;&#x751F;&#x6210;APP&#x7C7B;&#x7684;&#x7F51;&#x7AD9;,&#x7528;&#x6237;&#x901A;&#x8FC7;&#x62D6;&#x62C9;,&#x8BBE;&#x7F6E;&#x56FE;&#x7247; &#x4E4B;&#x7C7B;&#x7684;&#x7B80;&#x5355;&#x64CD;&#x4F5C;&#x5C31;&#x53EF;&#x4EE5;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x5E94;&#x7528;,&#x5927;&#x90E8;&#x5206;&#x90FD;&#x662F;&#x7528;&#x7684;HTML5&#x6765;&#x5B8C;&#x6210;&#x7684;&#xFF01;&#x6709;&#x6A21;&#x677F;,&#x76F4;&#x63A5;&#x5957;,&#x4F60;&#x61C2;&#x7684;~ &#x597D;&#x7684;,&#x8BDD;&#x4E0D;&#x591A;&#x8BF4;,&#x5F00;&#x59CB;&#x672C;&#x8282;&#x5185;&#x5BB9;&#xFF01;</p>
+<h2 id="&#x4E8C;&#x3001;&#x4EC0;&#x4E48;&#x662F;webview&#xFF1F;">&#x4E8C;&#x3001;&#x4EC0;&#x4E48;&#x662F;WebView&#xFF1F;</h2>
+<p>&#x7B54;&#xFF1A;Android&#x5185;&#x7F6E;webkit&#x5185;&#x6838;&#x7684;&#x9AD8;&#x6027;&#x80FD;&#x6D4F;&#x89C8;&#x5668;,&#x800C;WebView&#x5219;&#x662F;&#x5728;&#x8FD9;&#x4E2A;&#x57FA;&#x7840;&#x4E0A;&#x8FDB;&#x884C;&#x5C01;&#x88C5;&#x540E;&#x7684;&#x4E00;&#x4E2A; &#x63A7;&#x4EF6;,WebView&#x76F4;&#x8BD1;&#x7F51;&#x9875;&#x89C6;&#x56FE;,&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7B80;&#x5355;&#x7684;&#x770B;&#x4F5C;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x5D4C;&#x5957;&#x5230;&#x754C;&#x9762;&#x4E0A;&#x7684;&#x4E00;&#x4E2A;&#x6D4F;&#x89C8;&#x5668;&#x63A7;&#x4EF6;&#xFF01;</p>
+<h2 id="&#x4E09;&#x3001;&#x76F8;&#x5173;&#x65B9;&#x6CD5;">&#x4E09;&#x3001;&#x76F8;&#x5173;&#x65B9;&#x6CD5;</h2>
+<p>&#x5148;&#x4E0A;&#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF1A;WebView &#x5E76;&#x4E0D;&#x6253;&#x7B97;&#x4E00;&#x4E2A;&#x4E2A;&#x5730;&#x53BB;&#x8BB2;&#x5C5E;&#x6027;,&#x7528;&#x5230;&#x54EA;&#x4E2A;&#x5199;&#x54EA;&#x4E2A;,&#x5176;&#x4ED6;&#x7684;&#x81EA;&#x884C;&#x67E5;&#x9605;&#x6587;&#x6863;&#xFF01; &#x9664;&#x4E86;&#x76F4;&#x63A5;WebView&#x5916;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x4F60;&#x81EA;&#x5DF1;&#x7684;&#x884C;&#x4E3A;,&#x53EF;&#x4EE5;&#x81EA;&#x884C;&#x5B9A;&#x5236;&#x4E0B;&#x8FF0;&#x7C7B;&#xFF1A;</p>
+<p>WebChromeClient&#xFF1A;&#x8F85;&#x52A9;WebView&#x5904;&#x7406;Javascript&#x7684;&#x5BF9;&#x8BDD;&#x6846;&#x3001;&#x7F51;&#x7AD9;&#x56FE;&#x6807;&#x3001;&#x7F51;&#x7AD9;title&#x3001;&#x52A0;&#x8F7D;&#x8FDB;&#x5EA6;&#x7B49;&#xFF01; &#x6BD4;&#x5982;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>&#x65B9;&#x6CD5;</th>
+<th>&#x4F5C;&#x7528;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onJsAlert(WebView view,String url,String message,JsResult result)</td>
+<td>&#x5904;&#x7406;Js&#x4E2D;&#x7684;Alert&#x5BF9;&#x8BDD;&#x6846;</td>
+</tr>
+<tr>
+<td>onJsConfirm(WebView view,String url,String message,JsResult result)</td>
+<td>&#x5904;&#x7406;Js&#x4E2D;&#x7684;Confirm&#x5BF9;&#x8BDD;&#x6846;</td>
+</tr>
+<tr>
+<td>onJsPrompt(WebView view,String url,String message,String defaultValue,JsPromptResult result)</td>
+<td>&#x5904;&#x7406;Js&#x4E2D;&#x7684;Prompt&#x5BF9;&#x8BDD;&#x6846;</td>
+</tr>
+<tr>
+<td>onProgressChanged(WebView view,int newProgress)</td>
+<td>&#x5F53;&#x52A0;&#x8F7D;&#x8FDB;&#x5EA6;&#x6761;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x65F6;&#x8C03;&#x7528;</td>
+</tr>
+<tr>
+<td>onReceivedIcon(WebView view, Bitmap icon)</td>
+<td>&#x83B7;&#x5F97;&#x7F51;&#x9875;&#x7684;icon</td>
+</tr>
+<tr>
+<td>onReceivedTitle(WebView view, String title)</td>
+<td>&#x83B7;&#x5F97;&#x7F51;&#x9875;&#x7684;&#x6807;&#x9898;</td>
+</tr>
+</tbody>
+</table>
+<p>WebViewClient&#xFF1A;&#x8F85;&#x52A9;WebView&#x5904;&#x7406;&#x5404;&#x79CD;&#x901A;&#x77E5;&#x4E0E;&#x8BF7;&#x6C42;&#x4E8B;&#x4EF6;&#xFF01; &#x6BD4;&#x5982;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>&#x65B9;&#x6CD5;</th>
+<th>&#x4F5C;&#x7528;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onPageStared(WebView view,String url)</td>
+<td>&#x901A;&#x77E5;&#x4E3B;&#x7A0B;&#x5E8F;&#x7F51;&#x9875;&#x5F00;&#x59CB;&#x52A0;&#x8F7D;</td>
+</tr>
+<tr>
+<td>onPageFinished(WebView view,String url,Bitmap favicon)</td>
+<td>&#x901A;&#x77E5;&#x4E3B;&#x7A0B;&#x5E8F;,&#x7F51;&#x9875;&#x52A0;&#x8F7D;&#x5B8C;&#x6BD5;</td>
+</tr>
+<tr>
+<td>doUpdateVisitedHistory(WebView view,String url,boolean isReload)</td>
+<td>&#x66F4;&#x65B0;&#x5386;&#x53F2;&#x8BB0;&#x5F55;</td>
+</tr>
+<tr>
+<td>onLoadResource(WebView view,String url)</td>
+<td>&#x901A;&#x77E5;&#x4E3B;&#x7A0B;&#x5E8F;WebView&#x5373;&#x5C06;&#x52A0;&#x8F7D;&#x6307;&#x5B9A;url&#x7684;&#x8D44;&#x6E90;</td>
+</tr>
+<tr>
+<td>onScaleChanged(WebView view,float oldScale,float newScale)</td>
+<td>ViewView&#x7684;&#x7F29;&#x653E;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x65F6;&#x8C03;&#x7528;</td>
+</tr>
+<tr>
+<td>shouldOverrideKeyEvent(WebView view,KeyEvent event)</td>
+<td>&#x63A7;&#x5236;webView&#x662F;&#x5426;&#x5904;&#x7406;&#x6309;&#x952E;&#x65F6;&#x95F4;,&#x5982;&#x679C;&#x8FD4;&#x56DE;true,&#x5219;WebView&#x4E0D;&#x5904;&#x7406;,&#x8FD4;&#x56DE;false&#x5219;&#x5904;&#x7406;</td>
+</tr>
+<tr>
+<td>shouldOverrideUrlLoading(WebView view,String url)</td>
+<td>&#x63A7;&#x5236;&#x5BF9;&#x65B0;&#x52A0;&#x8F7D;&#x7684;Url&#x7684;&#x5904;&#x7406;,&#x8FD4;&#x56DE;true,&#x8BF4;&#x660E;&#x4E3B;&#x7A0B;&#x5E8F;&#x5904;&#x7406;WebView&#x4E0D;&#x505A;&#x5904;&#x7406;,&#x8FD4;&#x56DE;false&#x610F;&#x5473;&#x7740;WebView&#x4F1A;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x5904;&#x7406;</td>
+</tr>
+<tr>
+<td>onReceivedError(WebView view,int errorCode,String description,String failingUrl)</td>
+<td>&#x9047;&#x5230;&#x4E0D;&#x53EF;&#x6062;&#x590D;&#x7684;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x65F6;&#x8C03;&#x7528;</td>
+</tr>
+</tbody>
+</table>
+<p>WebSettings&#xFF1A;WebView&#x76F8;&#x5173;&#x914D;&#x7F6E;&#x7684;&#x8BBE;&#x7F6E;&#xFF0C;&#x6BD4;&#x5982;setJavaScriptEnabled()&#x8BBE;&#x7F6E;&#x662F;&#x5426;&#x5141;&#x8BB8;JS&#x811A;&#x672C;&#x6267;&#x884C; &#x90E8;&#x5206;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>&#x65B9;&#x6CD5;</th>
+<th>&#x4F5C;&#x7528;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getSettings()</td>
+<td>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;WebSettings&#x5BF9;&#x8C61;,&#x7528;&#x6765;&#x63A7;&#x5236;WebView&#x7684;&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;</td>
+</tr>
+<tr>
+<td>loadUrl(String url)</td>
+<td>&#x52A0;&#x8F7D;&#x6307;&#x5B9A;&#x7684;Url</td>
+</tr>
+<tr>
+<td>loadData(String data,String mimeType,String encoding)</td>
+<td>&#x52A0;&#x8F7D;&#x6307;&#x5B9A;&#x7684;Data&#x5230;WebView&#x4E2D;.&#x4F7F;&#x7528;&quot;data:&quot;&#x4F5C;&#x4E3A;&#x6807;&#x8BB0;&#x5934;,&#x8BE5;&#x65B9;&#x6CD5;&#x4E0D;&#x80FD;&#x52A0;&#x8F7D;&#x7F51;&#x7EDC;&#x6570;&#x636E;.&#x5176;&#x4E2D;mimeType&#x4E3A;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x5982;:textml,image/jpeg. encoding&#x4E3A;&#x5B57;&#x7B26;&#x7684;&#x7F16;&#x7801;&#x65B9;&#x5F0F;</td>
+</tr>
+<tr>
+<td>loadDataWithBaseURL(String baseUrl, String data, String mimeType, String encoding, String historyUrl)</td>
+<td>&#x6BD4;&#x4E0A;&#x9762;&#x7684;loadData&#x66F4;&#x52A0;&#x5F3A;&#x5927;</td>
+</tr>
+<tr>
+<td>setWebViewClient(WebViewClient client)</td>
+<td>&#x4E3A;WebView&#x6307;&#x5B9A;&#x4E00;&#x4E2A;WebViewClient&#x5BF9;&#x8C61;.WebViewClient&#x53EF;&#x4EE5;&#x8F85;&#x52A9;WebView&#x5904;&#x7406;&#x5404;&#x79CD;&#x901A;&#x77E5;,&#x8BF7;&#x6C42;&#x7B49;&#x4E8B;&#x4EF6;&#x3002;</td>
+</tr>
+<tr>
+<td>setWebChromeClient(WebChromeClient client)</td>
+<td>&#x4E3A;WebView&#x6307;&#x5B9A;&#x4E00;&#x4E2A;WebChromeClient&#x5BF9;&#x8C61;,WebChromeClient&#x4E13;&#x95E8;&#x7528;&#x6765;&#x8F85;&#x52A9;WebView&#x5904;&#x7406;js&#x7684;&#x5BF9;&#x8BDD;&#x6846;,&#x7F51;&#x7AD9;title,&#x7F51;&#x7AD9;&#x56FE;&#x6807;,&#x52A0;&#x8F7D;&#x8FDB;&#x5EA6;&#x6761;&#x7B49;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x8FD9;&#x91CC;&#x91CD;&#x8981;&#x533A;&#x5206;&#x4E09;&#x4E2A;load&#x65B9;&#x6CD5;&#x7684;&#x533A;&#x522B;&#xFF1A;</p>
+<p>loadUrl()&#xFF1A;&#x76F4;&#x63A5;&#x663E;&#x793A;&#x7F51;&#x9875;&#x5185;&#x5BB9;(&#x5355;&#x72EC;&#x663E;&#x793A;&#x7F51;&#x7EDC;&#x56FE;&#x7247;)&#xFF0C;&#x4E00;&#x822C;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x4E71;&#x7801;&#x3002; loadData(data, &quot;text/html&quot;, &quot;UTF-8&quot;)&#xFF1A;&#x7528;&#x6765;&#x52A0;&#x8F7D;URI&#x683C;&#x5F0F;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x4E0D;&#x80FD;&#x901A;&#x8FC7;&#x7F51;&#x7EDC;&#x6765;&#x52A0;&#x8F7D;&#x5185;&#x5BB9;&#xFF0C; &#x4E0D;&#x80FD;&#x52A0;&#x8F7D;&#x56FE;&#x7247;&#xFF0C;&#x800C;&#x4E14;&#x7ECF;&#x5E38;&#x4F1A;&#x9047;&#x5230;&#x4E71;&#x7801;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x77E5;&#x9053;String&#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;&#x4E3B;&#x8981;&#x662F;Unicode&#x7F16;&#x7801;&#x7684;&#xFF0C; &#x800C;WebView&#x4E00;&#x822C;&#x4E3A;&#x4E86;&#x8282;&#x7701;&#x8D44;&#x6E90;&#x4F7F;&#x7528;&#x7684;&#x662F;UTF-8&#x7F16;&#x7801;&#xFF0C;&#x5C3D;&#x7BA1;&#x6211;&#x4EEC;&#x6309;&#x4E0A;&#x9762;&#x5199;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x8FD8;&#x9700;&#x8981;&#x4E3A;webView&#x8BBE;&#x7F6E;&#xFF1A; webview.getSettings().setDefaultTextEncodingName(&quot;UTF -8&quot;); loadDataWithBaseURL(baseUrl, string, &quot;text/html&quot;, &quot;utf-8&quot;, null)&#xFF1A;loadData&#x7C7B;&#x7684;&#x4E00;&#x4E2A; &#x589E;&#x5F3A;&#x7C7B;&#xFF0C;&#x53EF;&#x4EE5;&#x52A0;&#x8F7D;&#x56FE;&#x7247;&#xFF0C;baseUrl&#x4E3A;&#x4F60;&#x5B58;&#x50A8;&#x7684;&#x56FE;&#x7247;&#x8DEF;&#x5F84;&#xFF0C;&#x800C;&#x4E14;&#x53EA;&#x9700;&#x5728;&#x8FD9;&#x91CC;&#x8BBE;&#x7F6E;utf-8&#x5C31;&#x53EF;&#x4EE5;&#x89E3;&#x51B3;&#x4E71;&#x7801; &#x95EE;&#x9898;&#x4E86;&#xFF01;</p>
+<p>&#x8FD9;&#x91CC;&#x53EA;&#x662F;&#x5217;&#x4E3E;&#x4E86;&#x90E8;&#x5206;&#x5C5E;&#x6027;&#x800C;&#x5DF2;&#xFF0C;&#x5176;&#x4ED6;&#x7684;&#x8FD8;&#x9700;&#x81EA;&#x884C;&#x67E5;&#x9605;&#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF1A;</p>
+<p>WebChromeClient&#x6587;&#x6863;</p>
+<p>WebViewClient&#x6587;&#x6863;</p>
+<p>WebSettings&#x6587;&#x6863;</p>
+<h2 id="&#x56DB;&#x3001;&#x4E00;&#x4E9B;&#x5E38;&#x89C1;&#x9700;&#x6C42;&#x8BB2;&#x89E3;">&#x56DB;&#x3001;&#x4E00;&#x4E9B;&#x5E38;&#x89C1;&#x9700;&#x6C42;&#x8BB2;&#x89E3;</h2>
+<h3 id="&#x9700;&#x6C42;1&#xFF1A;&#x6839;&#x636E;url&#x52A0;&#x8F7D;&#x7F51;&#x9875;">&#x9700;&#x6C42;1&#xFF1A;&#x6839;&#x636E;URL&#x52A0;&#x8F7D;&#x7F51;&#x9875;</h3>
+<h4 id="1&#xFF09;&#x76F4;&#x63A5;&#x5728;activity&#x4E0A;&#x52A0;&#x8F7D;&#x4E00;&#x4E2A;webview">1&#xFF09;&#x76F4;&#x63A5;&#x5728;Activity&#x4E0A;&#x52A0;&#x8F7D;&#x4E00;&#x4E2A;WebView</h4>
+<p>&#x8FD0;&#x884C;&#x6548;&#x679C;&#x56FE;&#xFF1A;</p>
+<p><img src="../img/network-63.jpg" alt=""></p>
+<p>&#x5B9E;&#x73B0;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AppCompatActivity</span> </span>{
+
+    <span class="hljs-keyword">private</span> WebView webView;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> exitTime = <span class="hljs-number">0</span>;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> </span>{
+        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        webView = <span class="hljs-keyword">new</span> WebView(<span class="hljs-keyword">this</span>);
+        webView.setWebViewClient(<span class="hljs-keyword">new</span> WebViewClient() {
+            <span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x5728;webView&#x70B9;&#x51FB;&#x6253;&#x5F00;&#x7684;&#x65B0;&#x7F51;&#x9875;&#x5728;&#x5F53;&#x524D;&#x754C;&#x9762;&#x663E;&#x793A;,&#x800C;&#x4E0D;&#x8DF3;&#x8F6C;&#x5230;&#x65B0;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;</span>
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">shouldOverrideUrlLoading</span><span class="hljs-params">(WebView view, String url)</span> </span>{
+                view.loadUrl(url);
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+            }
+        });
+        webView.getSettings().setJavaScriptEnabled(<span class="hljs-keyword">true</span>);  <span class="hljs-comment">//&#x8BBE;&#x7F6E;WebView&#x5C5E;&#x6027;,&#x8FD0;&#x884C;&#x6267;&#x884C;js&#x811A;&#x672C;</span>
+        webView.loadUrl(<span class="hljs-string">&quot;http://www.baidu.com/&quot;</span>);          <span class="hljs-comment">//&#x8C03;&#x7528;loadUrl&#x65B9;&#x6CD5;&#x4E3A;WebView&#x52A0;&#x5165;&#x94FE;&#x63A5;</span>
+        setContentView(webView);                           <span class="hljs-comment">//&#x8C03;&#x7528;Activity&#x63D0;&#x4F9B;&#x7684;setContentView&#x5C06;webView&#x663E;&#x793A;&#x51FA;&#x6765;</span>
+    }
+
+
+    <span class="hljs-comment">//&#x6211;&#x4EEC;&#x9700;&#x8981;&#x91CD;&#x5199;&#x56DE;&#x9000;&#x6309;&#x94AE;&#x7684;&#x65F6;&#x95F4;,&#x5F53;&#x7528;&#x6237;&#x70B9;&#x51FB;&#x56DE;&#x9000;&#x6309;&#x94AE;&#xFF1A;</span>
+    <span class="hljs-comment">//1.webView.canGoBack()&#x5224;&#x65AD;&#x7F51;&#x9875;&#x662F;&#x5426;&#x80FD;&#x540E;&#x9000;,&#x53EF;&#x4EE5;&#x5219;goback()</span>
+    <span class="hljs-comment">//2.&#x5982;&#x679C;&#x4E0D;&#x53EF;&#x4EE5;&#x8FDE;&#x7EED;&#x70B9;&#x51FB;&#x4E24;&#x6B21;&#x9000;&#x51FA;App,&#x5426;&#x5219;&#x5F39;&#x51FA;&#x63D0;&#x793A;Toast</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onBackPressed</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span> (webView.canGoBack()) {
+            webView.goBack();
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">if</span> ((System.currentTimeMillis() - exitTime) &gt; <span class="hljs-number">2000</span>) {
+                Toast.makeText(getApplicationContext(), <span class="hljs-string">&quot;&#x518D;&#x6309;&#x4E00;&#x6B21;&#x9000;&#x51FA;&#x7A0B;&#x5E8F;&quot;</span>,
+                        Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
+            } <span class="hljs-keyword">else</span> {
+                <span class="hljs-keyword">super</span>.onBackPressed();
+            }
+
+        }
+    }
+}
+</code></pre>
+<h4 id="2&#xFF09;&#x5E03;&#x5C40;&#x4EE3;&#x7801;&#x4E2D;&#x8BBE;&#x7F6E;webview">2&#xFF09;&#x5E03;&#x5C40;&#x4EE3;&#x7801;&#x4E2D;&#x8BBE;&#x7F6E;WebView</h4>
+<p>&#x76F8;&#x4FE1;&#x5927;&#x5BB6;&#x90FD;&#x89C1;&#x8FC7;&#x5F88;&#x591A;&#x7684;&#x65B0;&#x95FB;&#x7C7B;App&#x5427;&#x6216;&#x8005;&#x95E8;&#x6237;&#x4FE1;&#x606F;&#x7C7B;&#x7684;App,&#x4ED6;&#x7684;&#x7ED3;&#x6784;&#x53EF;&#x80FD;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p>
+<p><img src="../img/network-64.jpg" alt=""></p>
+<p>&#x5DE6;&#x4E0A;&#x89D2;&#x4E00;&#x4E2A;&#x70B9;&#x51FB;&#x5173;&#x95ED;&#x5F53;&#x524D;Activity&#x7684;&#x6309;&#x94AE;,&#x4E2D;&#x95F4;&#x662F;&#x65B0;&#x95FB;&#x7684;title,&#x53F3;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x5237;&#x65B0;&#x6309;&#x94AE;, &#x800C;&#x5728;&#x53F3;&#x4E0B;&#x89D2;&#x53EF;&#x80FD;&#x6709;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x60AC;&#x6D6E;&#x7684;&#x6309;&#x94AE;,&#x5F53;&#x6211;&#x4EEC;&#x6ED1;&#x52A8;&#x8D85;&#x8FC7;&#x5C4F;&#x5E55;&#x5BBD;&#x5EA6;&#x4ED6;&#x5C31;&#x4F1A;&#x663E;&#x793A;&#x51FA;&#x6765;, &#x5F53;&#x7528;&#x6237;&#x70B9;&#x51FB;&#x540E;&#x53C8;&#x4F1A;&#x56DE;&#x6EDA;&#x5230;&#x7F51;&#x9875;&#x7684;&#x9876;&#x90E8;&#xFF01;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x6765;&#x7B80;&#x5355;&#x7684;&#x5B9E;&#x73B0;&#x4E0B;&#xFF01;</p>
+<p>&#x8FD0;&#x884C;&#x6548;&#x679C;&#x56FE;&#xFF1A;</p>
+<p><img src="../img/network-65.jpg" alt=""></p>
+<p>&#x5B9E;&#x73B0;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-java">MainActivity.java&#xFF1A;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AppCompatActivity</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">View</span>.<span class="hljs-title">OnClickListener</span> </span>{
+
+
+    <span class="hljs-keyword">private</span> Button btn_back;
+    <span class="hljs-keyword">private</span> TextView txt_title;
+    <span class="hljs-keyword">private</span> Button btn_top;
+    <span class="hljs-keyword">private</span> Button btn_refresh;
+    <span class="hljs-keyword">private</span> WebView wView;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> exitTime = <span class="hljs-number">0</span>;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> </span>{
+        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        bindViews();
+    }
+
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">bindViews</span><span class="hljs-params">()</span> </span>{
+        btn_back = (Button) findViewById(R.id.btn_back);
+        txt_title = (TextView) findViewById(R.id.txt_title);
+        btn_top = (Button) findViewById(R.id.btn_top);
+        btn_refresh = (Button) findViewById(R.id.btn_refresh);
+        wView = (WebView) findViewById(R.id.wView);
+
+        btn_back.setOnClickListener(<span class="hljs-keyword">this</span>);
+        btn_refresh.setOnClickListener(<span class="hljs-keyword">this</span>);
+        btn_top.setOnClickListener(<span class="hljs-keyword">this</span>);
+
+        wView.loadUrl(<span class="hljs-string">&quot;http://www.baidu.com&quot;</span>);
+        wView.setWebChromeClient(<span class="hljs-keyword">new</span> WebChromeClient() {
+            <span class="hljs-comment">//&#x8FD9;&#x91CC;&#x8BBE;&#x7F6E;&#x83B7;&#x53D6;&#x5230;&#x7684;&#x7F51;&#x7AD9;title</span>
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onReceivedTitle</span><span class="hljs-params">(WebView view, String title)</span> </span>{
+                <span class="hljs-keyword">super</span>.onReceivedTitle(view, title);
+                txt_title.setText(title);
+            }
+        });
+
+
+        wView.setWebViewClient(<span class="hljs-keyword">new</span> WebViewClient() {
+            <span class="hljs-comment">//&#x5728;webview&#x91CC;&#x6253;&#x5F00;&#x65B0;&#x94FE;&#x63A5;</span>
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">shouldOverrideUrlLoading</span><span class="hljs-params">(WebView view, String url)</span> </span>{
+                view.loadUrl(url);
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+            }
+        });
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View v)</span> </span>{
+        <span class="hljs-keyword">switch</span> (v.getId()) {
+            <span class="hljs-keyword">case</span> R.id.btn_back:
+                finish();          <span class="hljs-comment">//&#x5173;&#x95ED;&#x5F53;&#x524D;Activity</span>
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> R.id.btn_refresh:
+                wView.reload();    <span class="hljs-comment">//&#x5237;&#x65B0;&#x5F53;&#x524D;&#x9875;&#x9762;</span>
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> R.id.btn_top:
+                wView.setScrollY(<span class="hljs-number">0</span>);   <span class="hljs-comment">//&#x6EDA;&#x52A8;&#x5230;&#x9876;&#x90E8;</span>
+                <span class="hljs-keyword">break</span>;
+        }
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onBackPressed</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span> (wView.canGoBack()) {
+            wView.goBack();
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">if</span> ((System.currentTimeMillis() - exitTime) &gt; <span class="hljs-number">2000</span>) {
+                Toast.makeText(getApplicationContext(), <span class="hljs-string">&quot;&#x518D;&#x6309;&#x4E00;&#x6B21;&#x9000;&#x51FA;&#x7A0B;&#x5E8F;&quot;</span>,
+                        Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
+            } <span class="hljs-keyword">else</span> {
+                finish();
+            }
+
+        }
+    }
+}
+</code></pre>
+<p>&#x95EE;&#x9898;&#x7B54;&#x7591;&#xFF1A;</p>
+<p>&#x76F8;&#x4FE1;&#x7EC6;&#x5FC3;&#x7684;&#x670B;&#x53CB;&#x770B;&#x5230;&#xFF0C;&#x6211;&#x4EEC;&#x56DE;&#x5230;&#x4E00;&#x5F00;&#x59CB;&#x52A0;&#x8F7D;&#x7684;&#x9875;&#x9762;&#x540E;&#xFF0C;&#x6309;&#x8FD4;&#x56DE;&#x952E;&#xFF0C;&#x6309;&#x4E86;&#x591A;&#x6B21;&#x8FD8;&#x662F;&#x6CA1;&#x6709;&#x9000;&#x51FA; &#x5F53;&#x524D;&#x7684;APP&#xFF0C;&#x540E;&#x6765;&#x8FD8;&#x662F;&#x6211;&#x4EEC;&#x624B;&#x52A8;&#x53BB;&#x70B9;back&#x952E;&#x901A;&#x8FC7;&#x8C03;&#x7528;finish&#x65B9;&#x6CD5;&#x624D;&#x80FD;&#x5173;&#x95ED;&#x5F53;&#x524D;&#x7684;Activity? &#x8FD9;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;&#x660E;&#x660E;&#x767E;&#x5EA6;&#x4E00;&#x4E0B;&#x5DF2;&#x7ECF;&#x662F;&#x7B2C;&#x4E00;&#x4E2A;&#x9875;&#x9762;&#x554A;&#xFF1F;</p>
+<p>&#x7B54;&#xFF1A;&#x5176;&#x5B9E;&#x53D1;&#x751F;&#x8FD9;&#x4E2A;&#x7684;&#x539F;&#x56E0;&#x662F;&#xFF1A;&#x7F51;&#x5740;&#x7684;&#x91CD;&#x5B9A;&#x5411;&#x95EE;&#x9898;&#x5F15;&#x8D77;&#x7684;&#xFF0C;&#x5176;&#x5B9E;&#x6211;&#x4EEC;&#x5728;&#x8BBF;&#x95EE;&#x767E;&#x5EA6;&#x7684;&#x65F6;&#x5019;&#xFF1A;</p>
+<p>&#x5C3D;&#x7BA1;&#x6211;&#x4EEC;load&#x7684;&#x662F;www.baidu.com&#xFF0C;&#x4F46;&#x662F;&#x767E;&#x5EA6;&#x505A;&#x4E86;&#x91CD;&#x5B9A;&#x5411;&#xFF0C;&#x8DF3;&#x8F6C;&#x5230;&#x4E86;&#x624B;&#x673A;&#x7248;&#x767E;&#x5EA6;&#x4E00;&#x4E0B;&#x7F51;&#x9875;&#xFF1A; &#x5373;&#x5B9E;&#x9645;&#x4F60;&#x7684;&#x6D41;&#x7A0B;&#x662F;&#xFF1A;www.baidu.com -&gt; &#x624B;&#x673A;&#x7248;&#x767E;&#x5EA6;&#x4E00;&#x4E0B; -&gt; &#x6253;&#x5F00;&#x5176;&#x4ED6;&#x7684;&#x94FE;&#x63A5;&#xFF01;</p>
+<p>&#x6211;&#x4EEC;&#x770B;&#x5230;&#x6211;&#x4EEC;&#x4E0A;&#x9762;shouldOverrideUrlLoading()&#x65B9;&#x6CD5;&#x662F;&#x8FD9;&#x6837;&#x5199;&#x7684;&#xFF1A;</p>
+<p>view.loadUrl(url);return true; &#x6211;&#x4EEC;&#x77E5;&#x9053;&#x7528;&#x6237;&#x70B9;&#x51FB;&#x4E00;&#x6B21;&#x56DE;&#x9000;&#x952E;&#xFF0C;&#x90A3;&#x4E48;webview&#x4F1A;&#x8C03;&#x7528;&#x4E00;&#x6B21;goback&#x65B9;&#x6CD5;()&#xFF0C;&#x6211;&#x4EEC;&#x628A;&#x4E0A;&#x9762;&#x4E09;&#x4E2A; &#x8BBE;&#x505A;A,B,C&#x4E09;&#x4E2A;&#x7AD9;&#x70B9;&#xFF0C;&#x5728;C&#x65F6;&#x70B9;&#x56DE;&#x9000;&#xFF0C;C - &gt; B&#x6CA1;&#x95EE;&#x9898;&#xFF0C;&#x63A5;&#x7740;&#x518D;&#x70B9; B -&gt; A&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x95EE;&#x9898; &#x5C31;&#x6765;&#x4E86;&#x5C3D;&#x7BA1;B&#x6765;&#x5230;&#x4E86;A&#xFF0C;&#x4F46;&#x662F;&#x56E0;&#x4E3A;&#x91CD;&#x5B9A;&#x5411;&#x53C8;&#x8DF3;&#x8F6C;&#x5230;&#x4E86;B&#xFF0C;&#x5982;&#x6B64;&#x5FAA;&#x73AF;&#x5F80;&#x590D;...&#x8FD9;&#x5C31;&#x662F;&#x4E3A;&#x4EC0;&#x4E48; &#x70B9;&#x51FB;&#x56DE;&#x9000;&#x952E;&#x5E76;&#x6CA1;&#x6709;&#x63A8;&#x51FA;WebView&#x7684;&#x539F;&#x56E0;&#xFF0C;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#xFF1A;&#x624B;&#x901F;&#xFF0C;&#x5728;webview&#x672A;&#x52A0;&#x8F7D;&#x5B8C;&#x7F51;&#x9875; &#x94B1;&#x8FDE;&#x7EED;&#x53CC;&#x51FB;&#x56DE;&#x9000;&#x952E;&#xFF0C;&#x624B;&#x901F;&#x8981;&#x591F;&#x5FEB;&#xFF0C;&#x54C8;&#x54C8;&#xFF01;&#x8BF4;&#x7B11;&#x800C;&#x5DF2;&#xFF0C;&#x8981;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x5C06; shouldOverrideUrlLoading&#x91CC;&#x7684;&#x4E1C;&#x4E1C;&#x5220;&#x6389;&#xFF0C;&#x7136;&#x540E;&#x5199;&#x4E0A;return false&#xFF1B;&#x5373;&#x53EF;&#xFF01; &#x4E0D;&#x4FE1;&#x662F;&#x91CD;&#x5B9A;&#x5411;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x4FEE;&#x6539;&#x4E0B;URL&#x8BD5;&#x8BD5;~</p>
+<h3 id="&#x9700;&#x6C42;2&#xFF1A;webview&#x6EDA;&#x52A8;&#x4E8B;&#x4EF6;&#x7684;&#x76D1;&#x542C;">&#x9700;&#x6C42;2&#xFF1A;WebView&#x6EDA;&#x52A8;&#x4E8B;&#x4EF6;&#x7684;&#x76D1;&#x542C;</h3>
+<p>&#x6211;&#x4EEC;&#x90FD;&#x77E5;&#x9053;&#x76D1;&#x542C;&#x6EDA;&#x52A8;&#x4E8B;&#x4EF6;&#x4E00;&#x822C;&#x90FD;&#x662F;&#x8BBE;&#x7F6E;setOnScrollChangedListener&#xFF0C;&#x53EF;&#x60DC;&#x7684;&#x662F; WebView&#x5E76;&#x6CA1;&#x6709;&#x7ED9;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x8FD9;&#x6837;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x91CD;&#x5199;WebView&#xFF0C;&#x8986;&#x76D6;&#x91CC;&#x9762;&#x7684;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF1A; protected void onScrollChanged(final int l, final int t, final int oldl,final int oldt){} &#x7136;&#x540E;&#x518D;&#x5BF9;&#x5916;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><code>MyWebViewDemo.java&#xFF1A;</code></p>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+ * Created by Jay on 2015/9/11 0011.
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyWebView</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">WebView</span> </span>{
+
+    <span class="hljs-keyword">private</span> OnScrollChangedCallback mOnScrollChangedCallback;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyWebView</span><span class="hljs-params">(Context context)</span> </span>{
+        <span class="hljs-keyword">super</span>(context);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyWebView</span><span class="hljs-params">(Context context, AttributeSet attrs)</span> </span>{
+        <span class="hljs-keyword">super</span>(context, attrs);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyWebView</span><span class="hljs-params">(Context context, AttributeSet attrs, <span class="hljs-keyword">int</span> defStyleAttr)</span> </span>{
+        <span class="hljs-keyword">super</span>(context, attrs, defStyleAttr);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onScrollChanged</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> t, <span class="hljs-keyword">int</span> oldl, <span class="hljs-keyword">int</span> oldt)</span> </span>{
+        <span class="hljs-keyword">super</span>.onScrollChanged(l, t, oldl, oldt);
+        <span class="hljs-keyword">if</span> (mOnScrollChangedCallback != <span class="hljs-keyword">null</span>) {
+            mOnScrollChangedCallback.onScroll(l - oldl, t - oldt);
+        }
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> OnScrollChangedCallback <span class="hljs-title">getOnScrollChangedCallback</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> mOnScrollChangedCallback;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setOnScrollChangedCallback</span><span class="hljs-params">(
+            <span class="hljs-keyword">final</span> OnScrollChangedCallback onScrollChangedCallback)</span> </span>{
+        mOnScrollChangedCallback = onScrollChangedCallback;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">OnScrollChangedCallback</span> </span>{
+        <span class="hljs-comment">//&#x8FD9;&#x91CC;&#x7684;dx&#x548C;dy&#x4EE3;&#x8868;&#x7684;&#x662F;x&#x8F74;&#x548C;y&#x8F74;&#x4E0A;&#x7684;&#x504F;&#x79FB;&#x91CF;&#xFF0C;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x628A;l, t, oldl, oldt&#x56DB;&#x4E2A;&#x53C2;&#x6570;&#x66B4;&#x9732;&#x51FA;&#x6765;</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onScroll</span><span class="hljs-params">(<span class="hljs-keyword">int</span> dx, <span class="hljs-keyword">int</span> dy)</span></span>;
+    }
+}
+</code></pre>
+<p><code>MainActivity.java:</code></p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AppCompatActivity</span> </span>{
+
+    <span class="hljs-keyword">private</span> MyWebView wView;
+    <span class="hljs-keyword">private</span> Button btn_icon;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> exitTime = <span class="hljs-number">0</span>;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> </span>{
+        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        btn_icon = (Button) findViewById(R.id.btn_icon);
+        wView = (MyWebView) findViewById(R.id.wView);
+        wView.loadUrl(<span class="hljs-string">&quot;http://www.hao123.com&quot;</span>);
+        wView.setWebViewClient(<span class="hljs-keyword">new</span> WebViewClient() {
+            <span class="hljs-comment">//&#x5728;webview&#x91CC;&#x6253;&#x5F00;&#x65B0;&#x94FE;&#x63A5;</span>
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">shouldOverrideUrlLoading</span><span class="hljs-params">(WebView view, String url)</span> </span>{
+                view.loadUrl(url);
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+            }
+        });
+
+        <span class="hljs-comment">//&#x6BD4;&#x5982;&#x8FD9;&#x91CC;&#x505A;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x5224;&#x65AD;&#xFF0C;&#x5F53;&#x9875;&#x9762;&#x53D1;&#x751F;&#x6EDA;&#x52A8;&#xFF0C;&#x663E;&#x793A;&#x90A3;&#x4E2A;Button</span>
+        wView.setOnScrollChangedCallback(<span class="hljs-keyword">new</span> MyWebView.OnScrollChangedCallback() {
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onScroll</span><span class="hljs-params">(<span class="hljs-keyword">int</span> dx, <span class="hljs-keyword">int</span> dy)</span> </span>{
+                <span class="hljs-keyword">if</span> (dy &gt; <span class="hljs-number">0</span>) {
+                    btn_icon.setVisibility(View.VISIBLE);
+                } <span class="hljs-keyword">else</span> {
+                    btn_icon.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        btn_icon.setOnClickListener(<span class="hljs-keyword">new</span> View.OnClickListener() {
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View v)</span> </span>{
+                wView.setScrollY(<span class="hljs-number">0</span>);
+                btn_icon.setVisibility(View.GONE);
+            }
+        });
+
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onBackPressed</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span> (wView.canGoBack()) {
+            wView.goBack();
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">if</span> ((System.currentTimeMillis() - exitTime) &gt; <span class="hljs-number">2000</span>) {
+                Toast.makeText(getApplicationContext(), <span class="hljs-string">&quot;&#x518D;&#x6309;&#x4E00;&#x6B21;&#x9000;&#x51FA;&#x7A0B;&#x5E8F;&quot;</span>,
+                        Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
+            } <span class="hljs-keyword">else</span> {
+                finish();
+            }
+
+        }
+    }
+}
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x6548;&#x679C;&#x56FE;&#xFF1A;</p>
+<p><img src="../img/network-66.jpg" alt=""></p>
+<p>&#x5F53;&#x7F51;&#x9875;&#x5F00;&#x59CB;&#x6EDA;&#x52A8;&#xFF0C;&#x4F1A;&#x5448;&#x73B0;&#x4E00;&#x4E2A;&#x5475;&#x5475;&#x7684;&#x6309;&#x94AE;&#xFF0C;&#x6211;&#x4EEC;&#x70B9;&#x51FB;&#x5475;&#x5475;&#x6309;&#x94AE;&#x53EF;&#x4EE5;&#x56DE;&#x5230;&#x9876;&#x90E8;&#xFF01; &#x7136;&#x540E;&#x5475;&#x5475;&#x6309;&#x94AE;&#x4F1A;&#x9690;&#x85CF;~</p>
+<h3 id="&#x9700;&#x6C42;3&#xFF1A;&#x6EDA;&#x52A8;&#x6761;&#x7684;&#x95EE;&#x9898;">&#x9700;&#x6C42;3&#xFF1A;&#x6EDA;&#x52A8;&#x6761;&#x7684;&#x95EE;&#x9898;</h3>
+<p>&#x4F60;&#x53EF;&#x80FD;&#x7528;&#x7684;&#x5C5E;&#x6027;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>setHorizontalScrollBarEnabled(false);//&#x6C34;&#x5E73;&#x4E0D;&#x663E;&#x793A;
+setVerticalScrollBarEnabled(false); //&#x5782;&#x76F4;&#x4E0D;&#x663E;&#x793A;
+setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);//&#x6EDA;&#x52A8;&#x6761;&#x5728;WebView&#x5185;&#x4FA7;&#x663E;&#x793A;
+setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY)//&#x6EDA;&#x52A8;&#x6761;&#x5728;WebView&#x5916;&#x4FA7;&#x663E;&#x793A;</p>
+<h3 id="&#x9700;&#x6C42;4&#xFF1A;&#x8BBE;&#x7F6E;&#x7F29;&#x653E;&#x4EE5;&#x53CA;&#x81EA;&#x9002;&#x5E94;&#x5C4F;&#x5E55;">&#x9700;&#x6C42;4&#xFF1A;&#x8BBE;&#x7F6E;&#x7F29;&#x653E;&#x4EE5;&#x53CA;&#x81EA;&#x9002;&#x5E94;&#x5C4F;&#x5E55;</h3>
+<p>&#x6839;&#x636E;&#x6211;&#x4EEC;&#x4E00;&#x822C;&#x7684;&#x4E60;&#x60EF;&#x6253;&#x5F00;&#x7F51;&#x9875;&#x5BF9;&#x4E8E;&#x770B;&#x4E0D;&#x6E05;&#x695A;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x6211;&#x4EEC;&#x559C;&#x6B22;&#x53CC;&#x6307;&#x6765;&#x7F29;&#x653E;&#x7F51;&#x9875;&#xFF0C;&#x800C;WebView &#x5219;&#x9700;&#x8981;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x624B;&#x52A8;&#x6765;&#x8BBE;&#x7F6E;&#x8FD9;&#x4E2A;&#x662F;&#x5426;&#x652F;&#x6301;&#x7F29;&#x653E;&#x4E86;&#xFF01;</p>
+<p>&#x53EA;&#x9700;&#x8981;&#x5728;&#x52A0;&#x5165;&#x4E0B;&#x8FF0;&#x4EE3;&#x7801;&#x5373;&#x53EF;&#xFF1A;</p>
+<pre><code class="lang-java">WebSettings settings = wView.getSettings();
+settings.setUseWideViewPort(<span class="hljs-keyword">true</span>);<span class="hljs-comment">//&#x8BBE;&#x5B9A;&#x652F;&#x6301;viewport</span>
+settings.setLoadWithOverviewMode(<span class="hljs-keyword">true</span>);   <span class="hljs-comment">//&#x81EA;&#x9002;&#x5E94;&#x5C4F;&#x5E55;</span>
+settings.setBuiltInZoomControls(<span class="hljs-keyword">true</span>);
+settings.setDisplayZoomControls(<span class="hljs-keyword">false</span>);
+settings.setSupportZoom(<span class="hljs-keyword">true</span>);<span class="hljs-comment">//&#x8BBE;&#x5B9A;&#x652F;&#x6301;&#x7F29;&#x653E;</span>
+</code></pre>
+<p>&#x4F7F;&#x7528;&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x540E;&#xFF0C;&#x8FDB;&#x53BB;&#x9875;&#x9762;&#x5C31;&#x4F1A;&#x662F;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x6548;&#x679C;&#xFF1A;</p>
+<p><img src="../img/network-67.jpg" alt=""></p>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x7F29;&#x653E;&#x65F6;&#xFF0C;&#x51FA;&#x73B0;&#x4E86;&#x4E00;&#x4E2A;&#x6076;&#x5FC3;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x5C31;&#x662F;&#x5F88;&#x5E38;&#x89C1;&#x7684;&#x7F29;&#x653E;&#x63A7;&#x4EF6;&#xFF0C;&#x6211;&#x4EEC;&#x80AF;&#x5B9A;&#x662F;&#x4E0D;&#x60F3;&#x8981;&#x7684;&#x5566;&#xFF0C; &#x90A3;&#x4E48;&#x52A0;&#x4E0A;&#x4E0B;&#x9762;&#x53E5;&#x4EE3;&#x7801;&#x5C31;&#x53EF;&#x4EE5;&#x628A;&#x7F29;&#x653E;&#x63A7;&#x4EF6;&#x7ED9;&#x9690;&#x85CF;&#x6389;&#x4E86;&#xFF01;</p>
+<pre><code class="lang-java">settings.setDisplayZoomControls(<span class="hljs-keyword">false</span>);
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x81EA;&#x884C;&#x8BBE;&#x7F6E;&#x521D;&#x59CB;&#x7684;&#x7F29;&#x653E;&#x6BD4;&#x4F8B;&#xFF0C;&#x53EA;&#x9700;&#x4E3A;webView&#xFF1A;</p>
+<pre><code class="lang-java">wView.setInitialScale(<span class="hljs-number">25</span>);<span class="hljs-comment">//&#x4E3A;25%&#xFF0C;&#x6700;&#x5C0F;&#x7F29;&#x653E;&#x7B49;&#x7EA7;</span>
+</code></pre>
+<p>&#x563F;&#x563F;&#xFF0C;&#x4E0A;&#x9762;&#x662F;&#x6574;&#x4E2A;&#x7F51;&#x9875;&#x90FD;&#x7F29;&#x653E;&#x7684;&#xFF0C;&#x4E0D;&#x8FC7;&#x53EF;&#x80FD;&#x6709;&#x65F6;&#x6211;&#x4EEC;&#x4EC5;&#x4EC5;&#x662F;&#x9700;&#x8981;&#x5BF9;&#x5B57;&#x4F53;&#x8FDB;&#x884C;&#x7F29;&#x653E;&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x4EE5; &#x8FD9;&#x6837;&#x505A;&#xFF1A;</p>
+<pre><code class="lang-java">settings.setTextZoom(<span class="hljs-keyword">int</span>)&#xFF1B;
+</code></pre>
+<p>&#x4E5F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x901A;&#x8FC7;&#xFF1A;</p>
+<pre><code class="lang-java">settings.setTextSize(TextSize.LARGER)&#xFF1B;
+</code></pre>
+<p>&#x6765;&#x8BBE;&#x7F6E;&#x5927;&#x5C0F;&#x3002;</p>
+<p>Android&#x81EA;&#x5E26;&#x4E94;&#x4E2A;&#x53EF;&#x9009;&#x5B57;&#x4F53;&#x5927;&#x5C0F;&#x7684;&#x503C;&#xFF1A;SMALLEST(50%),SMALLER(75%),NORMAL(100%),LARGER(150%), LARGEST(200%)&#x3002;</p>
+<h3 id="&#x9700;&#x6C42;5&#x83B7;&#x53D6;webview&#x7684;cookie&#x6570;&#x636E;">&#x9700;&#x6C42;5.&#x83B7;&#x53D6;WebView&#x7684;Cookie&#x6570;&#x636E;</h3>
+<p>&#x6211;&#x4EEC;&#x90FD;&#x77E5;&#x9053;Cookie&#x5176;&#x5B9E;&#x53EA;&#x662F;&#x4E00;&#x4E2A;&#x4EE3;&#x8868;&#x7528;&#x6237;&#x552F;&#x4E00;&#x6807;&#x8BC6;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x60C5;&#x666F;&#x4E00;&#x822C;&#x662F;&#xFF1A; &#x7528;&#x6237;&#x8F93;&#x5165;&#x8D26;&#x53F7;&#x5BC6;&#x7801;&#x540E;&#xFF0C;&#x70B9;&#x51FB;&#x767B;&#x9646;&#xFF0C;&#x7528;&#x6237;&#x8981;&#x62FF;&#x7740;&#x8FD9;&#x4E2A;Cookie&#x53BB;&#x8BBF;&#x95EE;&#x670D;&#x52A1;&#x5668;&#x63D0;&#x4F9B;&#x7684;&#x76F8;&#x5173;&#x670D;&#x52A1;&#xFF01; &#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x628A;cookie&#x7684;&#x83B7;&#x53D6;&#x5199;&#x5230;onPageFinsihed&#x7684;&#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x7B80;&#x5355;&#x7684;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x5199;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onPageFinished</span><span class="hljs-params">(WebView view, String url)</span> </span>{             
+    CookieManager cookieManager = CookieManager.getInstance();
+    String CookieStr = cookieManager.getCookie(url);
+    Log.e(<span class="hljs-string">&quot;HEHE&quot;</span>, <span class="hljs-string">&quot;Cookies = &quot;</span> + CookieStr);
+    <span class="hljs-keyword">super</span>.onPageFinished(view, url);
+}
+</code></pre>
+<h3 id="&#x9700;&#x6C42;6&#x8BBE;&#x7F6E;webview&#x7684;cookie&#x6570;&#x636E;">&#x9700;&#x6C42;6.&#x8BBE;&#x7F6E;WebView&#x7684;Cookie&#x6570;&#x636E;</h3>
+<p>&#x563F;&#x563F;&#xFF0C;&#x6211;&#x4EEC;&#x4E0A;&#x9762;&#x83B7;&#x53D6;&#x5230;&#x4E86;Cookie&#x6216;&#x8005;&#x901A;&#x8FC7;&#x5176;&#x4ED6;&#x9014;&#x5F84;&#x83B7;&#x5F97;&#x4E86;Cookie&#xFF0C;&#x6211;&#x4EEC;&#x5982;&#x4F55;&#x4E3A;WebView&#x8BBE;&#x7F6E;Cookie&#x5462;&#xFF1F; &#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x9700;&#x8981;&#x8BBE;&#x7F6E;Cookie&#x7684;&#x5730;&#x65B9;&#x52A0;&#x5165;&#x4E0B;&#x8FF0;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-java">CookieSyncManager.createInstance(MainActivity.<span class="hljs-keyword">this</span>);  
+CookieManager cookieManager = CookieManager.getInstance();  
+cookieManager.setAcceptCookie(<span class="hljs-keyword">true</span>);  
+cookieManager.setCookie(url, cookies);  <span class="hljs-comment">//cookies&#x662F;&#x8981;&#x8BBE;&#x7F6E;&#x7684;cookie&#x5B57;&#x7B26;&#x4E32; </span>
+CookieSyncManager.getInstance().sync();
+</code></pre>
+<p>&#x5BF9;&#x4E86;&#xFF0C;&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x9700;&#x8981;&#x5199;&#x5728;loadUrl()&#x4E4B;&#x524D;&#xFF0C;&#x800C;&#x4E14;&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x4E86;Cookie&#x4E86;&#xFF0C;&#x5C3D;&#x91CF;&#x522B;&#x518D;&#x8FDB;&#x884C;&#x5176;&#x4ED6;&#x7684;&#x8BBE;&#x7F6E; &#x4E0D;&#x7136;&#x53EF;&#x80FD;&#x4F1A;&#x65E0;&#x6548;&#xFF0C;&#x5EFA;&#x8BAE;&#x8BBE;&#x7F6E;cookie&#x7684;&#x5199;&#x5728;webView&#x76F8;&#x5173;&#x8BBE;&#x7F6E;&#x7684;&#x6700;&#x540E;&#x9762;~loadUrl()&#x4E4B;&#x524D;!</p>
+<h2 id="&#x4E94;&#x3001;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x4E0B;&#x8F7D;&#xFF1A;">&#x4E94;&#x3001;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x4E0B;&#x8F7D;&#xFF1A;</h2>
+<p>WebViewDemo1&#xFF1A;<a href="../img/WebViewDemo1.zip">&#x4E0B;&#x8F7D; WebViewDemo1.zip</a></p>
+<p>WebViewDemo2&#xFF1A;<a href="../img/WebViewDemo2.zip">&#x4E0B;&#x8F7D; WebViewDemo2.zip</a></p>
+<h2 id="&#x516D;&#x3001;&#x672C;&#x8282;&#x5C0F;&#x7ED3;&#xFF1A;">&#x516D;&#x3001;&#x672C;&#x8282;&#x5C0F;&#x7ED3;&#xFF1A;</h2>
+<p>&#x597D;&#x7684;&#xFF0C;&#x672C;&#x8282;&#x7ED9;&#x5927;&#x5BB6;&#x4ECB;&#x7ECD;&#x4E86;&#x4E00;&#x4E0B;WebView&#x7684;&#x57FA;&#x672C;&#x7528;&#x6CD5;&#xFF0C;&#x52A0;&#x8F7D;&#x7F51;&#x9875;&#xFF0C;&#x8BBE;&#x7F6E;&#x7F29;&#x653E;&#xFF0C;&#x5B57;&#x4F53;&#x7F29;&#x653E;&#xFF0C; &#x81EA;&#x9002;&#x5E94;&#x5C4F;&#x5E55;&#xFF0C;&#x4EE5;&#x53CA;Cookie&#x7684;&#x83B7;&#x53D6;&#x4EE5;&#x53CA;&#x8BBE;&#x7F6E;&#xFF1B;&#x76F8;&#x4FE1;&#x65E5;&#x5E38;&#x5F00;&#x53D1;&#x4E2D;&#x8FD8;&#x6709;&#x5404;&#x79CD;&#x5947;&#x8469;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x4E0D;&#x8FC7; &#x9650;&#x4E8E;&#x7BC7;&#x5E45;&#x5C31;&#x5199;&#x8FD9;&#x4E48;&#x591A;&#xFF0C;&#x6709;idea&#x7684;&#x6B22;&#x8FCE;&#x7559;&#x8A00;&#xFF0C;&#x4E0B;&#x8282;&#x6211;&#x4EEC;&#x6765;&#x5B66;&#x4E60;HTML5&#x7AEF;&#x5982;&#x4F55;&#x901A;&#x8FC7;JavaScript &#x6765;&#x4E0E;WebView&#x4EA4;&#x4E92;&#xFF0C;&#x5E76;&#x83B7;&#x53D6;&#x624B;&#x673A;&#x7684;&#x76F8;&#x5173;&#x6570;&#x636E;&#xFF01;&#x656C;&#x8BF7;&#x671F;&#x5F85;~&#x8C22;&#x8C22;~ </p>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; 54dxs.cn 2019 all right reserved&#xFF0C;powered by &#x6DF1;&#x60C5;&#x5C0F;&#x5EFA;</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;:
+2019-11-09 14:10:39
+</span></footer>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="webview.html" class="navigation navigation-prev " aria-label="Previous page: 8.5、WebView">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="webview-javascrip.html" class="navigation navigation-next " aria-label="Next page: 8.5.2、WebView和JavaScrip交互基础">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"8.5.1、基本用法","level":"8.5.1","depth":2,"next":{"title":"8.5.2、WebView和JavaScrip交互基础","level":"8.5.2","depth":2,"path":"doc/network/webview-javascrip.md","ref":"doc/network/webview-javascrip.md","articles":[]},"previous":{"title":"8.5、WebView","level":"8.5","depth":1,"path":"doc/network/webview.md","ref":"doc/network/webview.md","articles":[{"title":"8.5.1、基本用法","level":"8.5.1","depth":2,"path":"doc/network/webview-base.md","ref":"doc/network/webview-base.md","articles":[]},{"title":"8.5.2、WebView和JavaScrip交互基础","level":"8.5.2","depth":2,"path":"doc/network/webview-javascrip.md","ref":"doc/network/webview-javascrip.md","articles":[]},{"title":"8.5.3、Android4.4后WebView的一些注意事项","level":"8.5.3","depth":2,"path":"doc/network/webview-attention.md","ref":"doc/network/webview-attention.md","articles":[]},{"title":"8.5.4、WebView文件下载","level":"8.5.4","depth":2,"path":"doc/network/webview-download-file.md","ref":"doc/network/webview-download-file.md","articles":[]},{"title":"8.5.5、WebView缓存问题","level":"8.5.5","depth":2,"path":"doc/network/webview-cache.md","ref":"doc/network/webview-cache.md","articles":[]},{"title":"8.5.6、WebView处理网页返回的错误码信息","level":"8.5.6","depth":2,"path":"doc/network/webview-error-code.md","ref":"doc/network/webview-error-code.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","code","expandable-chapters-small","back-to-top-button","github","emphasize","splitter","-sharing","sharing-plus","donate","tbfed-pagefooter","alerts","flexible-alerts","pageview-count","hide-element","popup","custom-favicon","sectionx","insert-logo"],"root":"./","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 54dxs.cn 2019","modify_label":"该文件修订时间:","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"github":{"url":"https://github.com/lijian17/54dxs.github.io"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"donate":{"alipay":"/img/alipay.png","alipayText":"<font color='blue'>支付宝打赏</font>","button":"赏","title":"<span style='font-size:5rem; color:red'>🍖🍖赏个鸡腿吃呗!</span><br><br>","wechat":"/img/wxpay.png","wechatText":"<font color='red'>微信打赏</font>"},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"sectionx":{},"highlight":{},"favicon":"./doc/img/favicon.ico","back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"expandable-chapters-small":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"},"comment":{"label":"Comment","icon":"fa fa-comments","className":"info"}},"sharing":{"qq":true,"qzone":true,"weibo":true,"all":["douban","facebook","google","hatenaBookmark","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","vk","pocket","stumbleupon","whatsapp"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 270px; min-height: 60px","url":"/img/android-logo.png"}},"theme":"default","author":"深情小建","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Android新手入门","language":"zh-hans","links":{"sidebar":{"54大学生[Android频道][面试指南]":"https://android.54dxs.cn/interview/index.html","54大学生[Android频道][新手入门]":"https://android.54dxs.cn/rookie/index.html","54大学生[Android频道][进阶之光]":"https://android.54dxs.cn/advanced/index.html","54大学生[Android频道][项目实战]":"https://android.54dxs.cn/project/index.html"}},"gitbook":"*","description":"Android新手入门，跟随学习，专注认真，学有所成"},"file":{"path":"doc/network/webview-base.md","mtime":"2019-11-09T06:10:39.383Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-11T12:01:18.192Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sectionx/sectionx.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

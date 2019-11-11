@@ -1,0 +1,100 @@
+{
+	"root": "./",
+	"title": "Android新手入门",
+	"description": "Android新手入门，跟随学习，专注认真，学有所成",
+	"author": "深情小建",
+	"language": "zh-hans",
+	"links": {
+		"sidebar": {
+			"54大学生[Android频道][面试指南]": "https://android.54dxs.cn/interview/index.html",
+			"54大学生[Android频道][新手入门]": "https://android.54dxs.cn/rookie/index.html",
+			"54大学生[Android频道][进阶之光]": "https://android.54dxs.cn/advanced/index.html",
+			"54大学生[Android频道][项目实战]": "https://android.54dxs.cn/project/index.html"
+		}
+	},
+	"plugins": [
+		"-lunr",
+		"-search",
+		"search-pro",
+		"code",
+		"expandable-chapters-small",
+		"back-to-top-button",
+		"github",
+		"emphasize",
+		"splitter",
+		"-sharing",
+		"sharing-plus",
+		"donate",
+		"tbfed-pagefooter",
+		"alerts",
+		"flexible-alerts",
+		"pageview-count",
+		"hide-element",
+		"popup",
+		"custom-favicon",
+		"sectionx",
+		"insert-logo"
+	],
+	"pluginsConfig": {
+		"code": {
+			"copyButtons": true
+		},
+		"github": {
+			"url": "https://github.com/lijian17/54dxs.github.io"
+		},
+		"sharing": {
+			"qq": true,
+			"qzone": true,
+			"weibo": true,
+			"all": [
+				"douban",
+				"facebook",
+				"google",
+				"hatenaBookmark",
+				"instapaper",
+				"linkedin",
+				"twitter",
+				"weibo",
+				"messenger",
+				"qq",
+				"qzone",
+				"viber",
+				"vk",
+				"pocket",
+				"stumbleupon",
+				"whatsapp"
+			]
+		},
+		"donate": {
+			"title": "<span style='font-size:5rem; color:red'>🍖🍖赏个鸡腿吃呗!</span><br><br>",
+			"button": "赏",
+			"wechat": "/img/wxpay.png",
+			"alipay": "/img/alipay.png",
+			"wechatText": "<font color='red'>微信打赏</font>",
+			"alipayText": "<font color='blue'>支付宝打赏</font>"
+		},
+		"tbfed-pagefooter": {
+			"copyright": "Copyright &copy 54dxs.cn 2019",
+			"modify_label": "该文件修订时间:",
+			"modify_format": "YYYY-MM-DD HH:mm:ss"
+		},
+		"flexible-alerts": {
+			"style": "callout",
+			"comment": {
+				"label": "Comment",
+				"icon": "fa fa-comments",
+				"className": "info"
+			}
+		},
+		"hide-element": {
+			"elements": [
+				".gitbook-link"
+			]
+		},
+		"favicon": "./doc/img/favicon.ico",
+		"insert-logo": {
+			"url": "/img/android-logo.png",
+			"style": "background: none; max-height: 270px; min-height: 60px"
+		}
+	}
+}

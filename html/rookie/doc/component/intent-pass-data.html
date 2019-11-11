@@ -1,0 +1,3140 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>5.5.2、Intent之复杂数据的传递 · Android新手入门</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="深情小建">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-emphasize/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-sectionx/sectionx.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-insert-logo/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../fragment/fragment-base.html" />
+    
+    
+    <link rel="prev" href="intent-base.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://android.54dxs.cn/interview/index.html" target="_blank" class="custom-link">54大学生[Android频道][面试指南]</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://android.54dxs.cn/rookie/index.html" target="_blank" class="custom-link">54大学生[Android频道][新手入门]</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://android.54dxs.cn/advanced/index.html" target="_blank" class="custom-link">54大学生[Android频道][进阶之光]</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://android.54dxs.cn/project/index.html" target="_blank" class="custom-link">54大学生[Android频道][项目实战]</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        <li class="header">一、前言</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    1.1、介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">二、Android开发准备</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../ready/intro.html">
+            
+                <a href="../ready/intro.html">
+            
+                    
+                    2.0、Android基础入门教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../ready/system-architecture-analysis.html">
+            
+                <a href="../ready/system-architecture-analysis.html">
+            
+                    
+                    2.1、背景相关与系统架构分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../ready/development-environment-build.html">
+            
+                <a href="../ready/development-environment-build.html">
+            
+                    
+                    2.2、开发环境搭建
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" data-path="../ready/eclipse-adt-sdk-app.html">
+            
+                <a href="../ready/eclipse-adt-sdk-app.html">
+            
+                    
+                    2.2.1、使用Eclipse + ADT + SDK开发Android APP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" data-path="../ready/android-studio.html">
+            
+                <a href="../ready/android-studio.html">
+            
+                    
+                    2.2.2、使用Android Studio开发Android APP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../ready/sdk-problem-solve.html">
+            
+                <a href="../ready/sdk-problem-solve.html">
+            
+                    
+                    2.3、SDK更新不了问题解决
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../ready/genymotion-install.html">
+            
+                <a href="../ready/genymotion-install.html">
+            
+                    
+                    2.4、Genymotion模拟器安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="../ready/git.html">
+            
+                <a href="../ready/git.html">
+            
+                    
+                    2.5、Git
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.6.1" data-path="../ready/git-repo-operate.html">
+            
+                <a href="../ready/git-repo-operate.html">
+            
+                    
+                    2.5.1、Git使用教程之本地仓库的基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.2" data-path="../ready/git-repo-create.html">
+            
+                <a href="../ready/git-repo-create.html">
+            
+                    
+                    2.5.2、Git之使用GitHub搭建远程仓库
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="../ready/9png.html">
+            
+                <a href="../ready/9png.html">
+            
+                    
+                    2.6、.9png图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="../ready/interface-design.html">
+            
+                <a href="../ready/interface-design.html">
+            
+                    
+                    2.7、界面原型设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="../ready/project-src-analysis.html">
+            
+                <a href="../ready/project-src-analysis.html">
+            
+                    
+                    2.8、工程相关解析(各种文件，资源访问)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10" data-path="../ready/sign-package.html">
+            
+                <a href="../ready/sign-package.html">
+            
+                    
+                    2.9、Android程序签名打包
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11" data-path="../ready/decompile-apk-get-code-resources.html">
+            
+                <a href="../ready/decompile-apk-get-code-resources.html">
+            
+                    
+                    2.10、反编译APK获取代码&资源
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">三、Android控件使用</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../widget/view-viewgroup-intro.html">
+            
+                <a href="../widget/view-viewgroup-intro.html">
+            
+                    
+                    3.1、View与ViewGroup的概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../widget/layout.html">
+            
+                <a href="../widget/layout.html">
+            
+                    
+                    3.2、布局
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../widget/linearlayout.html">
+            
+                <a href="../widget/linearlayout.html">
+            
+                    
+                    3.2.1、LinearLayout(线性布局)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../widget/relativelayout.html">
+            
+                <a href="../widget/relativelayout.html">
+            
+                    
+                    3.2.2、RelativeLayout(相对布局)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.3" data-path="../widget/tablelayout.html">
+            
+                <a href="../widget/tablelayout.html">
+            
+                    
+                    3.2.3、TableLayout(表格布局)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.4" data-path="../widget/framelayout.html">
+            
+                <a href="../widget/framelayout.html">
+            
+                    
+                    3.2.4、FrameLayout(帧布局)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.5" data-path="../widget/gridlayout.html">
+            
+                <a href="../widget/gridlayout.html">
+            
+                    
+                    3.2.5、GridLayout(网格布局)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.6" data-path="../widget/absolutelayout.html">
+            
+                <a href="../widget/absolutelayout.html">
+            
+                    
+                    3.2.6、AbsoluteLayout(绝对布局)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../widget/widget.html">
+            
+                <a href="../widget/widget.html">
+            
+                    
+                    3.3、基础控件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.3.1" data-path="../widget/textview.html">
+            
+                <a href="../widget/textview.html">
+            
+                    
+                    3.3.1、TextView(文本框)详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.2" data-path="../widget/edittext.html">
+            
+                <a href="../widget/edittext.html">
+            
+                    
+                    3.3.2、EditText(输入框)详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.3" data-path="../widget/button-imagebutton.html">
+            
+                <a href="../widget/button-imagebutton.html">
+            
+                    
+                    3.3.3、Button(按钮)与ImageButton(图像按钮)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.4" data-path="../widget/imageview.html">
+            
+                <a href="../widget/imageview.html">
+            
+                    
+                    3.3.4、ImageView(图像视图)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.5" data-path="../widget/radiobutton-checkbox.html">
+            
+                <a href="../widget/radiobutton-checkbox.html">
+            
+                    
+                    3.3.5、RadioButton(单选按钮)和Checkbox(复选框)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.6" data-path="../widget/togglebutton-switch.html">
+            
+                <a href="../widget/togglebutton-switch.html">
+            
+                    
+                    3.3.6、开关按钮ToggleButton和开关Switch
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.7" data-path="../widget/progressbar.html">
+            
+                <a href="../widget/progressbar.html">
+            
+                    
+                    3.3.7、ProgressBar(进度条)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.8" data-path="../widget/seekbar.html">
+            
+                <a href="../widget/seekbar.html">
+            
+                    
+                    3.3.8、SeekBar(拖动条)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.9" data-path="../widget/ratingbar.html">
+            
+                <a href="../widget/ratingbar.html">
+            
+                    
+                    3.3.9、RatingBar(星级评分条)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../widget/widget2.html">
+            
+                <a href="../widget/widget2.html">
+            
+                    
+                    3.4、复杂控件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.4.1" data-path="../widget/scrollview.html">
+            
+                <a href="../widget/scrollview.html">
+            
+                    
+                    3.4.1、ScrollView(滚动条)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.2" data-path="../widget/date-time-1.html">
+            
+                <a href="../widget/date-time-1.html">
+            
+                    
+                    3.4.2、Date和Time控件(1)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.3" data-path="../widget/date-time-2.html">
+            
+                <a href="../widget/date-time-2.html">
+            
+                    
+                    3.4.3、Date和Time控件(2)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.4" data-path="../widget/adapter.html">
+            
+                <a href="../widget/adapter.html">
+            
+                    
+                    3.4.4、Adapter基础讲解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.5" data-path="../widget/listview.html">
+            
+                <a href="../widget/listview.html">
+            
+                    
+                    3.4.5、ListView简单使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.6" data-path="../widget/baseadapter.html">
+            
+                <a href="../widget/baseadapter.html">
+            
+                    
+                    3.4.6、BaseAdapter优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.7" data-path="../widget/listview-focus.html">
+            
+                <a href="../widget/listview-focus.html">
+            
+                    
+                    3.4.7、ListView的焦点问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.8" data-path="../widget/listview-checkbox.html">
+            
+                <a href="../widget/listview-checkbox.html">
+            
+                    
+                    3.4.8、ListView之checkbox错位问题解决
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.9" data-path="../widget/listview-update.html">
+            
+                <a href="../widget/listview-update.html">
+            
+                    
+                    3.4.9、ListView的数据更新问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="../widget/widget3.html">
+            
+                <a href="../widget/widget3.html">
+            
+                    
+                    3.5、高阶控件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.5.1" data-path="../widget/customer-baseadapter.html">
+            
+                <a href="../widget/customer-baseadapter.html">
+            
+                    
+                    3.5.1、构建一个可复用的自定义BaseAdapter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.2" data-path="../widget/listview-item.html">
+            
+                <a href="../widget/listview-item.html">
+            
+                    
+                    3.5.2、ListView Item多布局的实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.3" data-path="../widget/gridview.html">
+            
+                <a href="../widget/gridview.html">
+            
+                    
+                    3.5.3、GridView(网格视图)的基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.4" data-path="../widget/spinner.html">
+            
+                <a href="../widget/spinner.html">
+            
+                    
+                    3.5.4、Spinner(列表选项框)的基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.5" data-path="../widget/autocompletetextview.html">
+            
+                <a href="../widget/autocompletetextview.html">
+            
+                    
+                    3.5.5、AutoCompleteTextView(自动完成文本框)的基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.6" data-path="../widget/expandablelistview.html">
+            
+                <a href="../widget/expandablelistview.html">
+            
+                    
+                    3.5.6、ExpandableListView(可折叠列表)的基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.7" data-path="../widget/viewflipper.html">
+            
+                <a href="../widget/viewflipper.html">
+            
+                    
+                    3.5.7、ViewFlipper(翻转视图)的基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.8" data-path="../widget/toast.html">
+            
+                <a href="../widget/toast.html">
+            
+                    
+                    3.5.8、Toast(吐司)的基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.9" data-path="../widget/notification.html">
+            
+                <a href="../widget/notification.html">
+            
+                    
+                    3.5.9、Notification(状态栏通知)详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.10" data-path="../widget/alertdialog.html">
+            
+                <a href="../widget/alertdialog.html">
+            
+                    
+                    3.5.10、AlertDialog(对话框)详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="../widget/widget4.html">
+            
+                <a href="../widget/widget4.html">
+            
+                    
+                    3.6、窗体控件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.6.1" data-path="../widget/dialog.html">
+            
+                <a href="../widget/dialog.html">
+            
+                    
+                    3.6.1、其他几种常用对话框基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6.2" data-path="../widget/popupwindow.html">
+            
+                <a href="../widget/popupwindow.html">
+            
+                    
+                    3.6.2、PopupWindow(悬浮框)的基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6.3" data-path="../widget/menu.html">
+            
+                <a href="../widget/menu.html">
+            
+                    
+                    3.6.3、菜单(Menu)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6.4" data-path="../widget/viewpager.html">
+            
+                <a href="../widget/viewpager.html">
+            
+                    
+                    3.6.4、ViewPager的简单使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6.5" data-path="../widget/drawerlayout.html">
+            
+                <a href="../widget/drawerlayout.html">
+            
+                    
+                    3.6.5、DrawerLayout(官方侧滑菜单)的简单使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">四、Android事件浅析</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../event/listen-event-handle.html">
+            
+                <a href="../event/listen-event-handle.html">
+            
+                    
+                    4.1、基于监听的事件处理机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../event/callback-event-handle.html">
+            
+                <a href="../event/callback-event-handle.html">
+            
+                    
+                    4.2、基于回调的事件处理机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../event/handler-message.html">
+            
+                <a href="../event/handler-message.html">
+            
+                    
+                    4.3、Handler消息传递机制浅析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../event/touchlistener-ontouchevent.html">
+            
+                <a href="../event/touchlistener-ontouchevent.html">
+            
+                    
+                    4.4、TouchListener PK OnTouchEvent + 多点触碰
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../event/listener-edittext-change.html">
+            
+                <a href="../event/listener-edittext-change.html">
+            
+                    
+                    4.5、监听EditText的内容变化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="../event/configuration.html">
+            
+                <a href="../event/configuration.html">
+            
+                    
+                    4.6、响应系统设置的事件(Configuration类)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="../event/ansynctask.html">
+            
+                <a href="../event/ansynctask.html">
+            
+                    
+                    4.7、AnsyncTask异步任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="../event/gestures.html">
+            
+                <a href="../event/gestures.html">
+            
+                    
+                    4.8、Gestures(手势)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">五、Android四大组件</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="activity.html">
+            
+                <a href="activity.html">
+            
+                    
+                    5.1、Activity
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="activity2.html">
+            
+                <a href="activity2.html">
+            
+                    
+                    5.1.1、Activity初学乍练
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" data-path="activity-start.html">
+            
+                <a href="activity-start.html">
+            
+                    
+                    5.1.2、Activity初窥门径
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" data-path="activity-intro.html">
+            
+                <a href="activity-intro.html">
+            
+                    
+                    5.1.3、Activity登堂入室
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="service.html">
+            
+                <a href="service.html">
+            
+                    
+                    5.2、Service
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="service1.html">
+            
+                <a href="service1.html">
+            
+                    
+                    5.2.1、Service初涉
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.2" data-path="service2.html">
+            
+                <a href="service2.html">
+            
+                    
+                    5.2.2、Service进阶
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.3" data-path="service3.html">
+            
+                <a href="service3.html">
+            
+                    
+                    5.2.3、Service精通
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="broadcastreceiver.html">
+            
+                <a href="broadcastreceiver.html">
+            
+                    
+                    5.3、BroadcastReceiver
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.3.1" data-path="broadcastreceiver1.html">
+            
+                <a href="broadcastreceiver1.html">
+            
+                    
+                    5.3.1、BroadcastReceiver牛刀小试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.2" data-path="broadcastreceiver2.html">
+            
+                <a href="broadcastreceiver2.html">
+            
+                    
+                    5.3.2、BroadcastReceiver庖丁解牛
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="contentprovider.html">
+            
+                <a href="contentprovider.html">
+            
+                    
+                    5.4、ContentProvider
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.4.1" data-path="contentprovider1.html">
+            
+                <a href="contentprovider1.html">
+            
+                    
+                    5.4.1、ContentProvider初探
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.2" data-path="contentprovider2.html">
+            
+                <a href="contentprovider2.html">
+            
+                    
+                    5.4.2、ContentProvider再探——Document Provider
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="intent.html">
+            
+                <a href="intent.html">
+            
+                    
+                    5.5、Intent
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.5.1" data-path="intent-base.html">
+            
+                <a href="intent-base.html">
+            
+                    
+                    5.5.1、Intent的基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="5.5.2" data-path="intent-pass-data.html">
+            
+                <a href="intent-pass-data.html">
+            
+                    
+                    5.5.2、Intent之复杂数据的传递
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">六、Android之Fragment</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../fragment/fragment-base.html">
+            
+                <a href="../fragment/fragment-base.html">
+            
+                    
+                    6.1、Fragment基本概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../fragment/fragment-demo.html">
+            
+                <a href="../fragment/fragment-demo.html">
+            
+                    
+                    6.2、Fragment实例精讲
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="../fragment/fragment-demo1.html">
+            
+                <a href="../fragment/fragment-demo1.html">
+            
+                    
+                    6.2.1、底部导航栏的实现(方法1)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="../fragment/fragment-demo2.html">
+            
+                <a href="../fragment/fragment-demo2.html">
+            
+                    
+                    6.2.2、底部导航栏的实现(方法2)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.3" data-path="../fragment/fragment-demo3.html">
+            
+                <a href="../fragment/fragment-demo3.html">
+            
+                    
+                    6.2.3、底部导航栏的实现(方法3)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.4" data-path="../fragment/fragment-demo4.html">
+            
+                <a href="../fragment/fragment-demo4.html">
+            
+                    
+                    6.2.4、底部导航栏+ViewPager滑动切换页面
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.5" data-path="../fragment/fragment-demo5.html">
+            
+                <a href="../fragment/fragment-demo5.html">
+            
+                    
+                    6.2.5、新闻(购物)类App列表Fragment的简单实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">七、Android数据存储</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../store/file.html">
+            
+                <a href="../store/file.html">
+            
+                    
+                    7.1、文件存储读写
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../store/sharedpreferences.html">
+            
+                <a href="../store/sharedpreferences.html">
+            
+                    
+                    7.2、SharedPreferences保存用户偏好参数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="../store/sqlite.html">
+            
+                <a href="../store/sqlite.html">
+            
+                    
+                    7.3、SQLite数据库
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.3.1" data-path="../store/sqlite1.html">
+            
+                <a href="../store/sqlite1.html">
+            
+                    
+                    7.3.1、初见SQLite数据库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3.2" data-path="../store/sqlite2.html">
+            
+                <a href="../store/sqlite2.html">
+            
+                    
+                    7.3.2、又见SQLite数据库
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">八、Android网络通信</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../network/http.html">
+            
+                <a href="../network/http.html">
+            
+                    
+                    8.1、Http
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1.1" data-path="../network/http-protocol.html">
+            
+                <a href="../network/http-protocol.html">
+            
+                    
+                    8.1.1、Http协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.2" data-path="../network/http-response-header.html">
+            
+                <a href="../network/http-response-header.html">
+            
+                    
+                    8.1.2、Http请求头与响应头
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.3" data-path="../network/httpurlconnection.html">
+            
+                <a href="../network/httpurlconnection.html">
+            
+                    
+                    8.1.3、HttpURLConnection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.4" data-path="../network/httpclient.html">
+            
+                <a href="../network/httpclient.html">
+            
+                    
+                    8.1.4、HttpClient
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="../network/dataparser.html">
+            
+                <a href="../network/dataparser.html">
+            
+                    
+                    8.2、数据解析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.2.1" data-path="../network/xml.html">
+            
+                <a href="../network/xml.html">
+            
+                    
+                    8.2.1、XML数据解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2.2" data-path="../network/json.html">
+            
+                <a href="../network/json.html">
+            
+                    
+                    8.2.2、JSON数据解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="../network/upload-download.html">
+            
+                <a href="../network/upload-download.html">
+            
+                    
+                    8.3、文件上传下载
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.3.1" data-path="../network/upload-file.html">
+            
+                <a href="../network/upload-file.html">
+            
+                    
+                    8.3.1、文件上传
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3.2" data-path="../network/download1.html">
+            
+                <a href="../network/download1.html">
+            
+                    
+                    8.3.2、文件下载(1)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3.3" data-path="../network/download2.html">
+            
+                <a href="../network/download2.html">
+            
+                    
+                    8.3.3、文件下载(2)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="../network/webservice.html">
+            
+                <a href="../network/webservice.html">
+            
+                    
+                    8.4、调用WebService
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5" data-path="../network/webview.html">
+            
+                <a href="../network/webview.html">
+            
+                    
+                    8.5、WebView
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.5.1" data-path="../network/webview-base.html">
+            
+                <a href="../network/webview-base.html">
+            
+                    
+                    8.5.1、基本用法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5.2" data-path="../network/webview-javascrip.html">
+            
+                <a href="../network/webview-javascrip.html">
+            
+                    
+                    8.5.2、WebView和JavaScrip交互基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5.3" data-path="../network/webview-attention.html">
+            
+                <a href="../network/webview-attention.html">
+            
+                    
+                    8.5.3、Android4.4后WebView的一些注意事项
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5.4" data-path="../network/webview-download-file.html">
+            
+                <a href="../network/webview-download-file.html">
+            
+                    
+                    8.5.4、WebView文件下载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5.5" data-path="../network/webview-cache.html">
+            
+                <a href="../network/webview-cache.html">
+            
+                    
+                    8.5.5、WebView缓存问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5.6" data-path="../network/webview-error-code.html">
+            
+                <a href="../network/webview-error-code.html">
+            
+                    
+                    8.5.6、WebView处理网页返回的错误码信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8.6" data-path="../network/socket.html">
+            
+                <a href="../network/socket.html">
+            
+                    
+                    8.6、Socket
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.6.1" data-path="../network/socket-intro.html">
+            
+                <a href="../network/socket-intro.html">
+            
+                    
+                    8.6.1、Socket学习网络基础准备
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.6.2" data-path="../network/tcp1.html">
+            
+                <a href="../network/tcp1.html">
+            
+                    
+                    8.6.2、基于TCP协议的Socket通信(1)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.6.3" data-path="../network/tcp2.html">
+            
+                <a href="../network/tcp2.html">
+            
+                    
+                    8.6.3、基于TCP协议的Socket通信(2)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.6.4" data-path="../network/udp.html">
+            
+                <a href="../network/udp.html">
+            
+                    
+                    8.6.4、基于UDP协议的Socket通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">九、Android自定义控件</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../custom/drawable.html">
+            
+                <a href="../custom/drawable.html">
+            
+                    
+                    9.1、Android中的13种Drawable小结
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1.1" data-path="../custom/drawable1.html">
+            
+                <a href="../custom/drawable1.html">
+            
+                    
+                    9.1.1、Part 1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.2" data-path="../custom/drawable2.html">
+            
+                <a href="../custom/drawable2.html">
+            
+                    
+                    9.1.2、Part 2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.3" data-path="../custom/drawable3.html">
+            
+                <a href="../custom/drawable3.html">
+            
+                    
+                    9.1.3、Part 3
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="../custom/bitmap.html">
+            
+                <a href="../custom/bitmap.html">
+            
+                    
+                    9.2、Bitmap(位图)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.1" data-path="../custom/bitmap1.html">
+            
+                <a href="../custom/bitmap1.html">
+            
+                    
+                    9.2.1、Bitmap(位图)全解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2" data-path="../custom/bitmap2.html">
+            
+                <a href="../custom/bitmap2.html">
+            
+                    
+                    9.2.2、Bitmap引起的OOM问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="../custom/canvas.html">
+            
+                <a href="../custom/canvas.html">
+            
+                    
+                    9.3、Canvas(绘图)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.1" data-path="../custom/drawable-tool.html">
+            
+                <a href="../custom/drawable-tool.html">
+            
+                    
+                    9.3.1、三个绘图工具类详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2" data-path="../custom/bitmap-demo.html">
+            
+                <a href="../custom/bitmap-demo.html">
+            
+                    
+                    9.3.2、绘图类实战示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.3" data-path="../custom/maskfilter.html">
+            
+                <a href="../custom/maskfilter.html">
+            
+                    
+                    9.3.3、Paint API之MaskFilter(面具)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.4" data-path="../custom/xfermode-porterduff1.html">
+            
+                <a href="../custom/xfermode-porterduff1.html">
+            
+                    
+                    9.3.4、Paint API之Xfermode与PorterDuff详解(1)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.5" data-path="../custom/xfermode-porterduff2.html">
+            
+                <a href="../custom/xfermode-porterduff2.html">
+            
+                    
+                    9.3.5、Paint API之Xfermode与PorterDuff详解(2)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.6" data-path="../custom/xfermode-porterduff3.html">
+            
+                <a href="../custom/xfermode-porterduff3.html">
+            
+                    
+                    9.3.6、Paint API之Xfermode与PorterDuff详解(3)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.7" data-path="../custom/xfermode-porterduff4.html">
+            
+                <a href="../custom/xfermode-porterduff4.html">
+            
+                    
+                    9.3.7、Paint API之Xfermode与PorterDuff详解(4)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.8" data-path="../custom/xfermode-porterduff5.html">
+            
+                <a href="../custom/xfermode-porterduff5.html">
+            
+                    
+                    9.3.8、Paint API之Xfermode与PorterDuff详解(5)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.9" data-path="../custom/colorfilter1.html">
+            
+                <a href="../custom/colorfilter1.html">
+            
+                    
+                    9.3.9、Paint API之ColorFilter(颜色过滤器)(1)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.10" data-path="../custom/colorfilter2.html">
+            
+                <a href="../custom/colorfilter2.html">
+            
+                    
+                    9.3.10、Paint API之ColorFilter(颜色过滤器)(2)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.11" data-path="../custom/colorfilter3.html">
+            
+                <a href="../custom/colorfilter3.html">
+            
+                    
+                    9.3.11、Paint API之ColorFilter(颜色过滤器)(3)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.12" data-path="../custom/patheffect.html">
+            
+                <a href="../custom/patheffect.html">
+            
+                    
+                    9.3.12、Paint API之PathEffect(路径效果)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.13" data-path="../custom/shader.html">
+            
+                <a href="../custom/shader.html">
+            
+                    
+                    9.3.13、Paint API之Shader(图像渲染)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.14" data-path="../custom/shadowlayer.html">
+            
+                <a href="../custom/shadowlayer.html">
+            
+                    
+                    9.3.14、Paint几个枚举常量值以及ShadowLayer阴影效果
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.15" data-path="../custom/typeface.html">
+            
+                <a href="../custom/typeface.html">
+            
+                    
+                    9.3.15、Paint API之Typeface(字型)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.16" data-path="../custom/canvas-api1.html">
+            
+                <a href="../custom/canvas-api1.html">
+            
+                    
+                    9.3.16、Canvas API详解(1)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.17" data-path="../custom/canvas-api2.html">
+            
+                <a href="../custom/canvas-api2.html">
+            
+                    
+                    9.3.17、Canvas API详解(2)剪切方法合集
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.18" data-path="../custom/canvas-api3.html">
+            
+                <a href="../custom/canvas-api3.html">
+            
+                    
+                    9.3.18、Canvas API详解(3)Matrix和drawBitmapMash
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" data-path="../custom/animation.html">
+            
+                <a href="../custom/animation.html">
+            
+                    
+                    9.4、Android动画
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.4.1" data-path="../custom/frameanimation.html">
+            
+                <a href="../custom/frameanimation.html">
+            
+                    
+                    9.4.1、帧动画
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4.2" data-path="../custom/tween.html">
+            
+                <a href="../custom/tween.html">
+            
+                    
+                    9.4.2、补间动画
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4.3" data-path="../custom/valueanimator1.html">
+            
+                <a href="../custom/valueanimator1.html">
+            
+                    
+                    9.4.3、属性动画-初见
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4.4" data-path="../custom/valueanimator2.html">
+            
+                <a href="../custom/valueanimator2.html">
+            
+                    
+                    9.4.4、属性动画-又见
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">十、Android音视频</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" data-path="../video/soundpool.html">
+            
+                <a href="../video/soundpool.html">
+            
+                    
+                    10.1、使用SoundPool播放音效(Duang~)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="../video/mediaplayer.html">
+            
+                <a href="../video/mediaplayer.html">
+            
+                    
+                    10.2、MediaPlayer播放音频与视频
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="../video/camera.html">
+            
+                <a href="../video/camera.html">
+            
+                    
+                    10.3、使用Camera拍照
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.4" data-path="../video/mediarecord.html">
+            
+                <a href="../video/mediarecord.html">
+            
+                    
+                    10.4、使用MediaRecord录音
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">十一、Android服务管理器</li>
+        
+        
+    
+        <li class="chapter " data-level="11.1" data-path="../manager/telephonymanager.html">
+            
+                <a href="../manager/telephonymanager.html">
+            
+                    
+                    11.1、TelephonyManager(电话管理器)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="../manager/smsmanager.html">
+            
+                <a href="../manager/smsmanager.html">
+            
+                    
+                    11.2、SmsManager(短信管理器)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3" data-path="../manager/audiomanager.html">
+            
+                <a href="../manager/audiomanager.html">
+            
+                    
+                    11.3、AudioManager(音频管理器)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.4" data-path="../manager/vibrator.html">
+            
+                <a href="../manager/vibrator.html">
+            
+                    
+                    11.4、Vibrator(振动器)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.5" data-path="../manager/alarmmanager.html">
+            
+                <a href="../manager/alarmmanager.html">
+            
+                    
+                    11.5、AlarmManager(闹钟服务)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.6" data-path="../manager/powermanager.html">
+            
+                <a href="../manager/powermanager.html">
+            
+                    
+                    11.6、PowerManager(电源服务)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.7" data-path="../manager/windowmanager.html">
+            
+                <a href="../manager/windowmanager.html">
+            
+                    
+                    11.7、WindowManager(窗口管理服务)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.8" data-path="../manager/layoutinflater.html">
+            
+                <a href="../manager/layoutinflater.html">
+            
+                    
+                    11.8、LayoutInflater(布局服务)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.9" data-path="../manager/wallpapermanager.html">
+            
+                <a href="../manager/wallpapermanager.html">
+            
+                    
+                    11.9、WallpaperManager(壁纸管理器)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.10" data-path="../manager/sensor1.html">
+            
+                <a href="../manager/sensor1.html">
+            
+                    
+                    11.10、传感器专题(1)——相关介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.11" data-path="../manager/sensor2.html">
+            
+                <a href="../manager/sensor2.html">
+            
+                    
+                    11.11、传感器专题(2)——方向传感器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.12" data-path="../manager/sensor3.html">
+            
+                <a href="../manager/sensor3.html">
+            
+                    
+                    11.12、传感器专题(3)——加速度/陀螺仪传感器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.13" data-path="../manager/sensor4.html">
+            
+                <a href="../manager/sensor4.html">
+            
+                    
+                    11.13、传感器专题(4)——其他传感器了解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.14" data-path="../manager/gps.html">
+            
+                <a href="../manager/gps.html">
+            
+                    
+                    11.14、Android GPS初涉
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">十二、Android项目实战(看妹子APP)</li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" data-path="../drysister/drysister1.html">
+            
+                <a href="../drysister/drysister1.html">
+            
+                    
+                    12.1、项目搭建与简单实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="../drysister/drysister2.html">
+            
+                <a href="../drysister/drysister2.html">
+            
+                    
+                    12.2、解析后台数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" data-path="../drysister/drysister3.html">
+            
+                <a href="../drysister/drysister3.html">
+            
+                    
+                    12.3、图片加载优化(写个图片缓存小框架)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.4" data-path="../drysister/drysister4.html">
+            
+                <a href="../drysister/drysister4.html">
+            
+                    
+                    12.4、添加数据缓存(加入SQLite)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.5" data-path="../drysister/drysister5.html">
+            
+                <a href="../drysister/drysister5.html">
+            
+                    
+                    12.5、代码回顾，调整与日志类编写
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.6" data-path="../drysister/drysister6.html">
+            
+                <a href="../drysister/drysister6.html">
+            
+                    
+                    12.6、图标制作，混淆，签名打包，APK瘦身，应用发布
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >5.5.2、Intent之复杂数据的传递</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x4E00;&#x3001;&#x672C;&#x8282;&#x5F15;&#x8A00;&#xFF1A;">&#x4E00;&#x3001;&#x672C;&#x8282;&#x5F15;&#x8A00;&#xFF1A;</h2>
+<p>&#x4E0A;&#x4E00;&#x8282;&#x4E2D;&#x6211;&#x4EEC;&#x5B66;&#x4E60;&#x4E86;Intent&#x7684;&#x4E00;&#x4E9B;&#x57FA;&#x672C;&#x4F7F;&#x7528;&#xFF0C;&#x77E5;&#x9053;&#x4E86;Intent&#x7684;&#x4E03;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x663E;&#x5F0F;Intent&#x4EE5;&#x53CA; &#x9690;&#x5F0F;Intent&#xFF0C;&#x4EE5;&#x53CA;&#x5982;&#x4F55;&#x81EA;&#x5B9A;&#x4E49;&#x9690;&#x5F0F;Intent&#xFF0C;&#x6700;&#x540E;&#x8FD8;&#x7ED9;&#x5927;&#x5BB6;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E9B;&#x5E38;&#x7528;&#x7684;&#x7CFB;&#x7EDF;Intent&#xFF01; &#x800C;&#x672C;&#x8282;&#x8DDF;&#x5927;&#x5BB6;&#x8BB2;&#x89E3;&#x7684;&#x662F;Intent&#x4F20;&#x9012;&#x6570;&#x636E;&#x7684;&#x95EE;&#x9898;~&#x597D;&#x7684;&#xFF0C;&#x5F00;&#x59CB;&#x672C;&#x8282;&#x5185;&#x5BB9;~</p>
+<h2 id="&#x4E8C;&#x3001;intent&#x4F20;&#x9012;&#x7B80;&#x5355;&#x6570;&#x636E;">&#x4E8C;&#x3001;Intent&#x4F20;&#x9012;&#x7B80;&#x5355;&#x6570;&#x636E;</h2>
+<p>&#x8FD8;&#x8BB0;&#x5F97;&#x6211;&#x4EEC;&#x5728;Activity&#x90A3;&#x91CC;&#x5B66;&#x8FC7;&#x5982;&#x4F55;&#x5728;&#x4E24;&#x4E2A;Activity&#x4E2D;&#x4E92;&#x76F8;&#x4F20;&#x9012;&#x7B80;&#x5355;&#x6570;&#x636E;&#x7684;&#x65B9;&#x6CD5;&#x5417;&#xFF1F;</p>
+<p><img src="../img/component-83.jpg" alt=""></p>
+<p>&#x5C31;&#x662F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x901A;&#x8FC7;&#x8C03;&#x7528;Intent&#x7684;putExtra()&#x65B9;&#x6CD5;&#x5B58;&#x5165;&#x6570;&#x636E;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x83B7;&#x5F97;Intent&#x540E;&#x8C03;&#x7528;getXxxExtra&#x83B7;&#x5F97; &#x5BF9;&#x5E94;&#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;&#xFF1B;&#x4F20;&#x9012;&#x591A;&#x4E2A;&#x7684;&#x8BDD;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;Bundle&#x5BF9;&#x8C61;&#x4F5C;&#x4E3A;&#x5BB9;&#x5668;&#xFF0C;&#x901A;&#x8FC7;&#x8C03;&#x7528;Bundle&#x7684;putXxx&#x5148;&#x5C06;&#x6570;&#x636E; &#x5B58;&#x50A8;&#x5230;Bundle&#x4E2D;&#xFF0C;&#x7136;&#x540E;&#x8C03;&#x7528;Intent&#x7684;putExtras()&#x65B9;&#x6CD5;&#x5C06;Bundle&#x5B58;&#x5165;Intent&#x4E2D;&#xFF0C;&#x7136;&#x540E;&#x83B7;&#x5F97;Intent&#x4EE5;&#x540E;&#xFF0C; &#x8C03;&#x7528;getExtras()&#x83B7;&#x5F97;Bundle&#x5BB9;&#x5668;&#xFF0C;&#x7136;&#x540E;&#x8C03;&#x7528;&#x5176;getXXX&#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x636E;&#xFF01; &#x53E6;&#x5916;&#x6570;&#x636E;&#x5B58;&#x50A8;&#x6709;&#x70B9;&#x7C7B;&#x4F3C;&#x4E8E;Map&#x7684;&lt;&#x952E;&#xFF0C;&#x503C;&gt;&#xFF01;</p>
+<h2 id="&#x4E09;&#x3001;intent&#x4F20;&#x9012;&#x6570;&#x7EC4;">&#x4E09;&#x3001;Intent&#x4F20;&#x9012;&#x6570;&#x7EC4;</h2>
+<p>&#x563F;&#x563F;&#xFF0C;&#x666E;&#x901A;&#x7C7B;&#x578B;&#x5012;&#x6CA1;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x662F;&#x6570;&#x7EC4;&#x54A7;&#xFF1F;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>&#x5199;&#x5165;&#x6570;&#x7EC4;&#xFF1A;</p>
+<pre><code class="lang-java">bd.putStringArray(<span class="hljs-string">&quot;StringArray&quot;</span>, <span class="hljs-keyword">new</span> String[]{<span class="hljs-string">&quot;&#x5475;&#x5475;&quot;</span>,<span class="hljs-string">&quot;&#x54C8;&#x54C8;&quot;</span>});
+<span class="hljs-comment">//&#x53EF;&#x628A;StringArray&#x6362;&#x6210;&#x5176;&#x4ED6;&#x6570;&#x636E;&#x7C7B;&#x578B;,&#x6BD4;&#x5982;int,float&#x7B49;&#x7B49;...</span>
+</code></pre>
+<p>&#x8BFB;&#x53D6;&#x6570;&#x7EC4;&#xFF1A;</p>
+<pre><code class="lang-java">String[] str = bd.getStringArray(<span class="hljs-string">&quot;StringArray&quot;</span>)
+</code></pre>
+<h2 id="&#x56DB;&#x3001;intent&#x4F20;&#x9012;&#x96C6;&#x5408;">&#x56DB;&#x3001;Intent&#x4F20;&#x9012;&#x96C6;&#x5408;</h2>
+<p>&#x55EF;&#xFF0C;&#x6570;&#x7EC4;&#x5F88;&#x7B80;&#x5355;&#x5427;&#xFF0C;&#x90A3;&#x6211;&#x4EEC;&#x518D;&#x6765;&#x4F20;&#x4E0B;&#x96C6;&#x5408;~&#x8FD9;&#x4E2A;&#x5C31;&#x7A0D;&#x5FAE;&#x590D;&#x6742;&#x70B9;&#x4E86;&#xFF0C;&#x5206;&#x60C5;&#x51B5;&#x5904;&#x7406;&#xFF1A;</p>
+<h3 id="1&#xFF09;list&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x6216;string">1&#xFF09;List&lt;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x6216;String&gt;</h3>
+<p>&#x5199;&#x5165;&#x96C6;&#x5408;&#xFF1A;</p>
+<pre><code class="lang-java">intent.putStringArrayListExtra(name, value)
+intent.putIntegerArrayListExtra(name, value)
+</code></pre>
+<p>&#x8BFB;&#x53D6;&#x96C6;&#x5408;&#xFF1A;</p>
+<pre><code class="lang-java">intent.getStringArrayListExtra(name)
+intent.getIntegerArrayListExtra(name)
+</code></pre>
+<h3 id="2&#xFF09;list">2&#xFF09;List<object></object></h3>
+<p>&#x5C06;list&#x5F3A;&#x8F6C;&#x6210;Serializable&#x7C7B;&#x578B;,&#x7136;&#x540E;&#x4F20;&#x5165;(&#x53EF;&#x7528;Bundle&#x505A;&#x5A92;&#x4ECB;)</p>
+<p>&#x5199;&#x5165;&#x96C6;&#x5408;&#xFF1A;</p>
+<pre><code class="lang-java">putExtras(key, (Serializable)list)
+</code></pre>
+<p>&#x8BFB;&#x53D6;&#x96C6;&#x5408;&#xFF1A;</p>
+<pre><code class="lang-java">(List&lt;Object&gt;) getIntent().getSerializable(key)
+</code></pre>
+<p>PS:Object&#x7C7B;&#x9700;&#x8981;&#x5B9E;&#x73B0;Serializable&#x63A5;&#x53E3;</p>
+<h3 id="3&#xFF09;map&#x6216;&#x66F4;&#x590D;&#x6742;&#x7684;">3&#xFF09;Map<string, object="">,&#x6216;&#x66F4;&#x590D;&#x6742;&#x7684;</string,></h3>
+<p>&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x662F;&#xFF1A;<code>&#x5916;&#x5C42;&#x5957;&#x4E2A;List</code></p>
+<pre><code class="lang-java"><span class="hljs-comment">//&#x4F20;&#x9012;&#x590D;&#x6742;&#x4E9B;&#x7684;&#x53C2;&#x6570; </span>
+Map&lt;String, Object&gt; map1 = <span class="hljs-keyword">new</span> HashMap&lt;String, Object&gt;();  
+map1.put(<span class="hljs-string">&quot;key1&quot;</span>, <span class="hljs-string">&quot;value1&quot;</span>);  
+map1.put(<span class="hljs-string">&quot;key2&quot;</span>, <span class="hljs-string">&quot;value2&quot;</span>);  
+List&lt;Map&lt;String, Object&gt;&gt; list = <span class="hljs-keyword">new</span> ArrayList&lt;Map&lt;String, Object&gt;&gt;();  
+list.add(map1);  
+
+Intent intent = <span class="hljs-keyword">new</span> Intent();  
+intent.setClass(MainActivity.<span class="hljs-keyword">this</span>,ComplexActivity.class);  
+Bundle bundle = <span class="hljs-keyword">new</span> Bundle();  
+
+<span class="hljs-comment">//&#x987B;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;list&#x7528;&#x4E8E;&#x5728;budnle&#x4E2D;&#x4F20;&#x9012;&#x9700;&#x8981;&#x4F20;&#x9012;&#x7684;ArrayList&lt;Object&gt;,&#x8FD9;&#x4E2A;&#x662F;&#x5FC5;&#x987B;&#x8981;&#x7684;  </span>
+ArrayList bundlelist = <span class="hljs-keyword">new</span> ArrayList();   
+bundlelist.add(list);   
+bundle.putParcelableArrayList(<span class="hljs-string">&quot;list&quot;</span>,bundlelist);  
+intent.putExtras(bundle);                
+startActivity(intent);
+</code></pre>
+<h2 id="&#x4E94;&#x3001;intent&#x4F20;&#x9012;&#x5BF9;&#x8C61;">&#x4E94;&#x3001;Intent&#x4F20;&#x9012;&#x5BF9;&#x8C61;</h2>
+<p>&#x4F20;&#x9012;&#x5BF9;&#x8C61;&#x7684;&#x65B9;&#x5F0F;&#x6709;&#x4E24;&#x79CD;&#xFF1A;&#x5C06;&#x5BF9;&#x8C61;&#x8F6C;&#x6362;&#x4E3A;Json&#x5B57;&#x7B26;&#x4E32;&#x6216;&#x8005;&#x901A;&#x8FC7;Serializable,Parcelable&#x5E8F;&#x5217;&#x5316; &#x4E0D;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;Android&#x5185;&#x7F6E;&#x7684;&#x62A0;&#x811A;Json&#x89E3;&#x6790;&#x5668;&#xFF0C;&#x53EF;&#x4F7F;&#x7528;fastjson&#x6216;&#x8005;Gson&#x7B2C;&#x4E09;&#x65B9;&#x5E93;&#xFF01;</p>
+<h3 id="1&#xFF09;&#x5C06;&#x5BF9;&#x8C61;&#x8F6C;&#x6362;&#x4E3A;json&#x5B57;&#x7B26;&#x4E32;">1&#xFF09;&#x5C06;&#x5BF9;&#x8C61;&#x8F6C;&#x6362;&#x4E3A;Json&#x5B57;&#x7B26;&#x4E32;</h3>
+<p>Gson&#x89E3;&#x6790;&#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<p><code>Model:</code></p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Book</span></span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> id;
+    <span class="hljs-keyword">private</span> String title;
+    <span class="hljs-comment">//...</span>
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Author</span></span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> id;
+    <span class="hljs-keyword">private</span> String name;
+    <span class="hljs-comment">//...</span>
+}
+</code></pre>
+<p>&#x5199;&#x5165;&#x6570;&#x636E;&#xFF1A;</p>
+<pre><code class="lang-java">Book book=<span class="hljs-keyword">new</span> Book();
+book.setTitle(<span class="hljs-string">&quot;Java&#x7F16;&#x7A0B;&#x601D;&#x60F3;&quot;</span>);
+Author author=<span class="hljs-keyword">new</span> Author();
+author.setId(<span class="hljs-number">1</span>);
+author.setName(<span class="hljs-string">&quot;Bruce Eckel&quot;</span>);
+book.setAuthor(author);
+Intent intent=<span class="hljs-keyword">new</span> Intent(<span class="hljs-keyword">this</span>,SecondActivity.class);
+intent.putExtra(<span class="hljs-string">&quot;book&quot;</span>,<span class="hljs-keyword">new</span> Gson().toJson(book));
+startActivity(intent);
+</code></pre>
+<p>&#x8BFB;&#x53D6;&#x6570;&#x636E;&#xFF1A;</p>
+<pre><code class="lang-java">String bookJson=getIntent().getStringExtra(<span class="hljs-string">&quot;book&quot;</span>);
+Book book=<span class="hljs-keyword">new</span> Gson().fromJson(bookJson,Book.class);
+Log.d(TAG,<span class="hljs-string">&quot;book title-&gt;&quot;</span>+book.getTitle());
+Log.d(TAG,<span class="hljs-string">&quot;book author name-&gt;&quot;</span>+book.getAuthor().getName());
+</code></pre>
+<h3 id="2&#xFF09;&#x4F7F;&#x7528;serializableparcelable&#x5E8F;&#x5217;&#x5316;&#x5BF9;&#x8C61;">2&#xFF09;&#x4F7F;&#x7528;Serializable,Parcelable&#x5E8F;&#x5217;&#x5316;&#x5BF9;&#x8C61;</h3>
+<ol>
+<li><p>Serializable&#x5B9E;&#x73B0;:</p>
+</li>
+<li><p>&#x2460;&#x4E1A;&#x52A1;Bean&#x5B9E;&#x73B0;&#xFF1A;Serializable&#x63A5;&#x53E3;,&#x5199;&#x4E0A;getter&#x548C;setter&#x65B9;&#x6CD5;</p>
+</li>
+<li>&#x2461;Intent&#x901A;&#x8FC7;&#x8C03;&#x7528;putExtra(String name, Serializable value)&#x4F20;&#x5165;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B; &#x5F53;&#x7136;&#x5BF9;&#x8C61;&#x6709;&#x591A;&#x4E2A;&#x7684;&#x8BDD;&#x591A;&#x4E2A;&#x7684;&#x8BDD;,&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x5148;Bundle.putSerializable(x,x);</li>
+<li>&#x2462;&#x65B0;Activity&#x8C03;&#x7528;getSerializableExtra()&#x65B9;&#x6CD5;&#x83B7;&#x5F97;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;: eg:Product pd = (Product) getIntent().getSerializableExtra(&quot;Product&quot;);</li>
+<li><p>&#x2463;&#x8C03;&#x7528;&#x5BF9;&#x8C61;get&#x65B9;&#x6CD5;&#x83B7;&#x5F97;&#x76F8;&#x5E94;&#x53C2;&#x6570;</p>
+</li>
+<li><p>Parcelable&#x5B9E;&#x73B0;:</p>
+</li>
+</ol>
+<p>&#x4E00;&#x822C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li>&#x2460;&#x4E1A;&#x52A1;Bean&#x7EE7;&#x627F;Parcelable&#x63A5;&#x53E3;,&#x91CD;&#x5199;writeToParcel&#x65B9;&#x6CD5;,&#x5C06;&#x4F60;&#x7684;&#x5BF9;&#x8C61;&#x5E8F;&#x5217;&#x5316;&#x4E3A;&#x4E00;&#x4E2A;Parcel&#x5BF9;&#x8C61;;</li>
+<li>&#x2461;&#x91CD;&#x5199;describeContents&#x65B9;&#x6CD5;&#xFF0C;&#x5185;&#x5BB9;&#x63A5;&#x53E3;&#x63CF;&#x8FF0;&#xFF0C;&#x9ED8;&#x8BA4;&#x8FD4;&#x56DE;0&#x5C31;&#x53EF;&#x4EE5;</li>
+<li>&#x2462;&#x5B9E;&#x4F8B;&#x5316;&#x9759;&#x6001;&#x5185;&#x90E8;&#x5BF9;&#x8C61;CREATOR&#x5B9E;&#x73B0;&#x63A5;&#x53E3;Parcelable.Creator</li>
+<li>&#x2463;&#x540C;&#x6837;&#x5F0F;&#x901A;&#x8FC7;Intent&#x7684;putExtra()&#x65B9;&#x6CD5;&#x4F20;&#x5165;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;,&#x5F53;&#x7136;&#x591A;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x8BDD;,&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5148; &#x653E;&#x5230;Bundle&#x91CC;Bundle.putParcelable(x,x),&#x518D;Intent.putExtras()&#x5373;&#x53EF;</li>
+</ul>
+<p>&#x4E00;&#x4E9B;&#x89E3;&#x91CA;:</p>
+<p>&#x901A;&#x8FC7;writeToParcel&#x5C06;&#x4F60;&#x7684;&#x5BF9;&#x8C61;&#x6620;&#x5C04;&#x6210;Parcel&#x5BF9;&#x8C61;&#xFF0C;&#x518D;&#x901A;&#x8FC7;createFromParcel&#x5C06;Parcel&#x5BF9;&#x8C61;&#x6620;&#x5C04; &#x6210;&#x4F60;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x4E5F;&#x53EF;&#x4EE5;&#x5C06;Parcel&#x770B;&#x6210;&#x662F;&#x4E00;&#x4E2A;&#x6D41;&#xFF0C;&#x901A;&#x8FC7;writeToParcel&#x628A;&#x5BF9;&#x8C61;&#x5199;&#x5230;&#x6D41;&#x91CC;&#x9762;&#xFF0C; &#x5728;&#x901A;&#x8FC7;createFromParcel&#x4ECE;&#x6D41;&#x91CC;&#x8BFB;&#x53D6;&#x5BF9;&#x8C61;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x9700;&#x8981;&#x4F60;&#x6765;&#x5B9E;&#x73B0;&#xFF0C;&#x56E0;&#x6B64;&#x5199;&#x7684; &#x987A;&#x5E8F;&#x548C;&#x8BFB;&#x7684;&#x987A;&#x5E8F;&#x5FC5;&#x987B;&#x4E00;&#x81F4;&#x3002;</p>
+<p>&#x5B9E;&#x73B0;Parcelable&#x63A5;&#x53E3;&#x7684;&#x4EE3;&#x7801;&#x793A;&#x4F8B;:</p>
+<pre><code class="lang-java"><span class="hljs-comment">//Internal Description Interface,You do not need to manage  </span>
+<span class="hljs-meta">@Override</span>  
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">describeContents</span><span class="hljs-params">()</span> </span>{  
+     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;  
+}  
+
+<span class="hljs-meta">@Override</span>  
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">writeToParcel</span><span class="hljs-params">(Parcel parcel, <span class="hljs-keyword">int</span> flags)</span></span>{  
+    parcel.writeString(bookName);  
+    parcel.writeString(author);  
+    parcel.writeInt(publishTime);  
+}  
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Parcelable.Creator&lt;Book&gt; CREATOR = <span class="hljs-keyword">new</span> Creator&lt;Book&gt;() {  
+    <span class="hljs-meta">@Override</span>  
+    <span class="hljs-keyword">public</span> Book[] newArray(<span class="hljs-keyword">int</span> size) {  
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Book[size];  
+    }  
+
+    <span class="hljs-meta">@Override</span>  
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Book <span class="hljs-title">createFromParcel</span><span class="hljs-params">(Parcel source)</span> </span>{  
+        Book mBook = <span class="hljs-keyword">new</span> Book();    
+        mBook.bookName = source.readString();   
+        mBook.author = source.readString();    
+        mBook.publishTime = source.readInt();   
+        <span class="hljs-keyword">return</span> mBook;  
+    }  
+};
+</code></pre>
+<p>Android Studio&#x751F;&#x6210;Parcleable&#x63D2;&#x4EF6;&#xFF1A;</p>
+<p>Intellij/Andriod Studio&#x63D2;&#x4EF6;android-parcelable-intellij-plugin &#x53EA;&#x8981;ALT+Insert&#xFF0C;&#x5373;&#x53EF;&#x76F4;&#x63A5;&#x751F;&#x6210;Parcleable&#x63A5;&#x53E3;&#x4EE3;&#x7801;&#x3002;</p>
+<p>&#x53E6;&#x5916;&#xFF1A;Android&#x4E2D;&#x5927;&#x91CF;&#x7528;&#x5230;Parcelable&#x5BF9;&#x8C61;&#xFF0C;&#x5B9E;&#x73B0;Parcable&#x63A5;&#x53E3;&#x53C8;&#x662F;&#x975E;&#x5E38;&#x7E41;&#x7410;&#x7684;,&#x53EF;&#x4EE5;&#x7528;&#x5230; &#x7B2C;&#x4E09;&#x65B9;&#x7684;&#x5F00;&#x6E90;&#x6846;&#x67B6;:Parceler,&#x56E0;&#x4E3A;Maven&#x7684;&#x95EE;&#x9898;,&#x6682;&#x65F6;&#x8FD8;&#x6CA1;&#x8BD5;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#x5730;&#x5740;:<a href="http://www.race604.com/auto-parcelable-object/" target="_blank">Android&#x7684;Parcelable&#x81EA;&#x52A8;&#x751F;&#x6210;</a></p>
+<ol>
+<li>&#x4E24;&#x79CD;&#x5E8F;&#x5217;&#x5316;&#x65B9;&#x5F0F;&#x7684;&#x6BD4;&#x8F83;&#xFF1A;</li>
+</ol>
+<p>&#x4E24;&#x8005;&#x7684;&#x6BD4;&#x8F83;:</p>
+<ul>
+<li>1&#xFF09;&#x5728;&#x4F7F;&#x7528;&#x5185;&#x5B58;&#x7684;&#x65F6;&#x5019;&#xFF0C;Parcelable&#x6BD4;Serializable&#x6027;&#x80FD;&#x9AD8;&#xFF0C;&#x6240;&#x4EE5;&#x63A8;&#x8350;&#x4F7F;&#x7528;Parcelable&#x3002;</li>
+<li>2&#xFF09;Serializable&#x5728;&#x5E8F;&#x5217;&#x5316;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x4EA7;&#x751F;&#x5927;&#x91CF;&#x7684;&#x4E34;&#x65F6;&#x53D8;&#x91CF;&#xFF0C;&#x4ECE;&#x800C;&#x5F15;&#x8D77;&#x9891;&#x7E41;&#x7684;GC&#x3002;</li>
+<li>3&#xFF09;Parcelable&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x5728;&#x8981;&#x5C06;&#x6570;&#x636E;&#x5B58;&#x50A8;&#x5728;&#x78C1;&#x76D8;&#x4E0A;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x56E0;&#x4E3A;Parcelable&#x4E0D;&#x80FD;&#x5F88;&#x597D;&#x7684;&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x7684; &#x6301;&#x7EED;&#x6027;&#x5728;&#x5916;&#x754C;&#x6709;&#x53D8;&#x5316;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x3002;&#x5C3D;&#x7BA1;Serializable&#x6548;&#x7387;&#x4F4E;&#x70B9;&#xFF0C;&#x4F46;&#x6B64;&#x65F6;&#x8FD8;&#x662F;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;Serializable&#x3002;</li>
+</ul>
+<h2 id="&#x516D;&#x3001;intent&#x4F20;&#x9012;bitmap">&#x516D;&#x3001;Intent&#x4F20;&#x9012;Bitmap</h2>
+<p>bitmap&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;Parcelable&#x63A5;&#x53E3;,&#x76F4;&#x63A5;&#x4F20;&#x9012;&#x5373;&#x53EF;</p>
+<p>&#x5B9E;&#x73B0;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-java">Bitmap bitmap = <span class="hljs-keyword">null</span>;
+Intent intent = <span class="hljs-keyword">new</span> Intent();
+Bundle bundle = <span class="hljs-keyword">new</span> Bundle();
+bundle.putParcelable(<span class="hljs-string">&quot;bitmap&quot;</span>, bitmap);
+intent.putExtra(<span class="hljs-string">&quot;bundle&quot;</span>, bundle);
+</code></pre>
+<h2 id="&#x4E03;&#x3001;&#x4F20;&#x6765;&#x4F20;&#x53BB;&#x4E0D;&#x65B9;&#x4FBF;&#xFF0C;&#x76F4;&#x63A5;&#x5B9A;&#x4E49;&#x5168;&#x5C40;&#x6570;&#x636E;">&#x4E03;&#x3001;&#x4F20;&#x6765;&#x4F20;&#x53BB;&#x4E0D;&#x65B9;&#x4FBF;&#xFF0C;&#x76F4;&#x63A5;&#x5B9A;&#x4E49;&#x5168;&#x5C40;&#x6570;&#x636E;</h2>
+<p>&#x5982;&#x679C;&#x662F;&#x4F20;&#x9012;&#x7B80;&#x5355;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x6709;&#x8FD9;&#x6837;&#x7684;&#x9700;&#x6C42;&#xFF0C;Activity1 -&gt; Activity2 -&gt; Activity3 -&gt; Activity4&#xFF0C; &#x4F60;&#x60F3;&#x5728;Activity&#x4E2D;&#x4F20;&#x9012;&#x67D0;&#x4E2A;&#x6570;&#x636E;&#x5230;Activity4&#x4E2D;&#xFF0C;&#x600E;&#x4E48;&#x7834;&#xFF0C;&#x4E00;&#x4E2A;&#x4E2A;&#x9875;&#x9762;&#x4F20;&#x4E48;&#xFF1F;</p>
+<p>&#x663E;&#x7136;&#x4E0D;&#x79D1;&#x5B66;&#x662F;&#x5427;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x67D0;&#x4E2A;&#x6570;&#x636E;&#x53EF;&#x4EE5;&#x5728;&#x4EFB;&#x4F55;&#x5730;&#x65B9;&#x90FD;&#x80FD;&#x83B7;&#x53D6;&#x5230;&#xFF0C;&#x4F60;&#x5C31;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x4F7F;&#x7528; Application&#x5168;&#x5C40;&#x5BF9;&#x8C61;&#x4E86;&#xFF01;</p>
+<p>Android&#x7CFB;&#x7EDF;&#x5728;&#x6BCF;&#x4E2A;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x7684;&#x65F6;&#x5019;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;Application&#x5BF9;&#x8C61;&#xFF0C;&#x800C;&#x4E14;&#x53EA;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#xFF0C;&#x6240;&#x4EE5;Application &#x662F;&#x5355;&#x4F8B;(singleton)&#x6A21;&#x5F0F;&#x7684;&#x4E00;&#x4E2A;&#x7C7B;&#xFF0C;&#x800C;&#x4E14;Application&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x662F;&#x6574;&#x4E2A;&#x7A0B;&#x5E8F;&#x4E2D;&#x6700;&#x957F;&#x7684;&#xFF0C;&#x4ED6;&#x7684;&#x751F;&#x547D; &#x5468;&#x671F;&#x7B49;&#x4E8E;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x3002;&#x5982;&#x679C;&#x60F3;&#x5B58;&#x50A8;&#x4E00;&#x4E9B;&#x6BD4;&#x9759;&#x6001;&#x7684;&#x503C;(&#x56FA;&#x5B9A;&#x4E0D;&#x6539;&#x53D8;&#x7684;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x53D8;)&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x4F7F;&#x7528; Application&#x5C31;&#x9700;&#x8981;&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x5B9E;&#x73B0;Application&#x7C7B;&#xFF0C;&#x5E76;&#x4E14;&#x544A;&#x8BC9;&#x7CFB;&#x7EDF;&#x5B9E;&#x4F8B;&#x5316;&#x7684;&#x662F;&#x6211;&#x4EEC;&#x81EA;&#x5B9A;&#x4E49;&#x7684;Application &#x800C;&#x975E;&#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x7684;&#xFF0C;&#x800C;&#x8FD9;&#x4E00;&#x6B65;&#xFF0C;&#x5C31;&#x662F;&#x5728;AndroidManifest.xml&#x4E2D;&#x4E3A;&#x6211;&#x4EEC;&#x7684;application&#x6807;&#x7B7E;&#x6DFB;&#x52A0;:name&#x5C5E;&#x6027;&#xFF01;</p>
+<p>&#x5173;&#x952E;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#xFF1A;</p>
+<ul>
+<li><p>1&#xFF09;&#x81EA;&#x5B9A;&#x4E49;Application&#x7C7B;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Application</span> </span>{
+  <span class="hljs-keyword">private</span> String myState;
+  <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getState</span><span class="hljs-params">()</span></span>{
+      <span class="hljs-keyword">return</span> myState;
+  }
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setState</span><span class="hljs-params">(String s)</span></span>{
+      myState = s;
+  }
+}
+</code></pre>
+</li>
+<li><p>2&#xFF09;AndroidManifest.xml&#x4E2D;&#x58F0;&#x660E;&#xFF1A;</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">application</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;.MyApp&quot;</span> <span class="hljs-attr">android:icon</span>=<span class="hljs-string">&quot;@drawable/icon&quot;</span> 
+<span class="hljs-attr">android:label</span>=<span class="hljs-string">&quot;@string/app_name&quot;</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>3&#xFF09;&#x5728;&#x9700;&#x8981;&#x7684;&#x5730;&#x65B9;&#x8C03;&#x7528;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Blah</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Activity</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle b)</span></span>{
+      ...
+  MyApp appState = ((MyApp)getApplicationContext());
+  String state = appState.getState();
+      ...
+  }
+}
+</code></pre>
+</li>
+</ul>
+<p>&#x9AD8;&#x903C;&#x683C;&#x5199;&#x6CD5;</p>
+<p>&#xFF1A;&#x5728;&#x4EFB;&#x4F55;&#x4F4D;&#x7F6E;&#x90FD;&#x80FD;&#x83B7;&#x53D6;&#x5230;Application&#x5168;&#x5C40;&#x5BF9;&#x8C61;&#x3002;
+Applicaiton&#x662F;&#x7CFB;&#x7EDF;&#x7684;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#xFF0C;&#x4ED6;&#x4E5F;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x4E00;&#x4E2A;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;onCraete&#x91CC;&#x83B7;&#x5F97;&#x8FD9;&#x4E2A; Application&#x5BF9;&#x8C61;&#x3002;&#x8D34;&#x4E0B;&#x4FEE;&#x6539;&#x540E;&#x7684;&#x4EE3;&#x7801;&#x5427;&#xFF01;</p>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Application</span> </span>{
+    <span class="hljs-keyword">private</span> String myState;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> MyApp instance;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> MyApp <span class="hljs-title">getInstance</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-keyword">return</span> instance;
+    }
+
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getState</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-keyword">return</span> myState;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setState</span><span class="hljs-params">(String s)</span></span>{
+        myState = s;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">()</span></span>{
+        onCreate();
+        instance = <span class="hljs-keyword">this</span>;
+    }
+}
+</code></pre>
+<p>&#x7136;&#x540E;&#x5728;&#x4EFB;&#x610F;&#x5730;&#x65B9;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#xFF1A;MyApp.getInstance&#xFF08;&#xFF09;&#x6765;&#x83B7;&#x5F97;Application&#x7684;&#x5168;&#x5C40;&#x5BF9;&#x8C61;&#xFF01;</p>
+<p><strong>&#x6CE8;&#x610F;&#x4E8B;&#x9879;&#xFF1A;</strong></p>
+<p>Application&#x5BF9;&#x8C61;&#x662F;&#x5B58;&#x5728;&#x4E8E;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x6709;&#x5B83;&#x53EF;&#x80FD;&#x4F1A;&#x88AB;&#x7CFB;&#x7EDF;&#x6740;&#x6B7B;&#xFF0C;&#x6BD4;&#x5982;&#x8FD9;&#x6837;&#x7684;&#x573A;&#x666F;&#xFF1A;</p>
+<p>&#x6211;&#x4EEC;&#x5728;Activity1&#x4E2D;&#x5F80;application&#x4E2D;&#x5B58;&#x50A8;&#x4E86;&#x7528;&#x6237;&#x8D26;&#x53F7;&#xFF0C;&#x7136;&#x540E;&#x5728;Activity2&#x4E2D;&#x83B7;&#x53D6;&#x5230;&#x7528;&#x6237;&#x8D26;&#x53F7;&#xFF0C;&#x5E76;&#x4E14;&#x663E;&#x793A;&#xFF01;</p>
+<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x70B9;&#x51FB;home&#x952E;&#xFF0C;&#x7136;&#x540E;&#x8FC7;&#x4E86;N&#x4E45;&#x5019;&#xFF0C;&#x7CFB;&#x7EDF;&#x4E3A;&#x4E86;&#x56DE;&#x6536;&#x5185;&#x5B58;kill&#x6389;&#x4E86;&#x6211;&#x4EEC;&#x7684;app&#x3002;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x91CD;&#x65B0; &#x6253;&#x5F00;&#x8FD9;&#x4E2A;app&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x5F88;&#x795E;&#x5947;&#x7684;&#xFF0C;&#x56DE;&#x5230;&#x4E86;Activity2&#x7684;&#x9875;&#x9762;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x4F60;&#x518D;&#x53BB;&#x83B7;&#x53D6;Application &#x91CC;&#x7684;&#x7528;&#x6237;&#x8D26;&#x53F7;&#xFF0C;&#x7A0B;&#x5E8F;&#x5C31;&#x4F1A;&#x62A5;NullPointerException&#xFF0C;&#x7136;&#x540E;crash&#x6389;~</p>
+<p>&#x4E4B;&#x6240;&#x4EE5;&#x4F1A;&#x53D1;&#x751F;&#x4E0A;&#x8FF0;crash&#xFF0C;&#x662F;&#x56E0;&#x4E3A;&#x8FD9;&#x4E2A;Application&#x5BF9;&#x8C61;&#x662F;&#x5168;&#x65B0;&#x521B;&#x5EFA;&#x7684;&#xFF0C;&#x53EF;&#x80FD;&#x4F60;&#x4EE5;&#x4E3A;App&#x662F;&#x91CD;&#x65B0;&#x542F;&#x52A8;&#x7684;&#xFF0C; &#x5176;&#x5B9E;&#x5E76;&#x4E0D;&#x662F;&#xFF0C;&#x4EC5;&#x4EC5;&#x662F;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;Application&#xFF0C;&#x7136;&#x540E;&#x542F;&#x52A8;&#x4E0A;&#x6B21;&#x7528;&#x6237;&#x79BB;&#x5F00;&#x65F6;&#x7684;Activity&#xFF0C;&#x4ECE;&#x800C;&#x521B;&#x9020;App &#x5E76;&#x6CA1;&#x6709;&#x88AB;&#x6740;&#x6B7B;&#x7684;&#x5047;&#x8C61;&#xFF01;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x662F;&#x6BD4;&#x8F83;&#x91CD;&#x8981;&#x7684;&#x6570;&#x636E;&#x7684;&#x8BDD;&#xFF0C;&#x5EFA;&#x8BAE;&#x4F60;&#x8FD8;&#x662F;&#x8FDB;&#x884C;&#x672C;&#x5730;&#x5316;&#xFF0C;&#x53E6;&#x5916;&#x5728;&#x4F7F;&#x7528;&#x6570;&#x636E;&#x7684;&#x65F6;&#x5019; &#x8981;&#x5BF9;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x8FDB;&#x884C;&#x975E;&#x7A7A;&#x68C0;&#x67E5;&#xFF01;&#x8FD8;&#x6709;&#x4E00;&#x70B9;&#x5C31;&#x662F;&#xFF1A;&#x4E0D;&#x6B62;&#x662F;Application&#x53D8;&#x91CF;&#x4F1A;&#x8FD9;&#x6837;&#xFF0C;&#x5355;&#x4F8B;&#x5BF9;&#x8C61;&#x4EE5;&#x53CA;&#x516C;&#x5171;&#x9759;&#x6001;&#x53D8;&#x91CF; &#x4E5F;&#x4F1A;&#x8FD9;&#x6837;~</p>
+<h2 id="&#x516B;&#x3001;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x4F20;&#x53C2;">&#x516B;&#x3001;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x4F20;&#x53C2;</h2>
+<p>&#x4E0A;&#x9762;&#x7684;Application&#x5C31;&#x662F;&#x57FA;&#x4E8E;&#x5355;&#x4F8B;&#x7684;&#xFF0C;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x7684;&#x7279;&#x70B9;&#x5C31;&#x662F;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;&#x7CFB;&#x7EDF;&#x4E2D;&#x4E00;&#x4E2A;&#x7C7B;&#x6709;&#x4E14;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002; &#x8FD9;&#x6837;&#x5F88;&#x5BB9;&#x6613;&#x5C31;&#x80FD;&#x5B9E;&#x73B0;&#xFF0C;&#x5728;A&#x4E2D;&#x8BBE;&#x7F6E;&#x53C2;&#x6570;&#xFF0C;&#x5728;B&#x4E2D;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x4E86;&#x3002;&#x8FD9;&#x662F;&#x51E0;&#x79CD;&#x65B9;&#x6CD5;&#x4E2D;&#x6548;&#x7387;&#x6700;&#x9AD8;&#x7684;&#x3002;</p>
+<p>&#x8303;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;(&#x4EE3;&#x7801;&#x6765;&#x81EA;&#x4E8E;&#x7F51;&#x4E0A;~)</p>
+<p>&#x2460;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5355;&#x4F8B;&#x7C7B;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">XclSingleton</span>  
+</span>{  
+    <span class="hljs-comment">//&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x5B9E;&#x4F8B;  </span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> XclSingleton instance = <span class="hljs-keyword">null</span>;  
+
+    <span class="hljs-comment">//synchronized &#x7528;&#x4E8E;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#xFF0C;&#x9632;&#x6B62;&#x591A;&#x7EBF;&#x7A0B;&#x540C;&#x65F6;&#x521B;&#x5EFA;&#x5B9E;&#x4F8B;  </span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">static</span> XclSingleton <span class="hljs-title">getInstance</span><span class="hljs-params">()</span></span>{  
+        <span class="hljs-keyword">if</span>(instance == <span class="hljs-keyword">null</span>){  
+            instance = <span class="hljs-keyword">new</span> XclSingleton();  
+        }     
+        <span class="hljs-keyword">return</span> instance;  
+    }     
+
+    <span class="hljs-keyword">final</span> HashMap&lt;String, Object&gt; mMap;  
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">XclSingleton</span><span class="hljs-params">()</span>  
+    </span>{  
+        mMap = <span class="hljs-keyword">new</span> HashMap&lt;String,Object&gt;();  
+    }  
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">put</span><span class="hljs-params">(String key,Object value)</span></span>{  
+        mMap.put(key,value);  
+    }  
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">get</span><span class="hljs-params">(String key)</span>  
+    </span>{  
+        <span class="hljs-keyword">return</span> mMap.get(key);  
+    }  
+}
+</code></pre>
+<p>&#x2461;&#x8BBE;&#x7F6E;&#x53C2;&#x6570;:</p>
+<pre><code class="lang-java">XclSingleton.getInstance().put(<span class="hljs-string">&quot;key1&quot;</span>, <span class="hljs-string">&quot;value1&quot;</span>);  
+XclSingleton.getInstance().put(<span class="hljs-string">&quot;key2&quot;</span>, <span class="hljs-string">&quot;value2&quot;</span>);
+</code></pre>
+<h2 id="&#x4E5D;&#x3001;&#x672C;&#x8282;&#x5C0F;&#x7ED3;&#xFF1A;">&#x4E5D;&#x3001;&#x672C;&#x8282;&#x5C0F;&#x7ED3;&#xFF1A;</h2>
+<p>&#x597D;&#x7684;&#xFF0C;&#x5173;&#x4E8E;Intent&#x590D;&#x6742;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x5C31;&#x5230;&#x8FD9;&#x91CC;&#xFF0C;&#x672C;&#x8282;&#x9664;&#x4E86;&#x8BB2;&#x8FF0;&#x4F7F;&#x7528;Intent&#x6765;&#x4F20;&#x9012;&#x590D;&#x6742;&#x6570;&#x636E;&#x5916;&#xFF0C;&#x8FD8;&#x6559;&#x4E86;&#x5927;&#x5BB6; &#x4F7F;&#x7528;Application&#x548C;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x6765;&#x4F20;&#x9012;&#x53C2;&#x6570;&#xFF01;&#x76F8;&#x4FE1;&#x4F1A;&#x5BF9;&#x5927;&#x5BB6;&#x5728;&#x6570;&#x636E;&#x4F20;&#x9012;&#x65B9;&#x9762;&#x5E26;&#x6765;&#x65B9;&#x4FBF;&#xFF0C;&#x8C22;&#x8C22;~ </p>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; 54dxs.cn 2019 all right reserved&#xFF0C;powered by &#x6DF1;&#x60C5;&#x5C0F;&#x5EFA;</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;:
+2019-10-29 22:22:51
+</span></footer>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="intent-base.html" class="navigation navigation-prev " aria-label="Previous page: 5.5.1、Intent的基本使用">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../fragment/fragment-base.html" class="navigation navigation-next " aria-label="Next page: 6.1、Fragment基本概述">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"5.5.2、Intent之复杂数据的传递","level":"5.5.2","depth":2,"next":{"title":"6.1、Fragment基本概述","level":"6.1","depth":1,"path":"doc/fragment/fragment-base.md","ref":"doc/fragment/fragment-base.md","articles":[]},"previous":{"title":"5.5.1、Intent的基本使用","level":"5.5.1","depth":2,"path":"doc/component/intent-base.md","ref":"doc/component/intent-base.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","code","expandable-chapters-small","back-to-top-button","github","emphasize","splitter","-sharing","sharing-plus","donate","tbfed-pagefooter","alerts","flexible-alerts","pageview-count","hide-element","popup","custom-favicon","sectionx","insert-logo"],"root":"./","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 54dxs.cn 2019","modify_label":"该文件修订时间:","modify_format":"YYYY-MM-DD HH:mm:ss"},"emphasize":{},"github":{"url":"https://github.com/lijian17/54dxs.github.io"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"donate":{"alipay":"/img/alipay.png","alipayText":"<font color='blue'>支付宝打赏</font>","button":"赏","title":"<span style='font-size:5rem; color:red'>🍖🍖赏个鸡腿吃呗!</span><br><br>","wechat":"/img/wxpay.png","wechatText":"<font color='red'>微信打赏</font>"},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"sectionx":{},"highlight":{},"favicon":"./doc/img/favicon.ico","back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"expandable-chapters-small":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"},"comment":{"label":"Comment","icon":"fa fa-comments","className":"info"}},"sharing":{"qq":true,"qzone":true,"weibo":true,"all":["douban","facebook","google","hatenaBookmark","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","vk","pocket","stumbleupon","whatsapp"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 270px; min-height: 60px","url":"/img/android-logo.png"}},"theme":"default","author":"深情小建","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Android新手入门","language":"zh-hans","links":{"sidebar":{"54大学生[Android频道][面试指南]":"https://android.54dxs.cn/interview/index.html","54大学生[Android频道][新手入门]":"https://android.54dxs.cn/rookie/index.html","54大学生[Android频道][进阶之光]":"https://android.54dxs.cn/advanced/index.html","54大学生[Android频道][项目实战]":"https://android.54dxs.cn/project/index.html"}},"gitbook":"*","description":"Android新手入门，跟随学习，专注认真，学有所成"},"file":{"path":"doc/component/intent-pass-data.md","mtime":"2019-10-29T14:22:51.154Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-11T12:01:18.192Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sectionx/sectionx.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
