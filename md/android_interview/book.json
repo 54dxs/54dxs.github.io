@@ -10,88 +10,41 @@
 		}
 	},
 	"plugins": [
-		"-lunr",
-		"-search",
-		"search-pro",
-		"code",
-		"expandable-chapters-small",
-		"back-to-top-button",
-		"github",
-		"emphasize",
-		"splitter",
-		"-sharing",
-		"sharing-plus",
-		"donate",
-		"tbfed-pagefooter",
-		"alerts",
-		"flexible-alerts",
-		"pageview-count",
-		"hide-element",
-		"popup",
-		"custom-favicon",
-		"sectionx",
-		"insert-logo"
+		"baidutongji",
+		"back-to-top",
+		"pagefooter",
+		"bot"
 	],
 	"pluginsConfig": {
-		"code": {
-			"copyButtons": true
+		"theme-default": {
+			"showLevel": true
 		},
-		"github": {
-			"url": "https://github.com/lijian17/54dxs.github.io"
+		"baidutongji": {
+			"url": "https://hm.baidu.com/hm.js?576dac27159c64330bc7df555916318e"
 		},
-		"sharing": {
-			"qq": true,
-			"qzone": true,
-			"weibo": true,
-			"all": [
-				"douban",
-				"facebook",
-				"google",
-				"hatenaBookmark",
-				"instapaper",
-				"linkedin",
-				"twitter",
-				"weibo",
-				"messenger",
-				"qq",
-				"qzone",
-				"viber",
-				"vk",
-				"pocket",
-				"stumbleupon",
-				"whatsapp"
-			]
+		"back-to-top": {
+			
 		},
-		"donate": {
-			"title": "<span style='font-size:5rem; color:red'>🍖🍖赏个鸡腿吃呗!</span><br><br>",
-			"button": "赏",
-			"wechat": "/img/wxpay.png",
-			"alipay": "/img/alipay.png",
-			"wechatText": "<font color='red'>微信打赏</font>",
-			"alipayText": "<font color='blue'>支付宝打赏</font>"
-		},
-		"tbfed-pagefooter": {
-			"copyright": "Copyright &copy 54dxs.cn 2019",
+		"pagefooter": {
+			"copyright": "Copyright &copy 54dxs.cn 2020",
 			"modify_label": "该文件修订时间:",
-			"modify_format": "YYYY-MM-DD HH:mm:ss"
+			"modify_format": "yyyy-MM-dd hh:mm:ss"
 		},
-		"flexible-alerts": {
-			"style": "callout",
-			"comment": {
-				"label": "Comment",
-				"icon": "fa fa-comments",
-				"className": "info"
+		"bot": {
+			"dingtalk": {
+				"url": "https://oapi.dingtalk.com/robot/send?access_token=25bd0c5516b29de56f2398fdbe8bf1c99ff7d6925368b152c1cf286cd4640a93",
+				"title": "预警类型",
+				"at": {
+					"atMobiles": [
+						"15010990415", 
+						"15210550601"
+					], 
+					"isAtAll": false
+				}
+			},
+			"weixin": {
+				"url": "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=472e73bd-9069-45ed-af81-79f43fb4d82e"
 			}
-		},
-		"hide-element": {
-			"elements": [
-				".gitbook-link"
-			]
-		},
-		"favicon": "./doc/img/favicon.ico",
-		"insert-logo": {
-			"url": "/img/android-logo.png",
-			"style": "background: none; max-height: 270px; min-height: 60px"
 		}
 	}
 }
